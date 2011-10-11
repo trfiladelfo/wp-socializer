@@ -1,0 +1,579 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WP Socializer\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-07-31 13:42+0530\n"
+"PO-Revision-Date: 2010-07-31 14:25+0530\n"
+"Last-Translator: Aakash Chakravarthy <aakash.19493@gmail.com>\n"
+"Language-Team: Aakash Chakravarthy <aakash.19493@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Language: Chinese\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../adm-sidebar.php:10
+msgid "Donate and support this plugin's future"
+msgstr "捐赠和支持这个插件的未来"
+
+#: ../adm-sidebar.php:14
+msgid "Plugin Support"
+msgstr "插件支持"
+
+#: ../adm-sidebar.php:18
+msgid "Plugin Documentation"
+msgstr "插件文件"
+
+#: ../adm-sidebar.php:22
+msgid "Bugs Report"
+msgstr "错误报告"
+
+#: ../adm-sidebar.php:26
+msgid "FAQ's"
+msgstr "常见问题"
+
+#: ../adm-sidebar.php:30
+msgid "Request a feature"
+msgstr "要求一个功能"
+
+#: ../adm-sidebar.php:34
+msgid "Author Website"
+msgstr "作者网站"
+
+#: ../adm-sidebar.php:38
+msgid "Support this plugin"
+msgstr "支持此插件"
+
+#: ../adm-sidebar.php:42
+msgid "Follow the author"
+msgstr "按照作者"
+
+#: ../adm-sidebar.php:46
+msgid "Subscribe to Updates"
+msgstr "订阅更新"
+
+#: ../adm-sidebar.php:50
+msgid "Promote this plugin"
+msgstr "推动这个插件"
+
+#: ../adm-sidebar.php:55
+msgid "More plugins"
+msgstr "更多的插件"
+
+#: ../adm-sidebar.php:85
+msgid "Reference"
+msgstr "参考"
+
+#: ../adm-sidebar.php:88
+msgid "Template Functions"
+msgstr "模板功能"
+
+#: ../socializer-admin.php:170
+msgid "Updated successfully"
+msgstr "更新成功"
+
+#: ../socializer-admin.php:288
+msgid "Disabled"
+msgstr "残疾人士"
+
+#: ../socializer-admin.php:319
+msgid "Social Buttons"
+msgstr "社会按钮"
+
+#: ../socializer-admin.php:322
+msgid "Click the icon size to select and \"x\" button to remove selected. Click and drag to reorder selected sites"
+msgstr "点击图标大小选择和 \"x\" 按钮可以删除选中。单击并拖动以重新排列选定地点"
+
+#: ../socializer-admin.php:325
+msgid "Available buttons"
+msgstr "可用按钮"
+
+#: ../socializer-admin.php:353
+#: ../socializer-admin.php:368
+msgid "Selected buttons"
+msgstr "选择按钮"
+
+#: ../socializer-admin.php:386
+msgid "Settings"
+msgstr "设置"
+
+#: ../socializer-admin.php:390
+msgid "Open links in new tab/window"
+msgstr "在新标签中打开链接/窗口"
+
+#: ../socializer-admin.php:392
+#: ../socializer-admin.php:400
+#: ../socializer-admin.php:415
+#: ../socializer-admin.php:443
+#: ../socializer-admin.php:646
+#: ../socializer-admin.php:698
+#: ../socializer-admin.php:844
+msgid "Yes"
+msgstr "对"
+
+#: ../socializer-admin.php:393
+#: ../socializer-admin.php:401
+#: ../socializer-admin.php:416
+#: ../socializer-admin.php:444
+#: ../socializer-admin.php:647
+#: ../socializer-admin.php:699
+#: ../socializer-admin.php:843
+msgid "No"
+msgstr "没有"
+
+#: ../socializer-admin.php:397
+msgid "Load WP Socializer CSS"
+msgstr "负载 WP Socializer CSS"
+
+#: ../socializer-admin.php:398
+msgid "Note: hover effects &amp; column will not be available"
+msgstr "注：悬停效果和列将无法使用"
+
+#: ../socializer-admin.php:405
+msgid "Image on Hover effect"
+msgstr "在悬停图像效果"
+
+#: ../socializer-admin.php:409
+msgid "No Effect"
+msgstr "没有影响"
+
+#: ../socializer-admin.php:413
+msgid "Show Label for buttons"
+msgstr "显示标签的按钮"
+
+#: ../socializer-admin.php:420
+msgid "Show Icons in"
+msgstr "在显示图标"
+
+#: ../socializer-admin.php:421
+msgid "Very very effective when labels are enabled (try it)"
+msgstr "非常非常有效的标签，当启用（尝试）"
+
+#: ../socializer-admin.php:431
+msgid "Image folder"
+msgstr "图像文件夹"
+
+#: ../socializer-admin.php:432
+#: ../socializer-admin.php:497
+#: ../socializer-admin.php:500
+msgid "Leave blank to use default"
+msgstr "给空白以使用预设"
+
+#: ../socializer-admin.php:441
+msgid "Use Sprites"
+msgstr "使用精灵"
+
+#: ../socializer-admin.php:450
+#, php-format
+msgid "For using the 16px buttons, use the code %s in the placement template"
+msgstr "对于使用16px按钮，使用该模板放置的代码%s"
+
+#: ../socializer-admin.php:451
+#, php-format
+msgid "For using the 32px buttons, use the code %s in the placement template"
+msgstr "对于使用32px按钮，使用该模板放置的代码%s"
+
+#: ../socializer-admin.php:456
+#: ../socializer-admin.php:568
+msgid "General"
+msgstr "一般"
+
+#: ../socializer-admin.php:460
+msgid "Add This Username"
+msgstr "Addthis 用户名"
+
+#: ../socializer-admin.php:461
+msgid "If available"
+msgstr "如果可用"
+
+#: ../socializer-admin.php:462
+#: ../socializer-admin.php:539
+msgid "Language"
+msgstr "语"
+
+#: ../socializer-admin.php:468
+msgid "Choose the Bookmarking or sharing button"
+msgstr "选择书签或共享按钮"
+
+#: ../socializer-admin.php:491
+msgid "Optional button Settings"
+msgstr "可选按钮设置"
+
+#: ../socializer-admin.php:496
+msgid "Brand Name"
+msgstr "品牌名称"
+
+#: ../socializer-admin.php:499
+msgid "Custom services"
+msgstr "定制服务"
+
+#: ../socializer-admin.php:500
+msgid "comma-seperated"
+msgstr "逗号分隔的"
+
+#: ../socializer-admin.php:504
+msgid "Header Color"
+msgstr "标题颜色"
+
+#: ../socializer-admin.php:506
+msgid "Header Background"
+msgstr "标题背景"
+
+#: ../socializer-admin.php:512
+#: ../socializer-admin.php:545
+#: ../socializer-admin.php:562
+#: ../socializer-admin.php:612
+#: ../socializer-admin.php:628
+#: ../socializer-admin.php:682
+#: ../socializer-admin.php:710
+#, php-format
+msgid "For using this button, use the code %s in the placement template"
+msgstr "使用此按钮，请在模板放置代码%s"
+
+#: ../socializer-admin.php:518
+msgid "Post to Buzz button"
+msgstr "邮政巴兹按钮"
+
+#: ../socializer-admin.php:523
+#: ../socializer-admin.php:689
+msgid "Style"
+msgstr "风格"
+
+#: ../socializer-admin.php:525
+msgid "Show Button and counter"
+msgstr "显示按钮和反"
+
+#: ../socializer-admin.php:526
+msgid "Show Button only"
+msgstr "只显示按钮"
+
+#: ../socializer-admin.php:527
+msgid "Show Link only"
+msgstr "只显示链接"
+
+#: ../socializer-admin.php:533
+msgid "Size"
+msgstr "大小"
+
+#: ../socializer-admin.php:533
+#: ../socializer-admin.php:696
+msgid "Not for link"
+msgstr "不为连结"
+
+#: ../socializer-admin.php:534
+msgid "Normal"
+msgstr "正常"
+
+#: ../socializer-admin.php:536
+msgid "Small"
+msgstr "小"
+
+#: ../socializer-admin.php:547
+msgid "Follow on Buzz button"
+msgstr "关于口碑后续按钮"
+
+#: ../socializer-admin.php:552
+msgid "Profile URL"
+msgstr "个人资料的网址"
+
+#: ../socializer-admin.php:553
+msgid "Don't know your profile URL?"
+msgstr "不知道你的个人资料的网址？"
+
+#: ../socializer-admin.php:553
+msgid "Click here"
+msgstr "点击这里"
+
+#: ../socializer-admin.php:556
+msgid "Button Text"
+msgstr "按钮文本"
+
+#: ../socializer-admin.php:573
+msgid "Twitter Username"
+msgstr "Twitter的用户名"
+
+#: ../socializer-admin.php:577
+msgid "Retweet Button Type"
+msgstr "Retweet按钮类型"
+
+#: ../socializer-admin.php:579
+msgid "Normal (Big)"
+msgstr "正常（大）"
+
+#: ../socializer-admin.php:580
+#: ../socializer-admin.php:622
+msgid "Compact"
+msgstr "紧凑"
+
+#: ../socializer-admin.php:586
+msgid "Choose a service"
+msgstr "选择服务"
+
+#: ../socializer-admin.php:591
+msgid "Retweet Service"
+msgstr "Retweet服务"
+
+#: ../socializer-admin.php:598
+msgid "Select a theme for topsy"
+msgstr "选择一个主题Topsy"
+
+#: ../socializer-admin.php:614
+msgid "Digg Button"
+msgstr "Digg的按钮"
+
+#: ../socializer-admin.php:618
+msgid "Digg Button type"
+msgstr "Digg的按钮类型"
+
+#: ../socializer-admin.php:620
+msgid "Medium"
+msgstr "中"
+
+#: ../socializer-admin.php:621
+msgid "Large"
+msgstr "大"
+
+#: ../socializer-admin.php:623
+msgid "Icon"
+msgstr "图标"
+
+#: ../socializer-admin.php:633
+msgid "Like Button"
+msgstr "像巴顿"
+
+#: ../socializer-admin.php:637
+msgid "Button Style"
+msgstr "按钮样式"
+
+#: ../socializer-admin.php:639
+msgid "Standard"
+msgstr "标准"
+
+#: ../socializer-admin.php:640
+msgid "Button and count"
+msgstr "巴顿和计数"
+
+#: ../socializer-admin.php:644
+msgid "Show Faces"
+msgstr "显示面"
+
+#: ../socializer-admin.php:651
+msgid "Width"
+msgstr "宽度"
+
+#: ../socializer-admin.php:652
+msgid "In pixels"
+msgstr "在像素"
+
+#: ../socializer-admin.php:655
+msgid "Verb to Display"
+msgstr "动词，以显示"
+
+#: ../socializer-admin.php:657
+msgid "Like"
+msgstr "喜欢"
+
+#: ../socializer-admin.php:658
+msgid "Recommend"
+msgstr "建议"
+
+#: ../socializer-admin.php:662
+msgid "Font"
+msgstr "字体"
+
+#: ../socializer-admin.php:673
+msgid "Color scheme"
+msgstr "配色方案"
+
+#: ../socializer-admin.php:675
+msgid "Light"
+msgstr "光"
+
+#: ../socializer-admin.php:676
+msgid "Dark"
+msgstr "黑暗"
+
+#: ../socializer-admin.php:685
+msgid "Share Button"
+msgstr "分享按钮"
+
+#: ../socializer-admin.php:691
+msgid "Button"
+msgstr "按键"
+
+#: ../socializer-admin.php:693
+msgid "Link"
+msgstr "链接"
+
+#: ../socializer-admin.php:696
+msgid "Show Counter"
+msgstr "显示计数器"
+
+#: ../socializer-admin.php:702
+msgid "Above the button"
+msgstr "上面的按钮"
+
+#: ../socializer-admin.php:704
+msgid "Inline with the Button"
+msgstr "内联的按钮"
+
+#: ../socializer-admin.php:715
+msgid "Custom 1"
+msgstr "自定义1"
+
+#: ../socializer-admin.php:718
+#: ../socializer-admin.php:725
+#, php-format
+msgid "Enter any share button code. Use %s for the page url and %s for page title"
+msgstr "输入任何代码共享按钮。%s使用的页面的URL和页面标题%s"
+
+#: ../socializer-admin.php:720
+#: ../socializer-admin.php:728
+#, php-format
+msgid "For using this, use the code %s in the placement template"
+msgstr "对于使用，使用中的配售代码模板%s"
+
+#: ../socializer-admin.php:722
+msgid "Custom 2"
+msgstr "自定义2"
+
+#: ../socializer-admin.php:734
+msgid "Available button codes"
+msgstr "可用按钮的代码"
+
+#: ../socializer-admin.php:736
+msgid "Template 1"
+msgstr "模板1"
+
+#: ../socializer-admin.php:745
+#: ../socializer-admin.php:788
+msgid "Show in front page"
+msgstr "显示在头版"
+
+#: ../socializer-admin.php:747
+#: ../socializer-admin.php:790
+msgid "Show in individual posts"
+msgstr "显示在个别职位"
+
+#: ../socializer-admin.php:749
+#: ../socializer-admin.php:792
+msgid "Show in pages"
+msgstr "显示在网页"
+
+#: ../socializer-admin.php:751
+#: ../socializer-admin.php:794
+msgid "Show in archive pages"
+msgstr "在档案显示页"
+
+#: ../socializer-admin.php:753
+#: ../socializer-admin.php:796
+msgid "Show in Tag pages"
+msgstr "显示在标签页"
+
+#: ../socializer-admin.php:755
+#: ../socializer-admin.php:798
+msgid "Show in date archives"
+msgstr "日期显示档案"
+
+#: ../socializer-admin.php:757
+#: ../socializer-admin.php:800
+msgid "Show in author pages"
+msgstr "展的作者页"
+
+#: ../socializer-admin.php:759
+#: ../socializer-admin.php:802
+msgid "Show in search pages"
+msgstr "在搜索显示页面"
+
+#: ../socializer-admin.php:761
+#: ../socializer-admin.php:804
+msgid "Show in Excerpt"
+msgstr "展摘录"
+
+#: ../socializer-admin.php:763
+#: ../socializer-admin.php:806
+msgid "Show in RSS feeds"
+msgstr "在RSS显示供稿"
+
+#: ../socializer-admin.php:771
+#: ../socializer-admin.php:814
+msgid "Position"
+msgstr "位置"
+
+#: ../socializer-admin.php:772
+#: ../socializer-admin.php:815
+msgid "Above content"
+msgstr "以上内容"
+
+#: ../socializer-admin.php:773
+#: ../socializer-admin.php:816
+msgid "Below content"
+msgstr "以下内容"
+
+#: ../socializer-admin.php:779
+msgid "Template 2"
+msgstr "模板2"
+
+#: ../socializer-admin.php:825
+msgid "WP Socializer Settings"
+msgstr "WP Socializer 设置"
+
+#: ../socializer-admin.php:829
+msgid "Load button scripts in "
+msgstr "Load按钮剧本"
+
+#: ../socializer-admin.php:831
+msgid "Header (recommended)"
+msgstr "头（推荐）"
+
+#: ../socializer-admin.php:832
+msgid "Footer"
+msgstr "页脚"
+
+#: ../socializer-admin.php:837
+msgid "Disable WP Socializer"
+msgstr "禁用 WP Socializer"
+
+#: ../socializer-admin.php:840
+msgid "Temporarily disable all WP-Socializer buttons "
+msgstr "按钮暂时关闭所有WP-Socializer"
+
+#: ../socializer-admin.php:841
+msgid "Disabling will stop displaying all buttons, templates"
+msgstr "禁用所有按钮将停止显示，模板"
+
+#: ../socializer-admin.php:852
+msgid "Update"
+msgstr "更新"
+
+#: ../socializer-admin.php:856
+msgid "Donate"
+msgstr "捐赠"
+
+#: ../socializer-admin.php:856
+#: ../socializer-admin.php:906
+msgid "Help"
+msgstr "帮助"
+
+#: ../socializer-admin.php:856
+msgid "Twitter"
+msgstr "Twitter"
+
+#: ../socializer-admin.php:857
+msgid "a aakashweb.com plugin"
+msgstr "这是一个aakashweb.com插件"
+
+#: ../socializer-admin.php:902
+msgid "Disable template 1"
+msgstr "禁用模板1"
+
+#: ../socializer-admin.php:904
+msgid "Disable template 2"
+msgstr "禁用模板2"
+
+#: ../wp-socializer.php:1080
+msgid "AW Latest Updates"
+msgstr "AW最新更新"
+
