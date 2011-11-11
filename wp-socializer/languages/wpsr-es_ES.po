@@ -1,0 +1,1026 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WP Socializer\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-07-15 20:15+0530\n"
+"PO-Revision-Date: 2011-07-15 20:43+0530\n"
+"Last-Translator: Aakash Chakravarthy <aakash.19493@gmail.com>\n"
+"Language-Team: Aakash Chakravarthy\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../wp-socializer.php:38
+#: ../wp-socializer.php:45
+#: ../wp-socializer.php:52
+#: ../wp-socializer.php:60
+#: ../wp-socializer.php:76
+#: ../wp-socializer.php:90
+#: ../wp-socializer.php:97
+#: ../wp-socializer.php:113
+#: ../wp-socializer.php:120
+#: ../wp-socializer.php:137
+#: ../wp-socializer.php:175
+#: ../wp-socializer.php:192
+#: ../wp-socializer.php:209
+#: ../wp-socializer.php:217
+#: ../wp-socializer.php:224
+#: ../wp-socializer.php:231
+#: ../wp-socializer.php:239
+#: ../wp-socializer.php:247
+#: ../wp-socializer.php:256
+#: ../wp-socializer.php:287
+#: ../wp-socializer.php:295
+#: ../wp-socializer.php:303
+#: ../wp-socializer.php:312
+#: ../wp-socializer.php:333
+#: ../wp-socializer.php:347
+#: ../wp-socializer.php:357
+#: ../wp-socializer.php:364
+#: ../wp-socializer.php:380
+#: ../wp-socializer.php:397
+#: ../wp-socializer.php:411
+#: ../wp-socializer.php:425
+#: ../wp-socializer.php:433
+#: ../wp-socializer.php:479
+#: ../wp-socializer.php:486
+#: ../wp-socializer.php:493
+#: ../wp-socializer.php:500
+#: ../wp-socializer.php:517
+#: ../wp-socializer.php:524
+#: ../wp-socializer.php:532
+#: ../wp-socializer.php:547
+#: ../wp-socializer.php:555
+#: ../wp-socializer.php:564
+#: ../wp-socializer.php:572
+#: ../wp-socializer.php:589
+#: ../wp-socializer.php:597
+#: ../wp-socializer.php:629
+#: ../wp-socializer.php:654
+#: ../wp-socializer.php:668
+#: ../wp-socializer.php:682
+#: ../wp-socializer.php:689
+#: ../wp-socializer.php:696
+#: ../wp-socializer.php:721
+#: ../wp-socializer.php:743
+#: ../wp-socializer.php:770
+#: ../wp-socializer.php:779
+#: ../wp-socializer.php:786
+#: ../wp-socializer.php:793
+#: ../wp-socializer.php:812
+#: ../wp-socializer.php:819
+#: ../wp-socializer.php:854
+msgid "Share this on "
+msgstr "Comparte este artículo en"
+
+#: ../wp-socializer.php:68
+#: ../wp-socializer.php:129
+#: ../wp-socializer.php:168
+#: ../wp-socializer.php:279
+#: ../wp-socializer.php:507
+#: ../wp-socializer.php:661
+#: ../wp-socializer.php:703
+msgid "Post this on "
+msgstr "Publicar en este"
+
+#: ../wp-socializer.php:83
+#: ../wp-socializer.php:145
+#: ../wp-socializer.php:153
+#: ../wp-socializer.php:161
+#: ../wp-socializer.php:264
+#: ../wp-socializer.php:319
+#: ../wp-socializer.php:326
+#: ../wp-socializer.php:371
+#: ../wp-socializer.php:388
+#: ../wp-socializer.php:404
+#: ../wp-socializer.php:450
+#: ../wp-socializer.php:471
+#: ../wp-socializer.php:613
+#: ../wp-socializer.php:636
+#: ../wp-socializer.php:711
+#: ../wp-socializer.php:736
+#: ../wp-socializer.php:761
+#: ../wp-socializer.php:846
+msgid "Submit this to "
+msgstr "Enviar esto"
+
+#: ../wp-socializer.php:104
+msgid "Add this on "
+msgstr "Add this on "
+
+#: ../wp-socializer.php:182
+#: ../wp-socializer.php:418
+#: ../wp-socializer.php:440
+#: ../wp-socializer.php:457
+#: ../wp-socializer.php:539
+#: ../wp-socializer.php:622
+#: ../wp-socializer.php:675
+#: ../wp-socializer.php:728
+#: ../wp-socializer.php:829
+#: ../wp-socializer.php:838
+msgid "Add this to "
+msgstr "Agregue esto a"
+
+#: ../wp-socializer.php:199
+msgid "Email this "
+msgstr "enviar"
+
+#: ../wp-socializer.php:271
+#: ../wp-socializer.php:340
+msgid "Bookmark this on "
+msgstr "Marca esta en"
+
+#: ../wp-socializer.php:582
+msgid "Convert to "
+msgstr "convertir a"
+
+#: ../wp-socializer.php:605
+msgid "Print this article "
+msgstr "Imprimir este artículo"
+
+#: ../wp-socializer.php:644
+msgid "Subscribe to "
+msgstr "Suscríbete a"
+
+#: ../wp-socializer.php:751
+msgid "Tweet this !"
+msgstr "Tweet this !"
+
+#: ../wp-socializer.php:937
+msgid "<b>WP Socializer</b> plugin is intalled. Please adjust your settings"
+msgstr "Plugin de </b>WP Socializer</b> está instalado. Por favor ajuste la configuración"
+
+#: ../wp-socializer.php:937
+msgid "in this page"
+msgstr "en esta página"
+
+#: ../wp-socializer.php:947
+#: ../admin/wpsr-admin.php:752
+#: ../admin/wpsr-admin.php:859
+#: ../admin/wpsr-admin.php:1059
+#: ../admin/wpsr-admin.php:1461
+#: ../admin/wpsr-admin.php:1637
+msgid "Settings"
+msgstr "Configuración"
+
+#: ../wp-socializer.php:947
+#: ../admin/wpsr-admin.php:757
+#: ../admin/wpsr-admin.php:1565
+#, fuzzy
+msgid "Support"
+msgstr "Plugin de Apoyo"
+
+#: ../wp-socializer.php:1527
+msgid "AW Latest Updates"
+msgstr "AW Actualidad"
+
+#: ../wp-socializer.php:1538
+msgid "WP Socializer is <span style=\"color:red;\"><b>disabled</b></span>"
+msgstr "WP Socializer está <span style=\"color:red;\"><b>desactivado</b></span>"
+
+#: ../wp-socializer.php:1552
+#, fuzzy
+msgid "Edit the templates"
+msgstr "Deshabilitar plantilla 1"
+
+#: ../wp-socializer.php:1557
+msgid "Disable WP Socializer in this page"
+msgstr "Desactivar WP Socializer en esta página"
+
+#: ../wp-socializer.php:1597
+msgid "WP Socializer"
+msgstr "WP Socializer"
+
+#: ../wp-socializer.php:1598
+msgid "Insert WP Socializer buttons"
+msgstr "Insertar botones WP Socializer"
+
+#: ../admin/wpsr-admin-other.php:36
+msgid "In widgets and posts"
+msgstr "In widgets and posts"
+
+#: ../admin/wpsr-admin-other.php:37
+#: ../admin/wpsr-admin-other.php:91
+msgid "Note:"
+msgstr "Nota:"
+
+#: ../admin/wpsr-admin-other.php:37
+msgid "Inorder to use the buttons in <em>Widgets</em> and <em>Posts</em>, you need to use the below shortcodes."
+msgstr "Con el fin de utilizar los botones de \"Widgets\" & \"Posts\", es necesario utilizar los códigos cortos a continuación."
+
+#: ../admin/wpsr-admin-other.php:63
+msgid "These shortcodes have several parameters. You can use them to customize the buttons. View the parameters in this page."
+msgstr "Estos códigos cortos tienen varios parámetros. Se pueden utilizar para personalizar los botones. Ver los parámetros en esta página"
+
+#: ../admin/wpsr-admin-other.php:66
+msgid "You must use the above shortcodes in"
+msgstr "Debe utilizar el códigos cortos por encima de"
+
+#: ../admin/wpsr-admin-other.php:66
+msgid "plugin to insert the buttons in the widgets."
+msgstr "plug-in para insertar los botones en los widgets."
+
+#: ../admin/wpsr-admin-other.php:72
+msgid "HTML Javascript Adder is installed, Go to Widgets page and use the shortcodes in this widget"
+msgstr "HTML Javascript Adder está instalado, vaya a la página de Widgets y el uso de los códigos cortos en este widget"
+
+#: ../admin/wpsr-admin-other.php:75
+msgid "Upgrade HTML Javascript Adder plugin"
+msgstr "Actualiza HTML Javascript plugin de Adder"
+
+#: ../admin/wpsr-admin-other.php:76
+msgid "The current version ("
+msgstr "La versión actual ("
+
+#: ../admin/wpsr-admin-other.php:76
+msgid ") is not compatible with WP Socializer. It is recommended to upgrade"
+msgstr ") No es compatible con WP Socializer. Se recomienda actualizar"
+
+#: ../admin/wpsr-admin-other.php:79
+msgid "Install HTML Javascript Adder plugin"
+msgstr "Instalar plugin de HTML Javascript Adder"
+
+#: ../admin/wpsr-admin-other.php:86
+msgid "Inside Posts"
+msgstr "dentro de Posts"
+
+#: ../admin/wpsr-admin-other.php:87
+msgid "Inorder to use the buttons inside posts, you must use the above shortcodes in the post editor."
+msgstr "Con el fin de utilizar los botones dentro de los mensajes, debe utilizar el códigos cortos arriba en el editor de entradas."
+
+#: ../admin/wpsr-admin-other.php:91
+msgid "HTML Javascript Adder is a wordpress plugin for inserting HTML, Javascripts in widgets with more than 50,000 downloads. This is from the same author of this plugin. The latest version of HJA can insert WP Socializer buttons in widgets."
+msgstr "HTML Javascript Adder es un plugin de wordpress para insertar Javascript HTML, en los widgets con más de 50.000 descargas. Esto es del mismo autor de este plugin. La última versión de HJA puede insertar botones WP Socializer en widgets."
+
+#: ../admin/wpsr-admin.php:185
+msgid "Share and Enjoy"
+msgstr "Compartir y Disfrutar"
+
+#: ../admin/wpsr-admin.php:188
+msgid "Use Sharethis to share this post"
+msgstr "Use ShareThis para compartir este mensaje"
+
+#: ../admin/wpsr-admin.php:191
+msgid "Use Addhis to share this post"
+msgstr "Use Addhis compartir este posts"
+
+#: ../admin/wpsr-admin.php:508
+msgid "Updated successfully"
+msgstr "Actualizado el éxito"
+
+#: ../admin/wpsr-admin.php:512
+msgid "Values are set to defaults successfully"
+msgstr "Los valores se definen a los valores de éxito"
+
+#: ../admin/wpsr-admin.php:516
+msgid "Welcome to WP Socializer Admin page. <a href=\"http://\">Click here</a> to get started with WP Socializer"
+msgstr "Bienvenido a la página de administración de WP Socializer. <a href=\"http://www.aakashweb.com/?src=wpsr\">Haga clic aquí</a> para empezar con WP Socializer"
+
+#: ../admin/wpsr-admin.php:659
+msgid "Disabled"
+msgstr "Discapacitado"
+
+#: ../admin/wpsr-admin.php:673
+msgid "+1 this plugin"
+msgstr "Recomienda este plugin"
+
+#: ../admin/wpsr-admin.php:679
+#, fuzzy
+msgid "Like this plugin"
+msgstr "Promover este plugin"
+
+#: ../admin/wpsr-admin.php:686
+msgid "Donate"
+msgstr "Donar"
+
+#: ../admin/wpsr-admin.php:687
+msgid "and Support"
+msgstr "y soporte"
+
+#: ../admin/wpsr-admin.php:693
+msgid "Make your donation with Paypal"
+msgstr "Haga su donación con Paypal"
+
+#: ../admin/wpsr-admin.php:699
+msgid "Select your Donation amount:"
+msgstr "Seleccione el monto de su donación:"
+
+#: ../admin/wpsr-admin.php:721
+#, fuzzy
+msgid "Custom"
+msgstr "Personalizado 1"
+
+#: ../admin/wpsr-admin.php:731
+#: ../admin/wpsr-admin.php:1578
+msgid "Donate with PayPal!"
+msgstr "Donar con PayPal!"
+
+#: ../admin/wpsr-admin.php:756
+#: ../admin/wpsr-admin.php:1565
+#, fuzzy
+msgid "Documentation"
+msgstr "Plugin de Documentación"
+
+#: ../admin/wpsr-admin.php:758
+#: ../admin/wpsr-admin.php:1564
+msgid "Manual Placement"
+msgstr "Colocación manual de"
+
+#: ../admin/wpsr-admin.php:767
+msgid "Use the above code <a href=\"#tab-9\">here</a>, to insert the button"
+msgstr "Utilice el código anterior <a href=\"#tab-9\">aquí</a>, para insertar el botón"
+
+#: ../admin/wpsr-admin.php:781
+msgid "Select a template and click apply."
+msgstr "Seleccione un estilo y haga clic en Aplicar."
+
+#: ../admin/wpsr-admin.php:783
+msgid "Create a template"
+msgstr "Crear una plantilla"
+
+#: ../admin/wpsr-admin.php:783
+#, fuzzy
+msgid "Submit a template"
+msgstr "Deshabilitar plantilla 1"
+
+#: ../admin/wpsr-admin.php:791
+msgid "Social Buttons"
+msgstr "Social botones"
+
+#: ../admin/wpsr-admin.php:794
+msgid "Click the icon size to select and \"x\" button to remove selected. Click and drag to reorder selected sites"
+msgstr "Haga clic en el tamaño de los iconos para seleccionar y \"x \" para eliminar seleccionado. Haga clic y arrastre para reordenar los sitios seleccionados"
+
+#: ../admin/wpsr-admin.php:798
+msgid "Available buttons"
+msgstr "Botones disponibles"
+
+#: ../admin/wpsr-admin.php:798
+msgid "Filter buttons"
+msgstr "botones de filtro"
+
+#: ../admin/wpsr-admin.php:798
+msgid "Filter"
+msgstr "filtro"
+
+#: ../admin/wpsr-admin.php:826
+#: ../admin/wpsr-admin.php:841
+msgid "Selected buttons"
+msgstr "botones seleccionados"
+
+#: ../admin/wpsr-admin.php:863
+msgid "Open links in new tab/window"
+msgstr "Abrir enlaces en una nueva pestaña o ventana"
+
+#: ../admin/wpsr-admin.php:865
+#: ../admin/wpsr-admin.php:880
+#: ../admin/wpsr-admin.php:908
+#: ../admin/wpsr-admin.php:996
+#: ../admin/wpsr-admin.php:1069
+#: ../admin/wpsr-admin.php:1238
+#: ../admin/wpsr-admin.php:1287
+#: ../admin/wpsr-admin.php:1509
+#: ../admin/wpsr-admin.php:1526
+msgid "Yes"
+msgstr "Sí"
+
+#: ../admin/wpsr-admin.php:866
+#: ../admin/wpsr-admin.php:881
+#: ../admin/wpsr-admin.php:909
+#: ../admin/wpsr-admin.php:997
+#: ../admin/wpsr-admin.php:1070
+#: ../admin/wpsr-admin.php:1239
+#: ../admin/wpsr-admin.php:1288
+#: ../admin/wpsr-admin.php:1512
+#: ../admin/wpsr-admin.php:1525
+msgid "No"
+msgstr "En"
+
+#: ../admin/wpsr-admin.php:870
+msgid "Image on Hover effect"
+msgstr "La imagen en efecto Hover"
+
+#: ../admin/wpsr-admin.php:874
+msgid "No Effect"
+msgstr "Sin efecto"
+
+#: ../admin/wpsr-admin.php:878
+msgid "Show Label for buttons"
+msgstr "Mostrar la etiqueta de los botones"
+
+#: ../admin/wpsr-admin.php:885
+msgid "Show Icons in"
+msgstr "Show Icons in"
+
+#: ../admin/wpsr-admin.php:886
+msgid "Very very effective when labels are enabled (try it)"
+msgstr "Muy muy eficaz cuando las etiquetas están permitidas (probarlo)"
+
+#: ../admin/wpsr-admin.php:896
+msgid "Image folder"
+msgstr "Imagen carpeta"
+
+#: ../admin/wpsr-admin.php:897
+#: ../admin/wpsr-admin.php:932
+#: ../admin/wpsr-admin.php:940
+#: ../admin/wpsr-admin.php:992
+msgid "Leave blank to use default"
+msgstr "Deja en blanco para usar por defecto"
+
+#: ../admin/wpsr-admin.php:906
+msgid "Use Sprites"
+msgstr "Utilice Sprites"
+
+#: ../admin/wpsr-admin.php:926
+msgid "Services"
+msgstr "servicios"
+
+#: ../admin/wpsr-admin.php:960
+#: ../admin/wpsr-admin.php:1017
+#, fuzzy
+msgid "Buttons"
+msgstr "Botón"
+
+#: ../admin/wpsr-admin.php:974
+msgid "Optional button Settings"
+msgstr "Opcional en el botón Configuración"
+
+#: ../admin/wpsr-admin.php:979
+msgid "Add This Username"
+msgstr "Añadir este usuario"
+
+#: ../admin/wpsr-admin.php:983
+msgid "If available"
+msgstr "Si está disponible"
+
+#: ../admin/wpsr-admin.php:985
+#: ../admin/wpsr-admin.php:1102
+#: ../admin/wpsr-admin.php:1188
+msgid "Language"
+msgstr "Idioma"
+
+#: ../admin/wpsr-admin.php:991
+msgid "Brand Name"
+msgstr "Marca Nombre"
+
+#: ../admin/wpsr-admin.php:994
+msgid "Track Clickback"
+msgstr "pista Clickback"
+
+#: ../admin/wpsr-admin.php:1001
+msgid "Header Color"
+msgstr "Encabezado Color"
+
+#: ../admin/wpsr-admin.php:1003
+msgid "Header Background"
+msgstr "Encabezado Antecedentes"
+
+#: ../admin/wpsr-admin.php:1018
+#, fuzzy
+msgid "Button type"
+msgstr "Botón Estilo"
+
+#: ../admin/wpsr-admin.php:1019
+#, fuzzy
+msgid "Button Order"
+msgstr "Botón de Texto"
+
+#: ../admin/wpsr-admin.php:1020
+msgid "Reorder, remove or add social buttons"
+msgstr "Reordenar, eliminar o agregar botones sociales"
+
+#: ../admin/wpsr-admin.php:1064
+msgid "You can see you publisher key in this page. "
+msgstr "Puede que usted ve la clave del editor de esta página."
+
+#: ../admin/wpsr-admin.php:1064
+#: ../admin/wpsr-admin.php:1114
+msgid "Click here"
+msgstr "Haga clic aquí"
+
+#: ../admin/wpsr-admin.php:1081
+msgid "Post to Buzz button"
+msgstr "Poste en el botón Buzz"
+
+#: ../admin/wpsr-admin.php:1086
+#: ../admin/wpsr-admin.php:1278
+msgid "Style"
+msgstr "Estilo"
+
+#: ../admin/wpsr-admin.php:1088
+msgid "Show Button and counter"
+msgstr "Mostrar botón y la lucha contra"
+
+#: ../admin/wpsr-admin.php:1089
+msgid "Show Button only"
+msgstr "Mostrar sólo botón"
+
+#: ../admin/wpsr-admin.php:1090
+msgid "Show Link only"
+msgstr "Mostrar Vincular sólo"
+
+#: ../admin/wpsr-admin.php:1096
+msgid "Size"
+msgstr "Tamaño"
+
+#: ../admin/wpsr-admin.php:1096
+#: ../admin/wpsr-admin.php:1285
+msgid "Not for link"
+msgstr "No para el enlace"
+
+#: ../admin/wpsr-admin.php:1097
+msgid "Normal"
+msgstr "Normal"
+
+#: ../admin/wpsr-admin.php:1099
+msgid "Small"
+msgstr "Pequeño"
+
+#: ../admin/wpsr-admin.php:1108
+msgid "Follow on Buzz button"
+msgstr "Siga las Buz Buton"
+
+#: ../admin/wpsr-admin.php:1113
+msgid "Profile URL"
+msgstr "Perfil URL"
+
+#: ../admin/wpsr-admin.php:1114
+msgid "Don't know your profile URL?"
+msgstr "No sabe la URL del perfil?"
+
+#: ../admin/wpsr-admin.php:1117
+msgid "Button Text"
+msgstr "Botón de Texto"
+
+#: ../admin/wpsr-admin.php:1128
+msgid "General"
+msgstr "General"
+
+#: ../admin/wpsr-admin.php:1133
+msgid "Twitter Username"
+msgstr "Twitter Nombre de usuario"
+
+#: ../admin/wpsr-admin.php:1137
+msgid "Retweet Button Type"
+msgstr "Retweet botón Tipo"
+
+#: ../admin/wpsr-admin.php:1139
+msgid "Normal (Big)"
+msgstr "Normal (grande)"
+
+#: ../admin/wpsr-admin.php:1140
+#: ../admin/wpsr-admin.php:1213
+msgid "Compact"
+msgstr "Compacto"
+
+#: ../admin/wpsr-admin.php:1141
+msgid "No Count (only for Twitter's Official Button)"
+msgstr "No Count (sólo para Button Oficial de Twitter)"
+
+#: ../admin/wpsr-admin.php:1147
+msgid "Choose a service"
+msgstr "Elija un servicio"
+
+#: ../admin/wpsr-admin.php:1152
+msgid "Retweet Service"
+msgstr "Retweet Servicio"
+
+#: ../admin/wpsr-admin.php:1154
+msgid "Twitter's Official Button"
+msgstr "Botón Oficial de Twitter"
+
+#: ../admin/wpsr-admin.php:1163
+msgid "Select a theme for topsy"
+msgstr "Seleccione un tema de patas"
+
+#: ../admin/wpsr-admin.php:1182
+msgid "Recommend people"
+msgstr "recomiendo a la gente"
+
+#: ../admin/wpsr-admin.php:1184
+msgid "Twitter Username: Description (Optional)"
+msgstr "Nombre de usuario de Twitter: Descripción (Opcional)"
+
+#: ../admin/wpsr-admin.php:1205
+msgid "Digg Button"
+msgstr "Digg Button"
+
+#: ../admin/wpsr-admin.php:1209
+msgid "Digg Button type"
+msgstr "Digg Button tipo"
+
+#: ../admin/wpsr-admin.php:1211
+msgid "Medium"
+msgstr "Medio"
+
+#: ../admin/wpsr-admin.php:1212
+msgid "Wide"
+msgstr "Wide"
+
+#: ../admin/wpsr-admin.php:1214
+msgid "Icon"
+msgstr "Icono"
+
+#: ../admin/wpsr-admin.php:1224
+msgid "Like Button"
+msgstr "Al igual que Button"
+
+#: ../admin/wpsr-admin.php:1228
+msgid "Button Style"
+msgstr "Botón Estilo"
+
+#: ../admin/wpsr-admin.php:1230
+msgid "Standard"
+msgstr "Estándar"
+
+#: ../admin/wpsr-admin.php:1231
+msgid "Button count"
+msgstr "botón de contar"
+
+#: ../admin/wpsr-admin.php:1232
+msgid "Box count"
+msgstr "caja de contar"
+
+#: ../admin/wpsr-admin.php:1236
+msgid "Show Faces"
+msgstr "Mostrar Caras"
+
+#: ../admin/wpsr-admin.php:1243
+msgid "Width"
+msgstr "Ancho"
+
+#: ../admin/wpsr-admin.php:1244
+msgid "In pixels"
+msgstr "En píxeles"
+
+#: ../admin/wpsr-admin.php:1247
+msgid "Verb to Display"
+msgstr "Verbo mostrar"
+
+#: ../admin/wpsr-admin.php:1249
+msgid "Like"
+msgstr "Como"
+
+#: ../admin/wpsr-admin.php:1250
+msgid "Recommend"
+msgstr "Recomendar"
+
+#: ../admin/wpsr-admin.php:1254
+msgid "Font"
+msgstr "Fuente"
+
+#: ../admin/wpsr-admin.php:1265
+msgid "Color scheme"
+msgstr "Combinación de colores"
+
+#: ../admin/wpsr-admin.php:1267
+msgid "Light"
+msgstr "Luz"
+
+#: ../admin/wpsr-admin.php:1268
+msgid "Dark"
+msgstr "Oscuro"
+
+#: ../admin/wpsr-admin.php:1274
+msgid "Share Button"
+msgstr "Compartir Button"
+
+#: ../admin/wpsr-admin.php:1280
+msgid "Button"
+msgstr "Botón"
+
+#: ../admin/wpsr-admin.php:1282
+msgid "Link"
+msgstr "Enlace"
+
+#: ../admin/wpsr-admin.php:1285
+msgid "Show Counter"
+msgstr "Mostrar contra"
+
+#: ../admin/wpsr-admin.php:1291
+msgid "Above the button"
+msgstr "Por encima de la tecla"
+
+#: ../admin/wpsr-admin.php:1293
+msgid "Inline with the Button"
+msgstr "En línea con el botón"
+
+#: ../admin/wpsr-admin.php:1303
+msgid "Custom 1"
+msgstr "Personalizado 1"
+
+#: ../admin/wpsr-admin.php:1306
+#: ../admin/wpsr-admin.php:1312
+#, php-format
+msgid "Enter any share button code. Use %s for the page url and %s for page title"
+msgstr "Ingrese cualquier código del botón acción. Use %s para el URL de la página y %s para el título de la página"
+
+#: ../admin/wpsr-admin.php:1309
+msgid "Custom 2"
+msgstr "Personalizado 2"
+
+#: ../admin/wpsr-admin.php:1322
+msgid "Template 1"
+msgstr "Plantilla 1"
+
+#: ../admin/wpsr-admin.php:1323
+msgid "Template 2"
+msgstr "Plantilla 2"
+
+#: ../admin/wpsr-admin.php:1329
+#: ../admin/wpsr-admin.php:1394
+msgid "Use the menu below to insert the buttons into the template"
+msgstr "Utilice el siguiente menú para insertar los botones en la plantilla"
+
+#: ../admin/wpsr-admin.php:1330
+#: ../admin/wpsr-admin.php:1395
+msgid "All HTML/CSS tags can be used. The button codes can be wrapped with HTML tags for proper aligning."
+msgstr "Todas las etiquetas de HTML / CSS se puede utilizar. Los códigos de los botones se puede envolver con las etiquetas HTML para alinear adecuada."
+
+#: ../admin/wpsr-admin.php:1344
+#: ../admin/wpsr-admin.php:1409
+msgid "Automatically add paragraphs"
+msgstr "Añadir automáticamente los párrafos"
+
+#: ../admin/wpsr-admin.php:1349
+#: ../admin/wpsr-admin.php:1414
+msgid "Where to show these buttons ?"
+msgstr "Lugares de aparición de estos botones?"
+
+#: ../admin/wpsr-admin.php:1354
+#: ../admin/wpsr-admin.php:1419
+msgid "Show in front page"
+msgstr "Mostrar en la página principal"
+
+#: ../admin/wpsr-admin.php:1356
+#: ../admin/wpsr-admin.php:1421
+msgid "Show in individual posts"
+msgstr "Mostrar en puestos individuales"
+
+#: ../admin/wpsr-admin.php:1358
+#: ../admin/wpsr-admin.php:1423
+msgid "Show in pages"
+msgstr "Mostrar en las páginas"
+
+#: ../admin/wpsr-admin.php:1360
+#: ../admin/wpsr-admin.php:1425
+msgid "Show in archive pages"
+msgstr "Mostrar en el archivo de páginas"
+
+#: ../admin/wpsr-admin.php:1362
+#: ../admin/wpsr-admin.php:1427
+msgid "Show in Tag pages"
+msgstr "Mostrar etiqueta en las páginas"
+
+#: ../admin/wpsr-admin.php:1364
+#: ../admin/wpsr-admin.php:1429
+msgid "Show in date archives"
+msgstr "Mostrar la fecha de los archivos"
+
+#: ../admin/wpsr-admin.php:1366
+#: ../admin/wpsr-admin.php:1431
+msgid "Show in author pages"
+msgstr "Mostrar en las páginas de autor"
+
+#: ../admin/wpsr-admin.php:1368
+#: ../admin/wpsr-admin.php:1433
+msgid "Show in search pages"
+msgstr "Mostrar las páginas en busca"
+
+#: ../admin/wpsr-admin.php:1370
+#: ../admin/wpsr-admin.php:1435
+msgid "Show in Excerpt"
+msgstr "Mostrar en el Excerpt"
+
+#: ../admin/wpsr-admin.php:1372
+#: ../admin/wpsr-admin.php:1437
+msgid "Show in RSS feeds"
+msgstr "Mostrar en RSS"
+
+#: ../admin/wpsr-admin.php:1376
+#: ../admin/wpsr-admin.php:1440
+msgid "Position"
+msgstr "Posición"
+
+#: ../admin/wpsr-admin.php:1379
+#: ../admin/wpsr-admin.php:1442
+msgid "Above content"
+msgstr "Sobre el contenido"
+
+#: ../admin/wpsr-admin.php:1381
+#: ../admin/wpsr-admin.php:1444
+msgid "Below content"
+msgstr "A continuación el contenido"
+
+#: ../admin/wpsr-admin.php:1455
+#, fuzzy
+msgid "FAQ"
+msgstr "Preguntas frecuentes"
+
+#: ../admin/wpsr-admin.php:1455
+msgid "Why sometimes the buttons are not aligned properly in the page ?"
+msgstr "Por qué a veces los botones no se alinean correctamente en la página?"
+
+#: ../admin/wpsr-admin.php:1467
+msgid "URL"
+msgstr "URL"
+
+#: ../admin/wpsr-admin.php:1468
+msgid "Leave blank to use default Wordpress RSS feed."
+msgstr "Dejar en blanco para el uso por defecto de Wordpress feed RSS."
+
+#: ../admin/wpsr-admin.php:1468
+msgid "You can use Feedburner feed URL also"
+msgstr "Puede utilizar Feedburner URL del feed también"
+
+#: ../admin/wpsr-admin.php:1475
+msgid "Integration"
+msgstr "integración"
+
+#: ../admin/wpsr-admin.php:1479
+msgid "Username"
+msgstr "Username"
+
+#: ../admin/wpsr-admin.php:1491
+msgid "WP Socializer Settings"
+msgstr "WP Socializer Configuración "
+
+#: ../admin/wpsr-admin.php:1495
+msgid "Load button scripts in "
+msgstr "secuencias de comandos en el botón Cargar"
+
+#: ../admin/wpsr-admin.php:1497
+msgid "Header (recommended)"
+msgstr "Cabecera (recomendado)"
+
+#: ../admin/wpsr-admin.php:1498
+msgid "Footer"
+msgstr "Pie de página"
+
+#: ../admin/wpsr-admin.php:1502
+msgid "Load WP Socializer CSS"
+msgstr "Carga WP Socializer CSS"
+
+#: ../admin/wpsr-admin.php:1505
+#, fuzzy
+msgid "Note: templates, hover effects &amp; column will not work"
+msgstr "Nota: los efectos Hover y la columna no estará disponible"
+
+#: ../admin/wpsr-admin.php:1519
+msgid "Disable WP Socializer"
+msgstr "Inhabilitar WP Socializer"
+
+#: ../admin/wpsr-admin.php:1522
+msgid "Temporarily disable all WP-Socializer buttons "
+msgstr "Desactive temporalmente todos los WP-Socializer botones"
+
+#: ../admin/wpsr-admin.php:1523
+msgid "Disabling will stop displaying all buttons, templates"
+msgstr "Deshabilitar dejará de mostrarse todos los botones, las plantillas"
+
+#: ../admin/wpsr-admin.php:1533
+msgid "Update"
+msgstr "Actualización"
+
+#: ../admin/wpsr-admin.php:1534
+msgid "Reset all"
+msgstr "restablecer todos los"
+
+#: ../admin/wpsr-admin.php:1538
+msgid "Sure"
+msgstr "seguro"
+
+#: ../admin/wpsr-admin.php:1538
+msgid "Cancel"
+msgstr "cancelar"
+
+#: ../admin/wpsr-admin.php:1544
+msgid "a Aakash Web plugin"
+msgstr "un plugin Aakash Web"
+
+#: ../admin/wpsr-admin.php:1565
+msgid "Full Features"
+msgstr "Características completa"
+
+#: ../admin/wpsr-admin.php:1566
+msgid "Bug Report"
+msgstr "Reportar un error"
+
+#: ../admin/wpsr-admin.php:1566
+msgid "Video Demo & Tutorials"
+msgstr "Vídeo de demostración y tutoriales"
+
+#: ../admin/wpsr-admin.php:1569
+msgid "Share this plugin"
+msgstr "Compartir este plugin"
+
+#: ../admin/wpsr-admin.php:1576
+msgid "Support this plugin"
+msgstr "Apoya a este plugin"
+
+#: ../admin/wpsr-admin.php:1579
+msgid "Subscribe to Updates"
+msgstr "Suscribirse a las actualizaciones"
+
+#: ../admin/wpsr-admin.php:1583
+msgid "Start using WP Socializer"
+msgstr "Comience a utilizar Socializer WP"
+
+#: ../admin/wpsr-admin.php:1631
+msgid "Disable template 1"
+msgstr "Deshabilitar plantilla 1"
+
+#: ../admin/wpsr-admin.php:1634
+msgid "Disable template 2"
+msgstr "Deshabilitar plantilla 2"
+
+#: ../admin/wpsr-admin.php:1637
+msgid "Help"
+msgstr "Ayuda"
+
+#: ../includes/wpsr-addthis.php:123
+msgid "Share with Addthis"
+msgstr "Compartir con Addthis"
+
+#: ../includes/wpsr-digg.php:53
+msgid "Digg this"
+msgstr "Digg this"
+
+#: ../includes/wpsr-facebook.php:30
+msgid "Share on Facebook"
+msgstr "Compartir en Facebook"
+
+#: ../includes/wpsr-google.php:135
+msgid "Buzz this"
+msgstr "Buzz this"
+
+#: ../includes/wpsr-other.php:24
+msgid "Reddit this"
+msgstr "Reddit this"
+
+#: ../includes/wpsr-other.php:94
+msgid "Stumble this"
+msgstr "Stumble this"
+
+#: ../includes/wpsr-retweet.php:56
+msgid "Retweet this"
+msgstr "Retweet this"
+
+#~ msgid "Donate and support this plugin's future"
+#~ msgstr "Dona y apoyar este plugin futuro"
+
+#~ msgid "Request a feature"
+#~ msgstr "Solicitar una característica"
+
+#~ msgid "Author Website"
+#~ msgstr "Autor Web"
+
+#~ msgid "Follow the author"
+#~ msgstr "Siga el autor"
+
+#~ msgid "More plugins"
+#~ msgstr "Más plugins"
+
+#~ msgid "Reference"
+#~ msgstr "Referencia"
+
+#~ msgid "Template Functions"
+#~ msgstr "Funciones de Template"
+
+#~ msgid ""
+#~ "For using the 16px buttons, use the code %s in the placement template"
+#~ msgstr ""
+#~ "Para emplear el 16px botones, utilice el código %s en la colocación de "
+#~ "plantilla"
+
+#~ msgid ""
+#~ "For using the 32px buttons, use the code %s in the placement template"
+#~ msgstr ""
+#~ "Para emplear el 32px botones, utilice el código %s en la colocación de "
+#~ "plantilla"
+
+#~ msgid "Choose the Bookmarking or sharing button"
+#~ msgstr "Seleccione el botón de marcadores o compartir"
+
+#~ msgid "comma-seperated"
+#~ msgstr "coma seperated"
+
+#~ msgid "For using this button, use the code %s in the placement template"
+#~ msgstr ""
+#~ "Para usar este botón, utilice el código %s en la colocación de plantilla"
+
+#~ msgid "Large"
+#~ msgstr "Grande"
+
+#~ msgid "For using this, use the code %s in the placement template"
+#~ msgstr ""
+#~ "Para utilizar esto, utilice el código %s en la colocación de plantilla"
+
+#~ msgid "Available button codes"
+#~ msgstr "Disponible códigos botón"
+
+#~ msgid "Twitter"
+#~ msgstr "Twitter"
