@@ -13,13 +13,13 @@ $j(document).ready(function(){
 	});
 	
 	// For admin menu working
-	$j('a[href="admin.php?page=wp_socializer#tab-9"], a[href="#tab-9"]').live('click', function(e){
+	$j('a[href="admin.php?page=wp_socializer#tab-8"], a[href="#tab-8"]').live('click', function(e){
 		e.preventDefault();
-		tabs.tabs('select', 8);
+		tabs.tabs('select', 7);
 	});
 	
-	$j('a[href="admin.php?page=wp_socializer#tab-10"]').click(function(){
-		tabs.tabs('select', 9);
+	$j('a[href="admin.php?page=wp_socializer#tab-9"]').click(function(){
+		tabs.tabs('select', 8);
 	});
 	
 	// Color picker Initializements

@@ -107,5 +107,4 @@ function wpsr_digg_rss_bt(){
 	
 	return $wpsr_digg_processed;
 }
-
 ?>

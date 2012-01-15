@@ -1,9 +1,9 @@
 <?php
 /*
 Plugin Name: WP Socializer
-Version: 2.2
+Version: 2.3
 Plugin URI: http://www.aakashweb.com/
-Description: WP Socializer is an advanced and powerful plugin for adding bookmarking buttons like social buttons, addthis, digg, retweet, facebook like/share in posts and excerpts.
+Description: WP Socializer is an advanced and powerful plugin for adding bookmarking buttons like social buttons, Facebook like, Google +1, Addthis, Digg, Twitter retweet buttons in posts and excerpts. Facebook like box and Google+ page badge can also be added in the sidebars using Widgets.
 Author: Aakash Chakravarthy
 Author URI: http://www.aakashweb.com/
 */
@@ -14,7 +14,7 @@ if(!defined('WP_CONTENT_URL')) {
 	$wpsr_url = WP_CONTENT_URL . '/plugins/' . plugin_basename(dirname(__FILE__)) . '/';
 }
 
-define('WPSR_VERSION', '2.2');
+define('WPSR_VERSION', '2.3');
 define('WPSR_AUTHOR', 'Aakash Chakravarthy');
 define('WPSR_URL', $wpsr_url);
 define('WPSR_PUBLIC_URL', WPSR_URL . 'public/');
@@ -27,7 +27,7 @@ $wpsr_socialsites_list = array(
 		'name' => 'Add to favorites',
 		'titleText' => '{de-title}',
 	 	'icon' => 'addtofavorites.png',
-	 	'url' => '{de-url}" onclick="addBookmark(event);" rel="sidebar',
+	 	'url' => '{de-url}" onclick="addBookmark(event);',
 		'support32px' => 1,
 	 ),
 	 
@@ -871,21 +871,30 @@ $wpsr_button_code_list = array(
 	"{addthis-tb-16px}", "{addthis-tb-32px}", "{addthis-sc}", 
 	"{sharethis-vcount}", "{sharethis-hcount}", "{sharethis-large}", 
 	"{sharethis-regular}", "{sharethis-regular2}", "{sharethis-bt}", 
-	"{sharethis-classic}", "{buzz-post}", "{buzz-follow}", 
-	"{plusone-small}", "{plusone-medium}", "{plusone-standard}", 
-	"{plusone-tall}", "{retweet-bt}", "{digg-bt}", 
-	"{facebook-like}", "{facebook-share}", "{reddit-1}", 
-	"{reddit-2}", "{reddit-3}", "{stumbleupon-1}", 
-	"{stumbleupon-2}", "{stumbleupon-3}", "{stumbleupon-5}", 
-	"{custom-1}", "{custom-2}"
+	"{sharethis-classic}", "{plusone-small}", "{plusone-medium}", 
+	"{plusone-standard}", "{plusone-tall}", "{retweet-bt}", 
+	"{digg-bt}", "{facebook-like}", "{facebook-share}", 
+	"{reddit-1}", "{reddit-2}", "{reddit-3}", 
+	"{stumbleupon-1}", "{stumbleupon-2}", "{stumbleupon-3}", 
+	"{stumbleupon-5}", "{linkedin-standard}", "{linkedin-right}",
+	"{linkedin-top}", "{custom-1}", "{custom-2}"
 );
 
 $wpsr_addthis_lang_array = array(
 	'en'=>'English', 'ar'=>'Arabic', 'zh'=>'Chinese', 'cs'=>'Czech', 'da'=>'Danish', 'nl'=>'Dutch','fa'=>'Farsi', 'fi'=>'Finnish', 'fr'=>'French', 'ga'=>'Gaelic', 'de'=>'German', 'el'=>'Greek', 'he'=>'Hebrew', 'hi'=>'Hindi', 'it'=>'Italian', 'ja'=>'Japanese', 'ko'=>'Korean', 'lv'=>'Latvian', 'lt'=>'Lithuanian', 'no'=>'Norwegian', 'pl'=>'Polish', 'pt'=>'Portugese', 'ro'=>'Romanian', 'ru'=>'Russian', 'sk'=>'Slovakian', 'sl'=>'Slovenian', 'es'=>'Spanish', 'sv'=>'Swedish', 'th'=>'Thai', 'ur'=>'Urdu', 'cy'=>'Welsh', 'vi'=>'Vietnamese'
 );
 
-$wpsr_buzz_lang_array = array(
-	'en'=>'English', 'ar'=>'Arabic', 'zh'=>'Chinese', 'cs'=>'Czech', 'da'=>'Danish', 'nl'=>'Dutch','fa'=>'Farsi', 'fi'=>'Finnish', 'fr'=>'French', 'ga'=>'Gaelic', 'de'=>'German', 'el'=>'Greek', 'he'=>'Hebrew', 'hi'=>'Hindi', 'it'=>'Italian', 'ja'=>'Japanese', 'ko'=>'Korean', 'lv'=>'Latvian', 'lt'=>'Lithuanian', 'no'=>'Norwegian', 'pl'=>'Polish', 'pt'=>'Portugese', 'ro'=>'Romanian', 'ru'=>'Russian', 'sk'=>'Slovakian', 'sl'=>'Slovenian', 'es'=>'Spanish', 'sv'=>'Swedish', 'th'=>'Thai', 'vi'=>'Vietnamese'
+$wpsr_shortcodes_list = array(
+	'Social buttons' => '[wpsr_socialbts]', 
+	'Addthis' => '[wpsr_addthis]',
+	'Sharethis'	=> '[wpsr_sharethis]', 
+	'Retweet' => '[wpsr_retweet]',
+	'Google +1' => '[wpsr_plusone]',
+	'Digg' => '[wpsr_digg]',
+	'Facebook' => '[wpsr_facebook]',
+	'StumbleUpon' => '[wpsr_stumbleupon]',
+	'Reddit' => '[wpsr_reddit]',
+	'LinkedIn' => '[wpsr_linkedin]',
 );
 
 ## Initializations
@@ -908,6 +917,7 @@ require_once('includes/wpsr-socialbuttons.php');
 require_once('includes/wpsr-other.php');
 require_once('includes/wpsr-custom.php');
 require_once('includes/wpsr-shortcodes.php');
+require_once('includes/wpsr-widgets.php'); // Since v2.3
 
 ## General functions
 function strpos_arr($haystack, $needle) { 
@@ -985,11 +995,7 @@ function wp_socializer($to_display, $params=""){
 		case 'plusone' :
 			return wpsr_plusone_bt($params);
 			break;
-			
-		case 'buzz' :
-			return wpsr_buzz($params);
-			break;
-			
+				
 		case 'retweet' :
 			return wpsr_retweet($params);
 			break;
@@ -1012,6 +1018,10 @@ function wp_socializer($to_display, $params=""){
 		
 		case 'reddit' :
 			return wpsr_reddit($params);
+			break;
+			
+		case 'linkedin' :
+			return wpsr_linkedin($params);
 			break;
 		
 		case 'custom-1' :
@@ -1103,8 +1113,6 @@ function wpsr_process_template($the_template){
 	$wpsr_sharethis_buttons = wpsr_sharethis_bt('buttons');
 	$wpsr_sharethis_classic = wpsr_sharethis_bt('classic');
 	
-	$wpsr_buzz_post = wpsr_buzz_bt('post');
-	$wpsr_buzz_follow = wpsr_buzz_bt('follow');
 	$wpsr_pone_small = wpsr_plusone_bt('small');
 	$wpsr_pone_medium = wpsr_plusone_bt('medium');
 	$wpsr_pone_standard = wpsr_plusone_bt('standard');
@@ -1118,6 +1126,10 @@ function wpsr_process_template($the_template){
 	$wpsr_reddit_bts = array('', wpsr_reddit_bt('1'), wpsr_reddit_bt('2'), wpsr_reddit_bt('3'));
 	$wpsr_stumbleupon_bts = array('', wpsr_stumbleupon_bt('1'), wpsr_stumbleupon_bt('2'), wpsr_stumbleupon_bt('3'), wpsr_stumbleupon_bt('5'));
 	
+	$wpsr_linkedin_standard = wpsr_linkedin_bt('standard');
+	$wpsr_linkedin_right = wpsr_linkedin_bt('right');
+	$wpsr_linkedin_top = wpsr_linkedin_bt('top');
+	
 	$wpsr_custom1 = wpsr_custom_bt('custom1');
 	$wpsr_custom2 = wpsr_custom_bt('custom2');
 	
@@ -1126,41 +1138,40 @@ function wpsr_process_template($the_template){
 		$wpsr_addthis_tb16px, $wpsr_addthis_tb32px, $wpsr_addthis_sc, 
 		$wpsr_sharethis_vcount, $wpsr_sharethis_hcount, $wpsr_sharethis_large, 
 		$wpsr_sharethis_regular, $wpsr_sharethis_regular2, $wpsr_sharethis_buttons, 
-		$wpsr_sharethis_classic, $wpsr_buzz_post, $wpsr_buzz_follow, 
-		$wpsr_pone_small, $wpsr_pone_medium, $wpsr_pone_standard, 
-		$wpsr_pone_tall, $wpsr_retweet_bt, $wpsr_digg_bt, 
-		$wpsr_facebook_like, $wpsr_facebook_share, $wpsr_reddit_bts[1], 
-		$wpsr_reddit_bts[2], $wpsr_reddit_bts[3], $wpsr_stumbleupon_bts[1], 
-		$wpsr_stumbleupon_bts[2], $wpsr_stumbleupon_bts[3], $wpsr_stumbleupon_bts[4], 
-		$wpsr_custom1, $wpsr_custom2
+		$wpsr_sharethis_classic, $wpsr_pone_small, $wpsr_pone_medium, 
+		$wpsr_pone_standard, $wpsr_pone_tall, $wpsr_retweet_bt, 
+		$wpsr_digg_bt, $wpsr_facebook_like, $wpsr_facebook_share, 
+		$wpsr_reddit_bts[1], $wpsr_reddit_bts[2], $wpsr_reddit_bts[3], 
+		$wpsr_stumbleupon_bts[1], $wpsr_stumbleupon_bts[2], $wpsr_stumbleupon_bts[3], 
+		$wpsr_stumbleupon_bts[4], $wpsr_linkedin_standard, $wpsr_linkedin_right,
+		$wpsr_linkedin_top, $wpsr_custom1, $wpsr_custom2
 	);
 	
-	// RSS Buttons v2.0
+	// RSS Buttons v2.1
 	$wpsr_social_bts_16px_rss = wpsr_socialbts_rss('16px');
 	$wpsr_social_bts_32px_rss = wpsr_socialbts_rss('32px');
 	$wpsr_addthis_rss = wpsr_addthis_rss_bt();
 	$wpsr_sharethis_rss = wpsr_sharethis_rss_bt();
-	$wpsr_buzz_post_rss = wpsr_buzz_rss_bt('post');
-	$wpsr_buzz_follow_rss = wpsr_buzz_rss_bt('follow');
 	$wpsr_pone_rss = wpsr_plusone_rss_bt();
 	$wpsr_retweet_rss = wpsr_retweet_rss_bt();
 	$wpsr_digg_rss = wpsr_digg_rss_bt();
 	$wpsr_facebook_rss = wpsr_facebook_rss_bt();
 	$wpsr_reddit_rss = wpsr_reddit_rss_bt();
 	$wpsr_stumbleupon_rss = wpsr_stumbleupon_rss_bt();
+	$wpsr_linkedin_rss = wpsr_linkedin_rss_bt();
 	
 	$wpsr_button_processed_list_rss = array(
 		$wpsr_social_bts_16px_rss, $wpsr_social_bts_32px_rss, $wpsr_addthis_rss, 
 		$wpsr_addthis_rss, $wpsr_addthis_rss, $wpsr_addthis_rss, 
 		$wpsr_sharethis_rss, $wpsr_sharethis_rss, $wpsr_sharethis_rss, 
 		$wpsr_sharethis_rss, $wpsr_sharethis_rss, $wpsr_sharethis_rss, 
-		$wpsr_sharethis_rss, $wpsr_buzz_post_rss, $wpsr_buzz_follow_rss, 
-		$wpsr_pone_rss, $wpsr_pone_rss, $wpsr_pone_rss, 
-		$wpsr_pone_rss, $wpsr_retweet_rss, $wpsr_digg_rss, 
-		$wpsr_facebook_rss, $wpsr_facebook_rss, $wpsr_reddit_rss, 
-		$wpsr_reddit_rss, $wpsr_reddit_rss, $wpsr_stumbleupon_rss, 
+		$wpsr_sharethis_rss, $wpsr_pone_rss, $wpsr_pone_rss, 
+		$wpsr_pone_rss, $wpsr_pone_rss, $wpsr_retweet_rss, 
+		$wpsr_digg_rss, $wpsr_facebook_rss, $wpsr_facebook_rss, 
+		$wpsr_reddit_rss, $wpsr_reddit_rss, $wpsr_reddit_rss, 
 		$wpsr_stumbleupon_rss, $wpsr_stumbleupon_rss, $wpsr_stumbleupon_rss, 
-		$wpsr_custom1, $wpsr_custom2
+		$wpsr_stumbleupon_rss, $wpsr_linkedin_rss, $wpsr_linkedin_rss,
+		$wpsr_linkedin_rss, $wpsr_custom1, $wpsr_custom2
 	); 
 
 	// Get the placement options | Template 1&2
@@ -1489,12 +1500,11 @@ function wpsr_scripts_adder(){
 		echo wpsr_sharethis_script();
 	}
 	
-	if(wpsr_buzz_bt_used() == 1){
-		echo wpsr_buzz_script();
-	}
-	
 	if(wpsr_plusone_bt_used() == 1){
 		echo wpsr_plusone_script();
+	}
+	if(wpsr_linkedin_bt_used() == 1){
+		echo wpsr_linkedin_script();
 	}
 }
 
@@ -1513,23 +1523,6 @@ function wpsr_footer(){
 	}
 }
 add_action('wp_footer', 'wpsr_footer');
-
-## Admin Dashboard
-if(!function_exists('aw_dashboard')){
-	function aw_dashboard() {
-		$rss = array('url' => 'http://feeds2.feedburner.com/aakashweb', 'items' => '5','show_date' => 0, 'show_summary'=> 0);
-		$subscribe = "window.open('http://feedburner.google.com/fb/a/mailverify?uri=aakashweb', 'win','menubar=1,resizable=1,width=600,height=500'); return false;" ;
-		echo '<div class="rss-widget">';
-		wp_widget_rss_output($rss);
-		echo '<p><a href="#" onclick="' . $subscribe . '">Subscribe to Updates</a> | <a href="http://twitter.com/vaakash" target="_blank">Follow on Twitter</a> | <a href="http://www.aakashweb.com/" target="_blank">Home Page</a></p>';
-		echo "</div>";
-	}
-	
-	function aw_dashboard_setup() {
-		wp_add_dashboard_widget('aw_dashboard', __( 'AW Latest Updates', 'wpsr'), 'aw_dashboard');
-	}
-	add_action('wp_dashboard_setup', 'aw_dashboard_setup');
-}
 
 ## Add notification to the dashboard right now
 function wpsr_dashboard_rightnow(){
@@ -1593,5 +1586,4 @@ function wpsr_add_wpsrbutton_tinymce($plugin_array) {
 
 // init process for button control
 add_action('init', 'wpsr_add_wpsr_button');
-
 ?>

@@ -1,11 +1,12 @@
 <items>
-	<item name="Simple template - Compact" image="/images/template_compact.png" desc="" author="Aakash Chakravarthy" version="1.0" url="http://www.aakashweb.com">
+	<item name="Simple template - Compact" image="/images/template_compact.png" desc="" author="Aakash Chakravarthy" version="2.0" url="http://www.aakashweb.com">
 		<settings>wpsr_retweet_type==compact;;
 		wpsr_retweet_service==twitter;;
-		wpsr_digg_type==DiggCompact;;
-		wpsr_facebook_btstyle==standard;;
+		wpsr_facebook_btstyle==button_count;;
 		wpsr_facebook_showfaces==0;;
-		wpsr_facebook_width==300;;
+		wpsr_facebook_width==90;;
+		
+		wpsr_template1_addp==0;;
 		
 		wpsr_template1_inhome==0;;
 		wpsr_template1_insingle==1;;
@@ -32,16 +33,17 @@
 		wpsr_template2_infeed==1;;
 		wpsr_template2_abvcontent==0;;
 		wpsr_template2_blwcontent==1;;
+		
+		wpsr_socialbt_loadcss==1;;
 		</settings>
 		<template1>
 			<![CDATA[
-<div class="buttons-wrap">
+<div class="buttons-wrap clearfix">
+	<span class="margin15 floatleft">{facebook-like}</span>
 	<span class="margin15 floatleft">{retweet-bt}</span>
-	<span class="margin15 floatleft">{digg-bt}</span>
+	<span class="margin15 floatleft">{plusone-medium}</span>
+	<span class="margin15 floatleft">{linkedin-right}</span>
 	<span class="margin15 floatleft">{stumbleupon-1}</span>
-	<span class="margin15 floatleft">{reddit-1}</span>
-	<span class="margin15 floatleft">{plusone-small}</span>
-	<div class="clear-all padding5">{facebook-like}</div>
 </div>
 			]]>
 		</template1>
@@ -55,13 +57,12 @@
 
 	</item>
 	
-	<item name="Simple template - Large" image="/images/template_large.png" desc="" author="Aakash Chakravarthy" version="1.0" url="http://www.aakashweb.com">
+	<item name="Simple template - Large" image="/images/template_large.png" desc="" author="Aakash Chakravarthy" version="2.0" url="http://www.aakashweb.com">
 		<settings>wpsr_retweet_type==normal;;
 		wpsr_retweet_service==twitter;;
-		wpsr_digg_type==DiggMedium;;
-		wpsr_facebook_btstyle==standard;;
+		wpsr_facebook_btstyle==box_count;;
 		wpsr_facebook_showfaces==0;;
-		wpsr_facebook_width==300;;
+		wpsr_facebook_width==50;;
 		
 		wpsr_template1_inhome==0;;
 		wpsr_template1_insingle==1;;
@@ -76,6 +77,8 @@
 		wpsr_template1_abvcontent==1;;
 		wpsr_template1_blwcontent==0;;
 		
+		wpsr_template1_addp==0;;
+		
 		wpsr_template2_inhome==1;;
 		wpsr_template2_insingle==1;;
 		wpsr_template2_inpage==1;;
@@ -89,16 +92,17 @@
 		wpsr_template2_abvcontent==0;;
 		wpsr_template2_blwcontent==1;;
 		
+		wpsr_socialbt_loadcss==1;;
 		</settings>
 		<template1>
 			<![CDATA[
-<div class="buttons-wrap">
+<div class="buttons-wrap clearfix">
+	<span class="margin10 floatleft">{facebook-like}</span>
 	<span class="margin10 floatleft">{retweet-bt}</span>
-	<span class="margin10 floatleft">{digg-bt}</span>
+	<span class="margin10 floatleft">{plusone-tall}</span>
 	<span class="margin10 floatleft">{stumbleupon-5}</span>
 	<span class="margin10 floatleft">{reddit-2}</span>
-	<span class="margin10 floatleft">{plusone-tall}</span>
-	<div class="clear-all padding5">{facebook-like}</div>
+	<span class="margin10 floatleft">{linkedin-top}</span>
 </div>
 			]]>
 		</template1>
@@ -112,13 +116,12 @@
 
 	</item>
 	
-	<item name="Simple template - Compact - Inverted" image="/images/template_compact_inv.png" desc="" author="Aakash Chakravarthy" version="1.0" url="http://www.aakashweb.com">
+	<item name="Simple template - Compact - Inverted" image="/images/template_compact_inv.png" desc="" author="Aakash Chakravarthy" version="2.0" url="http://www.aakashweb.com">
 		<settings>wpsr_retweet_type==compact;;
 		wpsr_retweet_service==twitter;;
-		wpsr_digg_type==DiggCompact;;
-		wpsr_facebook_btstyle==standard;;
+		wpsr_facebook_btstyle==button_count;;
 		wpsr_facebook_showfaces==0;;
-		wpsr_facebook_width==300;;
+		wpsr_facebook_width==90;;
 		
 		wpsr_template1_inhome==1;;
 		wpsr_template1_insingle==1;;
@@ -133,6 +136,8 @@
 		wpsr_template1_abvcontent==1;;
 		wpsr_template1_blwcontent==0;;
 		
+		wpsr_template1_addp==0;;
+		
 		wpsr_template2_inhome==0;;
 		wpsr_template2_insingle==1;;
 		wpsr_template2_inpage==1;;
@@ -145,6 +150,8 @@
 		wpsr_template2_infeed==0;;
 		wpsr_template2_abvcontent==0;;
 		wpsr_template2_blwcontent==1;;
+		
+		wpsr_socialbt_loadcss==1;;
 		</settings>
 		<template1>
 			<![CDATA[
@@ -155,26 +162,24 @@
 		<template2>
 			<![CDATA[
 <h3>Share and Enjoy</h3>
-<div class="buttons-wrap">
+<div class="buttons-wrap clearfix">
+	<span class="margin15 floatleft">{facebook-like}</span>
 	<span class="margin15 floatleft">{retweet-bt}</span>
-	<span class="margin15 floatleft">{digg-bt}</span>
+	<span class="margin15 floatleft">{plusone-medium}</span>
+	<span class="margin15 floatleft">{linkedin-right}</span>
 	<span class="margin15 floatleft">{stumbleupon-1}</span>
-	<span class="margin15 floatleft">{reddit-1}</span>
-	<span class="margin15 floatleft">{plusone-small}</span>
-	<div class="clear-all padding5">{facebook-like}</div>
 </div>
 			]]>
 		</template2>
 
 	</item>
 	
-	<item name="Simple template - Large - Inverted" image="/images/template_large_inv.png" desc="" author="Aakash Chakravarthy" version="1.0" url="http://www.aakashweb.com">
+	<item name="Simple template - Large - Inverted" image="/images/template_large_inv.png" desc="" author="Aakash Chakravarthy" version="2.0" url="http://www.aakashweb.com">
 		<settings>wpsr_retweet_type==normal;;
 		wpsr_retweet_service==twitter;;
-		wpsr_digg_type==DiggMedium;;
-		wpsr_facebook_btstyle==standard;;
+		wpsr_facebook_btstyle==box_count;;
 		wpsr_facebook_showfaces==0;;
-		wpsr_facebook_width==300;;
+		wpsr_facebook_width==50;;
 		
 		wpsr_template1_inhome==1;;
 		wpsr_template1_insingle==1;;
@@ -189,6 +194,8 @@
 		wpsr_template1_abvcontent==1;;
 		wpsr_template1_blwcontent==0;;
 		
+		wpsr_template1_addp==0;;
+		
 		wpsr_template2_inhome==0;;
 		wpsr_template2_insingle==1;;
 		wpsr_template2_inpage==1;;
@@ -201,6 +208,8 @@
 		wpsr_template2_infeed==0;;
 		wpsr_template2_abvcontent==0;;
 		wpsr_template2_blwcontent==1;;
+		
+		wpsr_socialbt_loadcss==1;;
 		</settings>
 		
 		<template1>
@@ -212,20 +221,20 @@
 		<template2>
 			<![CDATA[
 <h3>Share and Enjoy</h3>
-<div class="buttons-wrap">
+<div class="buttons-wrap clearfix">
+	<span class="margin10 floatleft">{facebook-like}</span>
 	<span class="margin10 floatleft">{retweet-bt}</span>
-	<span class="margin10 floatleft">{digg-bt}</span>
+	<span class="margin10 floatleft">{plusone-tall}</span>
 	<span class="margin10 floatleft">{stumbleupon-5}</span>
 	<span class="margin10 floatleft">{reddit-2}</span>
-	<span class="margin10 floatleft">{plusone-tall}</span>
-	<div class="clear-all padding5">{facebook-like}</div>
+	<span class="margin10 floatleft">{linkedin-top}</span>
 </div>
 			]]>
 		</template2>
 
 	</item>
 	
-	<item name="Addthis template - Compact" image="/images/template_addthis_compact.png" desc="" author="Aakash Chakravarthy" version="1.0" url="http://www.aakashweb.com">
+	<item name="Addthis template - Compact" image="/images/template_addthis_compact.png" desc="" author="Aakash Chakravarthy" version="1.5" url="http://www.aakashweb.com">
 		<settings>wpsr_addthis_sharecount==grouped;;
 
 		wpsr_template1_inhome==1;;
@@ -240,6 +249,9 @@
 		wpsr_template1_infeed==0;;
 		wpsr_template1_abvcontent==1;;
 		wpsr_template1_blwcontent==0;;
+		
+		wpsr_template1_addp==0;;
+		wpsr_socialbt_loadcss==1;;
 		
 		wpsr_template2_inhome==1;;
 		wpsr_template2_insingle==1;;
@@ -270,7 +282,7 @@
 
 	</item>
 	
-	<item name="Addthis template - Large" image="/images/template_addthis_large.png" desc="" author="Aakash Chakravarthy" version="1.0" url="http://www.aakashweb.com">
+	<item name="Addthis template - Large" image="/images/template_addthis_large.png" desc="" author="Aakash Chakravarthy" version="1.5" url="http://www.aakashweb.com">
 		<settings>wpsr_addthis_sharecount==grouped;;
 
 		wpsr_template1_inhome==1;;
@@ -285,6 +297,9 @@
 		wpsr_template1_infeed==0;;
 		wpsr_template1_abvcontent==1;;
 		wpsr_template1_blwcontent==0;;
+		
+		wpsr_template1_addp==0;;
+		wpsr_socialbt_loadcss==1;;
 		
 		wpsr_template2_inhome==1;;
 		wpsr_template2_insingle==1;;
@@ -315,7 +330,7 @@
 
 	</item>
 	
-	<item name="Sharethis template - Compact" image="/images/template_sharethis_compact.png" desc="" author="Aakash Chakravarthy" version="1.0" url="http://www.aakashweb.com">
+	<item name="Sharethis template - Compact" image="/images/template_sharethis_compact.png" desc="" author="Aakash Chakravarthy" version="1.5" url="http://www.aakashweb.com">
 		<settings>
 		wpsr_template1_inhome==0;;
 		wpsr_template1_insingle==1;;
@@ -329,6 +344,9 @@
 		wpsr_template1_infeed==0;;
 		wpsr_template1_abvcontent==1;;
 		wpsr_template1_blwcontent==0;;
+		
+		wpsr_template1_addp==0;;
+		wpsr_socialbt_loadcss==1;;
 		
 		wpsr_template2_inhome==1;;
 		wpsr_template2_insingle==1;;
@@ -359,10 +377,9 @@
 
 	</item>
 	
-	<item name="Sharethis template - Large" image="/images/template_sharethis_large.png" desc="" author="Aakash Chakravarthy" version="1.0" url="http://www.aakashweb.com">
+	<item name="Sharethis template - Large" image="/images/template_sharethis_large.png" desc="" author="Aakash Chakravarthy" version="1.5" url="http://www.aakashweb.com">
 	
 		<settings>
-
 		wpsr_template1_inhome==0;;
 		wpsr_template1_insingle==1;;
 		wpsr_template1_inpage==1;;
@@ -375,6 +392,9 @@
 		wpsr_template1_infeed==0;;
 		wpsr_template1_abvcontent==1;;
 		wpsr_template1_blwcontent==0;;
+		
+		wpsr_template1_addp==0;;
+		wpsr_socialbt_loadcss==1;;
 		
 		wpsr_template2_inhome==1;;
 		wpsr_template2_insingle==1;;
@@ -405,7 +425,7 @@
 
 	</item>
 
-	<item name="Right float - Inside 1" image="/images/template_float_right_1.png" desc="" author="Aakash Chakravarthy" version="1.0" url="http://www.aakashweb.com">
+	<item name="Right float - Inside 1" image="/images/template_float_right_1.png" desc="" author="Aakash Chakravarthy" version="1.5" url="http://www.aakashweb.com">
 		<settings>wpsr_socialbt_effect==jump;;
 		wpsr_retweet_type==normal;;
 		wpsr_retweet_service==twitter;;
@@ -426,6 +446,9 @@
 		wpsr_template1_infeed==0;;
 		wpsr_template1_abvcontent==1;;
 		wpsr_template1_blwcontent==0;;
+		
+		wpsr_template1_addp==0;;
+		wpsr_socialbt_loadcss==1;;
 		
 		wpsr_template2_inhome==1;;
 		wpsr_template2_insingle==1;;
@@ -466,7 +489,7 @@
 
 	</item>
 	
-	<item name="Left float - Fixed - Outside 1" image="/images/template_float_left_1.png" desc="" author="Aakash Chakravarthy" version="1.0" url="http://www.aakashweb.com">
+	<item name="Left float - Fixed - Outside 1" image="/images/template_float_left_1.png" desc="" author="Aakash Chakravarthy" version="1.5" url="http://www.aakashweb.com">
 		<settings>wpsr_socialbt_effect==jump;;
 		wpsr_retweet_type==normal;;
 		wpsr_retweet_service==twitter;;
@@ -488,6 +511,9 @@
 		wpsr_template1_abvcontent==1;;
 		wpsr_template1_blwcontent==0;;
 		
+		wpsr_template1_addp==0;;
+		wpsr_socialbt_loadcss==1;;
+		
 		wpsr_template2_inhome==1;;
 		wpsr_template2_insingle==1;;
 		wpsr_template2_inpage==1;;
@@ -504,7 +530,7 @@
 		
 		<template1>
 			<![CDATA[
-<span class="padding10 fixed-pos shadow border5" style="left:20px;width:55px">
+<span class="padding10 fixed-pos shadow border5" style="top:25%;left:20px;width:55px">
 {retweet-bt}
 <br/><br/>
 {facebook-like}
@@ -524,7 +550,7 @@
 
 	</item>
 	
-	<item name="Social buttons 16px - 1" image="/images/template_socialbts_16px_1.png" desc="" author="Aakash Chakravarthy" version="1.0" url="http://www.aakashweb.com">
+	<item name="Social buttons 16px - 1" image="/images/template_socialbts_16px_1.png" desc="" author="Aakash Chakravarthy" version="1.5" url="http://www.aakashweb.com">
 		<settings>wpsr_socialbt_target==1;;
 		wpsr_socialbt_loadcss==1;;
 		wpsr_socialbt_effect==none;;
@@ -543,6 +569,9 @@
 		wpsr_template1_infeed==0;;
 		wpsr_template1_abvcontent==1;;
 		wpsr_template1_blwcontent==0;;
+		
+		wpsr_template1_addp==0;;
+		wpsr_socialbt_loadcss==1;;
 		
 		wpsr_template2_inhome==1;;
 		wpsr_template2_insingle==1;;
@@ -572,7 +601,7 @@
 
 	</item>
 	
-	<item name="Social buttons 32px - 1" image="/images/template_socialbts_32px_1.png" desc="" author="Aakash Chakravarthy" version="1.0" url="http://www.aakashweb.com">
+	<item name="Social buttons 32px - 1" image="/images/template_socialbts_32px_1.png" desc="" author="Aakash Chakravarthy" version="1.5" url="http://www.aakashweb.com">
 		<settings>wpsr_socialbt_target==1;;
 		wpsr_socialbt_loadcss==1;;
 		wpsr_socialbt_effect==none;;
@@ -591,6 +620,9 @@
 		wpsr_template1_infeed==0;;
 		wpsr_template1_abvcontent==1;;
 		wpsr_template1_blwcontent==0;;
+		
+		wpsr_template1_addp==0;;
+		wpsr_socialbt_loadcss==1;;
 		
 		wpsr_template2_inhome==1;;
 		wpsr_template2_insingle==1;;

@@ -1,5 +1,5 @@
 /*
- * WP Socializer Social buttons - CSS File - v2.1
+ * WP Socializer Social buttons - CSS File - v2.2
  * Author: Aakash Chakravarthy
  */
 
@@ -16,8 +16,8 @@
 .wp-socializer ul li {
 	background: none;
 	list-style-type: none !important;
-	margin: 0px 5px 5px 0px;
-	padding: 0px;
+	margin: 0px 5px 5px 0px !important;
+	padding: 0px !important;
 	float: left !important;
 }
 .wp-socializer ul li:before { 
