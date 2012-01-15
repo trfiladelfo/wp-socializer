@@ -96,14 +96,12 @@ echo
 		</li>
 		
 		<li class="parentLi btn">
-			<span class="admSprites buzzIcon"></span>Google
+			<span class="admSprites googleplusIcon"></span>Google
 			<ul bxid="' . $id . '">
 				<li openTag="{plusone-small}">+1 - Small</li>
 				<li openTag="{plusone-medium}">+1 - Medium</li>
 				<li openTag="{plusone-standard}">+1 - Standard</li>
 				<li openTag="{plusone-tall}">+1 - Tall</li>
-				<li openTag="{buzz-post}">Google buzz Post button</li>
-				<li openTag="{buzz-follow}">Google buzz Follow button</li>
 			</ul>
 		</li>
 		
@@ -131,6 +129,15 @@ echo
 				<li class="showTooltip" openTag="{reddit-1}" title="' . wpsr_addmi('reddit-bts') . '">Type 1</li>
 				<li class="showTooltip" openTag="{reddit-2}" title="' . wpsr_addmi('reddit-bts') . '">Type 2</li>
 				<li class="showTooltip" openTag="{reddit-3}" title="' . wpsr_addmi('reddit-bts') . '">Type 3</li>
+			</ul>
+		</li>
+		
+		<li class="parentLi btn">
+			<span class="admSprites linkedinIcon"></span>LinkedIn
+			<ul bxid="' . $id . '">
+				<li class="showTooltip" openTag="{linkedin-standard}" title="' . wpsr_addmi('linkedin-bts') . '">Type 1</li>
+				<li class="showTooltip" openTag="{linkedin-right}" title="' . wpsr_addmi('linkedin-bts') . '">Type 2</li>
+				<li class="showTooltip" openTag="{linkedin-top}" title="' . wpsr_addmi('linkedin-bts') . '">Type 3</li>
 			</ul>
 		</li>
 		
@@ -179,11 +186,11 @@ echo
 ## Default values
 function wpsr_reset_values(){
 	$wpsr_temp1_def = '<div class="buttons-wrap clearfix">
-	<span class="margin15 floatleft">{retweet-bt}</span>
 	<span class="margin15 floatleft">{facebook-like}</span>
+	<span class="margin15 floatleft">{retweet-bt}</span>
+	<span class="margin15 floatleft">{plusone-medium}</span>
+	<span class="margin15 floatleft">{linkedin-right}</span>
 	<span class="margin15 floatleft">{stumbleupon-1}</span>
-	<span class="margin15 floatleft">{reddit-1}</span>
-	<span class="margin15 floatleft">{plusone-small}</span>
 </div>';
 	
 	$wpsr_temp2_def = '<h2>' . __('Share and Enjoy' ,'wpsr') . '</h2>
@@ -216,15 +223,6 @@ function wpsr_reset_values(){
 	
 	update_option("wpsr_sharethis_data", $wpsr_sharethis);
 	
-	## Buzz Defaults
-	$wpsr_buzz['style'] = 'count';
-	$wpsr_buzz['size'] = 'normal';
-	$wpsr_buzz['language'] = 'en';
-	$wpsr_buzz['profile'] = 'http://profiles.google.com/me';
-	$wpsr_buzz['followbttext'] = 'Follow Me';
-	
-	update_option("wpsr_buzz_data", $wpsr_buzz);
-	
 	## Retweet Defaults
 	$wpsr_retweet['username'] = '';
 	$wpsr_retweet['type'] = 'compact';
@@ -254,9 +252,10 @@ function wpsr_reset_values(){
 	update_option("wpsr_facebook_data", $wpsr_facebook);
 	
 	## Social Button Defaults
-	$wpsr_socialbt['selected16px'] = 'facebook,twitter,delicious,digg,googlebuzz,stumbleupon,addtofavorites,email,rss';
-	$wpsr_socialbt['selected32px'] = 'facebook,twitter,delicious,digg,googlebuzz,stumbleupon,addtofavorites,email,rss';
+	$wpsr_socialbt['selected16px'] = 'facebook,twitter,delicious,digg,stumbleupon,addtofavorites,email,rss';
+	$wpsr_socialbt['selected32px'] = 'facebook,twitter,delicious,digg,stumbleupon,addtofavorites,email,rss';
 	$wpsr_socialbt['target'] = 0;
+	$wpsr_socialbt['target'] = 1;
 	$wpsr_socialbt['loadcss'] = 1;
 	$wpsr_socialbt['effect'] = 'opacity';
 	$wpsr_socialbt['label'] = 0;
@@ -330,8 +329,8 @@ function wpsr_show_admin(){
 
 ## Fix version 1.0 settings
 function wpsr_version1_fix(){
-	$wpsr_socialbt['selected16px'] = 'facebook,twitter,delicious,digg,googlebuzz,stumbleupon,addtofavorites,email,rss';
-	$wpsr_socialbt['selected32px'] = 'facebook,twitter,delicious,digg,googlebuzz,stumbleupon,addtofavorites,email,rss';
+	$wpsr_socialbt['selected16px'] = 'facebook,twitter,delicious,digg,stumbleupon,addtofavorites,email,rss';
+	$wpsr_socialbt['selected32px'] = 'facebook,twitter,delicious,digg,stumbleupon,addtofavorites,email,rss';
 	$wpsr_socialbt['imgpath16px'] = WPSR_SOCIALBT_IMGPATH . '16/';
 	$wpsr_socialbt['imgpath32px'] = WPSR_SOCIALBT_IMGPATH . '32/';
 	update_option('wpsr_socialbt_data', $wpsr_socialbt);
@@ -343,12 +342,11 @@ function wpsr_admin_page(){
 	$wpsr_updated = false;
 	
 	## Get the global variables
-	global $wpsr_socialsites_list, $wpsr_addthis_lang_array, $wpsr_buzz_lang_array, $wpsr_button_code_list, $wpsr_donate_link;
+	global $wpsr_socialsites_list, $wpsr_addthis_lang_array, $wpsr_button_code_list, $wpsr_donate_link;
 	
 	## Assign the defaults for new users
 	$wpsr_addthis = get_option('wpsr_addthis_data');
 	$wpsr_sharethis = get_option('wpsr_sharethis_data');
-	$wpsr_buzz = get_option('wpsr_buzz_data');
 	$wpsr_retweet = get_option('wpsr_retweet_data');
 	$wpsr_digg = get_option('wpsr_digg_data');
 	$wpsr_facebook = get_option('wpsr_facebook_data');
@@ -358,7 +356,7 @@ function wpsr_admin_page(){
 	$wpsr_template2 = get_option('wpsr_template2_data');
 	$wpsr_settings = get_option('wpsr_settings_data');
 	
-	if(empty($wpsr_addthis) && empty($wpsr_sharethis) && empty($wpsr_digg) && empty($wpsr_retweet) && empty($wpsr_digg) && empty($wpsr_buzz) && empty($wpsr_facebook) && empty($wpsr_template1) && empty($wpsr_template2) && empty($wpsr_settings) && empty($wpsr_custom)){
+	if(empty($wpsr_addthis) && empty($wpsr_sharethis) && empty($wpsr_digg) && empty($wpsr_retweet) && empty($wpsr_digg) && empty($wpsr_facebook) && empty($wpsr_template1) && empty($wpsr_template2) && empty($wpsr_settings) && empty($wpsr_custom)){
 		wpsr_reset_values();
 	}
 	
@@ -405,16 +403,6 @@ function wpsr_admin_page(){
 		
 		update_option("wpsr_sharethis_data", $wpsr_sharethis);
 		
-		## Buzz Options
-		$wpsr_buzz['style'] = $_POST['wpsr_buzz_style'];
-		$wpsr_buzz['size'] = $_POST['wpsr_buzz_size'];
-		$wpsr_buzz['language'] = $_POST['wpsr_buzz_lang'];
-		$wpsr_buzz['page'] = $_POST['wpsr_buzz_page'];
-		$wpsr_buzz['profile'] = $_POST['wpsr_buzz_profile'];
-		$wpsr_buzz['followbttext'] = $_POST['wpsr_buzz_followbttext'];
-		
-		update_option("wpsr_buzz_data", $wpsr_buzz);
-		
 		## Retweet Options
 		$wpsr_retweet['username'] = $_POST['wpsr_retweet_username'];
 		$wpsr_retweet['type'] = $_POST['wpsr_retweet_type'];
@@ -445,6 +433,7 @@ function wpsr_admin_page(){
 		
 		## Social Button Options
 		$wpsr_socialbt['target'] = $_POST['wpsr_socialbt_target'];
+		$wpsr_socialbt['nofollow'] = $_POST['wpsr_socialbt_nofollow'];
 		$wpsr_socialbt['loadcss'] = $_POST['wpsr_socialbt_loadcss'];
 		$wpsr_socialbt['effect'] = $_POST['wpsr_socialbt_effect'];
 		$wpsr_socialbt['label'] = $_POST['wpsr_socialbt_label'];
@@ -559,17 +548,6 @@ function wpsr_admin_page(){
 	$wpsr_sharethis_pubkey = $wpsr_sharethis['pubkey'];
 	$wpsr_sharethis_addp = $wpsr_sharethis['addp'];
 	
-	## Buzz Options
-	$wpsr_buzz = get_option('wpsr_buzz_data');
-	
-	$wpsr_buzz_style = $wpsr_buzz['style'];
-	$wpsr_buzz_size = $wpsr_buzz['size'];
-	$wpsr_buzz_lang = $wpsr_buzz['language'];
-	$wpsr_buzz_page = $wpsr_buzz['page'];
-	$wpsr_buzz_custompage = $wpsr_buzz['custompage'];
-	$wpsr_buzz_profile = $wpsr_buzz['profile'];
-	$wpsr_buzz_followbttext = $wpsr_buzz['followbttext'];
-	
 	## Retweet Options
 	$wpsr_retweet = get_option('wpsr_retweet_data');
 	
@@ -606,6 +584,7 @@ function wpsr_admin_page(){
 	$wpsr_socialbt = get_option('wpsr_socialbt_data');
 	
 	$wpsr_socialbt_target = $wpsr_socialbt['target'];
+	$wpsr_socialbt_nofollow = $wpsr_socialbt['nofollow'];
 	$wpsr_socialbt_loadcss = $wpsr_socialbt['loadcss'];
 	$wpsr_socialbt_effect = $wpsr_socialbt['effect'];
 	$wpsr_socialbt_label = $wpsr_socialbt['label'];
@@ -694,10 +673,7 @@ function wpsr_admin_page(){
 			</div>
 			
 			<div class="promos donateBox">
-				<div class="wrap">
-					<div class="txt1"><a href="<?php echo $wpsr_donate_link; ?>" target="_blank"><?php _e('Donate', 'wpsr'); ?></a></div>
-					<div class="txt2"><a href="<?php echo $wpsr_donate_link; ?>" target="_blank"><?php _e('and Support', 'wpsr'); ?></a></div>
-				</div>
+				<a href="http://bit.ly/wpsrDonate" target="_blank" title="Like this plugin ? You donation you will keep me up developing this plugin"><img src="https://www.paypal.com/en_US/i/btn/x-click-but04.gif" height="50"/></a>
 			</div>
 			
 			<div class="donatePopup">
@@ -732,14 +708,13 @@ function wpsr_admin_page(){
 		<li><a href="#tab-2"><span class='admSprites socialButtons'></span>Social Buttons</a></li>
 		<li><a href="#tab-3"><span class='admSprites addthisIcon'></span>Addthis</a></li>
 		<li><a href="#tab-4"><span class='admSprites sharethisIcon'></span>Sharethis</a></li>
-		<li><a href="#tab-5"><span class='admSprites buzzIcon'></span>Google Buzz</a></li>
-		<li><a href="#tab-6"><span class='admSprites retweetIcon'></span>Retweet &amp; Digg</a></li>
-		<li><a href="#tab-7"><span class='admSprites facebookIcon'></span>Facebook</a></li>
-		<li><a href="#tab-8"><span class='admSprites customIcon'></span>Custom</a></li>
-		<li class="placementTab"><a href="#tab-9"><span class='admSprites placementIcon'></span>Placement<br/>
+		<li><a href="#tab-5"><span class='admSprites retweetIcon'></span>Retweet &amp; Digg</a></li>
+		<li><a href="#tab-6"><span class='admSprites facebookIcon'></span>Facebook</a></li>
+		<li><a href="#tab-7"><span class='admSprites customIcon'></span>Custom</a></li>
+		<li class="placementTab"><a href="#tab-8"><span class='admSprites placementIcon'></span>Placement<br/>
 		<small class="info">Place buttons in this tab</small></a>
 		</li>
-		<li><a href="#tab-10"><span class='admSprites settingsIcon'></span><?php _e('Settings', 'wpsr'); ?></a></li>
+		<li><a href="#tab-9"><span class='admSprites settingsIcon'></span><?php _e('Settings', 'wpsr'); ?></a></li>
 		
 		<h5 class="tabGroup">Links</h5>
 		
@@ -768,7 +743,7 @@ function wpsr_admin_page(){
 		<h4>One click setup</h4>
 		<div class="templatesList">
 		<img src="<?php echo WPSR_ADMIN_URL; ?>images/one-click-header.jpg" class="imgHead"/>
-		<p class="smallText"><?php _e('Select a template and click apply.', 'wpsr'); ?><br/>Selecting the below template will overwrite the current template you are using.</p>
+		<p class="smallText"><?php _e('Select a template and click apply.', 'wpsr'); ?><br/>Selecting the below template will overwrite the current template you are using. <br/><em>Please delete the browser cache to view the new set of templates</em></p>
 		</div>
 		<a href="http://www.aakashweb.com/docs/wp-socializer-docs/creating-a-custom-template/" target="_blank"><?php _e('Create a template', 'wpsr'); ?></a> | <a href="http://www.aakashweb.com/docs/wp-socializer-docs/creating-a-custom-template/" target="_blank"><?php _e('Submit a template', 'wpsr'); ?></a>
 	</div>
@@ -853,6 +828,15 @@ function wpsr_admin_page(){
           <option <?php echo $wpsr_socialbt_target == '0' ? ' selected="selected"' : ''; ?> value="0"><?php _e('No', 'wpsr'); ?></option>
         </select></td>
       </tr>
+	  
+	  <tr>
+        <td height="35"><?php _e('Add <code>rel="nofollow"</code> attribute to links', 'wpsr'); ?></td>
+        <td><select id="wpsr_socialbt_nofollow" name="wpsr_socialbt_nofollow">
+          <option <?php echo $wpsr_socialbt_nofollow == '1' ? ' selected="selected"' : ''; ?> value="1"><?php _e('Yes', 'wpsr'); ?></option>
+          <option <?php echo $wpsr_socialbt_nofollow == '0' ? ' selected="selected"' : ''; ?> value="0"><?php _e('No', 'wpsr'); ?></option>
+        </select></td>
+      </tr>
+	  
       <tr>
         <td height="35"><?php _e('Image on Hover effect', 'wpsr'); ?> </td>
         <td><select id="wpsr_socialbt_effect" name="wpsr_socialbt_effect">
@@ -1060,54 +1044,8 @@ function wpsr_admin_page(){
 		
 	</div>
 	
-	<!-- GOOGLE BUZZ PAGE -->
-	<div id="tab-5" class="tabContent">
-		<p class="notice"><strong>Note:</strong> Google Buzz will shutdown in a Week. <a href="http://googleblog.blogspot.com/2011/10/fall-sweep.html" target="_blank">Source</a></p>
-		
-		<h4><?php _e('Post to Buzz button', 'wpsr'); ?><?php wpsr_addcodeico('{buzz-post}'); ?></h4>
-		<div class="section">
-		<table width="100%" height="181" border="0">
-          <tr>
-            <td width="29%" height="21"><?php _e('Style', 'wpsr'); ?></td>
-            <td width="71%" rowspan="2">
-			<label><input name="wpsr_buzz_style" id="wpsr_buzz_style" type="radio" value="count" <?php echo $wpsr_buzz_style == 'count' ? ' checked="checked"' : ''; ?> /> <?php _e('Show Button and counter', 'wpsr'); ?></label><br />
-			<label><input name="wpsr_buzz_style" id="wpsr_buzz_style" type="radio" value="button" <?php echo $wpsr_buzz_style == 'button' ? ' checked="checked"' : ''; ?> /> <?php _e('Show Button only', 'wpsr'); ?></label><br />
-			<label><input name="wpsr_buzz_style" id="wpsr_buzz_style" type="radio" value="link" <?php echo $wpsr_buzz_style == 'link' ? ' checked="checked"' : ''; ?> /> <?php _e('Show Link only', 'wpsr'); ?></label>			</td>
-          </tr>
-          <tr>
-            <td height="53">&nbsp;</td>
-          </tr>
-          <tr>
-            <td height="63"><?php _e('Size', 'wpsr'); ?><br /><span class="smallText"><?php _e('Not for link', 'wpsr'); ?></span></td>
-            <td><label><input name="wpsr_buzz_size" id="wpsr_buzz_size" type="radio" value="normal" <?php echo $wpsr_buzz_size == 'normal' ? ' checked="checked"' : ''; ?> /> <?php _e('Normal', 'wpsr'); ?></label>
-              <br />
-              <label><input name="wpsr_buzz_size" id="wpsr_buzz_size" type="radio" value="small" <?php echo $wpsr_buzz_size == 'small' ? ' checked="checked"' : ''; ?> /> <?php _e('Small', 'wpsr'); ?></label></td>
-          </tr>
-          <tr>
-            <td height="34"><label for="wpsr_buzz_lang"><?php _e('Language', 'wpsr'); ?></label></td>
-            <td><select name="wpsr_buzz_lang" id="wpsr_buzz_lang"><?php foreach ($wpsr_buzz_lang_array as $lang=>$name){echo "<option value=\"$lang\"". ($lang == $wpsr_buzz_lang ? " selected":"") . ">$name</option>";}?></select></td>
-          </tr>
-        </table>
-		</div>
-
-		<h4><?php _e('Follow on Buzz button', 'wpsr'); ?><?php wpsr_addcodeico('{buzz-follow}'); ?></h4>
-		<div class="section">
-		<table width="100%" border="0">
-          <tr>
-            <td width="30%"><label for="wpsr_buzz_profile"><?php _e('Profile URL', 'wpsr'); ?></label></td>
-            <td width="70%"><input name="wpsr_buzz_profile" id="wpsr_buzz_profile" type="text" value="<?php echo $wpsr_buzz_profile ?>" size="35"/><br /><span class="smallText"><?php _e('Don\'t know your profile URL?', 'wpsr'); ?> <a href="http://profiles.google.com/me" target="_blank"><?php _e('Click here', 'wpsr'); ?></a></span></td>
-          </tr>
-          <tr>
-            <td height="36"><label for="wpsr_buzz_followbttext"><?php _e('Button Text', 'wpsr'); ?></label></td>
-            <td><input name="wpsr_buzz_followbttext" id="wpsr_buzz_followbttext" type="text" value="<?php echo $wpsr_buzz_followbttext ?>" size="35"/></td>
-          </tr>
-        </table>
-		</div>
-		
-	</div><!-- Buzz box -->
-	
 	<!-- RETWEET AND DIGG PAGE -->
-	<div id="tab-6" class="tabContent">
+	<div id="tab-5" class="tabContent">
 	
 		<h4><?php _e('General', 'wpsr'); ?><?php wpsr_addcodeico('{retweet-bt}'); ?></h4>
 		<div class="section">
@@ -1202,7 +1140,7 @@ function wpsr_admin_page(){
 	</div>
 	
 	<!-- FACEBOOK PAGE -->
-	<div id="tab-7" class="tabContent">
+	<div id="tab-6" class="tabContent">
 		<h4><?php _e('Like Button', 'wpsr'); ?><?php wpsr_addcodeico('{facebook-like}'); ?></h4>
 		<div class="section">
 		<table width="100%" border="0">
@@ -1283,7 +1221,7 @@ function wpsr_admin_page(){
 	</div>
 	
 	<!-- CUSTOM BUTTONS PAGE -->
-	<div id="tab-8" class="tabContent">
+	<div id="tab-7" class="tabContent">
 		<h4><?php _e('Custom 1', 'wpsr'); ?><?php wpsr_addcodeico('{custom-1}'); ?></h4>
 		<div class="section">
 		<textarea name="wpsr_custom1" id="wpsr_custom1" cols="60" rows="8" class="custom_box"><?php echo $wpsr_custom1; ?></textarea><br />
@@ -1299,7 +1237,7 @@ function wpsr_admin_page(){
 	</div>
 	
 	<!-- TEMPLATE PAGE -->
-	<div id="tab-9" class="tabContent">
+	<div id="tab-8" class="tabContent">
 	
 	<p class="notice">If you want to edit or use an already made template, then select it from the "<strong>One click</strong>" tab</p>
 	
@@ -1326,7 +1264,7 @@ function wpsr_admin_page(){
 		  <table width="100%" height="237" border="0">
             <tr>
               <td height="38" colspan="3"><label>
-                <input name="wpsr_template1_addp" type="checkbox" value="1" <?php echo $wpsr_template1_addp == "1" ? 'checked="checked"' : ""; ?> />
+                <input id="wpsr_template1_addp" name="wpsr_template1_addp" type="checkbox" value="1" <?php echo $wpsr_template1_addp == "1" ? 'checked="checked"' : ""; ?> />
                 <?php _e('Automatically add paragraphs', 'wpsr'); ?>
               </label></td>
               <td>&nbsp;</td>
@@ -1442,7 +1380,7 @@ function wpsr_admin_page(){
 	</div>
 	
 	<!-- SETTINGS -->
-	<div id="tab-10" class="tabContent">
+	<div id="tab-9" class="tabContent">
 		<h4>RSS <?php _e('Settings', 'wpsr'); ?></h4>
 		<div class="section">
 			<table width="100%" height="39" border="0">
@@ -1526,9 +1464,9 @@ function wpsr_admin_page(){
 
 </div><!-- Tabs -->
 
-<div class="credits">
-	<a href="http://www.aakashweb.com/" title="Aakash Web" target="_blank"><?php _e('a Aakash Web plugin', 'wpsr'); ?></a>
-</div><!-- Credits -->
+<p align="center" class="credits"><a href="http://www.aakashweb.com/" title="Aakash Web" target="_blank"><?php _e('a Aakash Web plugin', 'wpsr'); ?></a></p>
+<p align="center"><a href="http://bit.ly/wpsrDonate" target="_blank" title="Like this plugin ? You donation you will keep me up developing this plugin" class="donateLink"><img src="https://www.paypal.com/en_US/i/btn/x-click-but04.gif" /></a></p>
+<!-- Credits -->
 	
 </div><!-- Wrap -->
 <?php endif; ?>
@@ -1604,7 +1542,6 @@ function wpsr_meta_box(){
 	
 ?>
 	<a name="wp_socializer" id="wp_socializer"></a>
-	<img width="20" height="20" src="<?php echo WPSR_ADMIN_URL; ?>images/wp-socializer.png" style="float:right; margin-top:-28px; margin-left:28px"/><style>.postbox:hover img{display:none;}</style>
 	
 	<table width="100%" border="0">
 	  <tr>

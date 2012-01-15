@@ -37,5 +37,4 @@ function wpsr_custom_bt($custom){
 	}
 	
 }
-
 ?>

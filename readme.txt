@@ -2,32 +2,40 @@
 Contributors: Aakash Chakravarthy
 Author URI: http://www.aakashweb.com/
 Plugin URI: http://www.aakashweb.com/wordpress-plugins/wp-socializer/
-Tags: social, social bookmarking, bookmarks, bookmarking, bookmarks menu, share, sharing, search, rss, post, posts, plugin, seo, page, pages, google, excerpt, content, bookmark, button, technorati, e-mail, email, gmail, Facebook, twitter, retweet, myspace, diigo, delicious, digg, buzz, google buzz, yahoo, reddit, dzone, Sphinn, addthis, template, socializer, sociable, wp, wordpress, sexy bookmarks
+Tags: social, social bookmarking, bookmarks, bookmarking, bookmarks menu, share, sharing, search, rss, post, posts, plugin, seo, page, pages, google, excerpt, content, bookmark, button, technorati, e-mail, email, gmail, Facebook, twitter, retweet, myspace, diigo, delicious, digg, buzz, linkedin, google buzz, yahoo, reddit, dzone, Sphinn, addthis, template, socializer, sociable, wp, wordpress, sexy bookmarks
 Donate Link: http://bit.ly/wpsrDonate
-Requires at least: 2.6
-Tested up to: 3.3
-Stable tag: 2.2
+Requires at least: 2.8
+Tested up to: 3.3.1
+Stable tag: 2.3
 
-All in one plugin for inserting Social bookmarking buttons(105), Retweet, Google+1, Facebook, Digg, Addthis, Sharethis buttons in  a WordPress site.
+All in one plugin for inserting Social bookmarking buttons(105), Retweet, Google+1, Facebook, LinkedIn, Addthis, Sharethis buttons in a WordPress site
 
 == Description ==
 
-WP Socializer is a advanced and powerful plugin for adding social bookmarking buttons, Retweet buttons, Google +1 buttons, Digg buttons, Addthis buttons, Facebook buttons anywhere in a WordPress site from posts to Widgets.
+WP Socializer is a advanced and powerful plugin for adding social bookmarking buttons, Retweet buttons, Google +1 buttons, LinkedIn buttons, Digg buttons, Addthis buttons, Facebook buttons anywhere in a WordPress site from posts to Widgets.
+
+Facebook like box, Google + badge can also be added to the sidebar with full custtomization.
+A ultimate replacement to many plugins, being a all in one.
 
 [youtube="http://www.youtube.com/v/6AXCt13MXcU"]
-
-A ultimate replacement to many plugins, being a all in one.
 
 = Features =
 
 WP Socializer allows to insert 8 different types of social and sharing buttons. Those features are explained below. These buttons can be used either seperately or together.
 
+= New features in v2.3 =
+
+* Facebook like box widget added.
+* Google + badge widget added.
+* LinkedIn buttons are added.
+* And [more](changelog) features.
+
 = What buttons can be inserted ? =
 
 * 105 Social bookmarking buttons with both 16px and 32px button sizes.
 * Addthis and Sharethis buttons of all type.
-* Google +1, Facebook like buttons
-* All Retweet and Digg buttons.
+* Google +1, Facebook like buttons.
+* All Retweet, Digg buttons and LinkedIn buttons.
 * StumbleUpon, Reddit and Google Buzz buttons.
 
 = Where the button can be placed ? =
@@ -52,6 +60,7 @@ WP Socializer allows to insert 8 different types of social and sharing buttons. 
 * [Screenshots](http://www.aakashweb.com/wordpress-plugins/wp-socializer/#screenshots-tab)
 * [Support](http://www.aakashweb.com/forum/)
 * [Request a Feature](http://www.aakashweb.com/wordpress-plugins/wp-socializer/#respond)
+* [Add a testimonial](http://www.aakashweb.com/wordpress-plugins/wp-socializer/#respond)
 * [Donate](http://bit.ly/wpsrDonate)
 
 = Using WP Socializer =
@@ -77,10 +86,20 @@ Frequently Asked Questions can be seen [here](http://www.aakashweb.com/faqs/word
 1. Complete WP Socializer, social bookmarking icons overview.
 2. Overview of the posts, showing where and how the buttons can be placed.
 3. Admin Interface overview.
+4. Facebook like box and Google + page badge included in a sidebar using inbuilt widgets.
+5. Widget for including Facebook like box and Google + page bage.
 
-[More Screenshots](http://www.aakashweb.com/wordpress-plugins/wp-socializer/#screenshots-tab)
+[More Screenshots](http://www.aakashweb.com/wordpress-plugins/wp-socializer/#screenshots)
 
 == Changelog ==
+
+= 2.3 = 
+* Facebook like box, Google + badge widget is included.
+* LinkedIn buttons are added.
+* Google Buzz is removed.
+* Templates are updated.
+* Option to change the `rel="nofollow"` attribute.
+* Minor admin UI changes and improvements.
 
 = 2.2 =
 * Conflict with the tinyMCE editor fixed.

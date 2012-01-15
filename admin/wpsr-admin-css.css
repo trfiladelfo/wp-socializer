@@ -279,15 +279,18 @@
 	background: url(images/footer-bg.png) repeat-x top;
 	border-top: 1px solid #D4D4D4;
 }
+.footer .donateLink{
+	margin-right: 25px;
+}
 .credits{
-	font-size: 10px;
-	margin: 10px 0px 0px;
-	background: url(images/aw.png) no-repeat;
-	padding-left: 23px;
+	font-size: 13px;
+	margin: 20px 0px 0px;
 }
 .credits a{
 	color: #333333;
 	text-decoration: none;
+	background: url(images/aw.png) no-repeat;
+	padding-left: 23px;
 }
 .templateInfo{
 	margin: -11px 0px 10px;
@@ -320,7 +323,7 @@
 	-moz-box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.5);
 	box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.09);
 }
-.promoBox .donateBox{
+/*.promoBox .donateBox{
 	width: 180px;
 	background: url(images/donateBg.png);
 	border: 1px solid #FFEA97;
@@ -337,7 +340,7 @@
 }
 .promoBox .donateBox .txt2{
 	color: #333333;
-}
+}*/
 .promoBox .donatePopup{
 	display: none;
 	font-family: Arial, Helvetica, sans-serif;
@@ -454,21 +457,22 @@
 }
 
 .addthisIcon{ background-position: 0 0;  } 
-.buzzIcon{ background-position: 0 -66px;  } 
-.customIcon{ background-position: 0 -132px;  } 
-.documentationIcon{ background-position: 0 -198px;  } 
-.facebookIcon{ background-position: 0 -264px;  } 
+.customIcon{ background-position: 0 -66px;  } 
+.documentationIcon{ background-position: 0 -132px;  } 
+.facebookIcon{ background-position: 0 -198px;  } 
+.googleplusIcon{ background-position: 0 -264px;  } 
 .helpIcon{ background-position: 0 -330px;  } 
-.minusIcon{ background-position: 0 -396px;  } 
-.oneclickIcon{ background-position: 0 -462px;  } 
-.placementIcon{ background-position: 0 -528px;  } 
-.redditIcon{ background-position: 0 -594px;  } 
-.retweetIcon{ background-position: 0 -660px;  } 
-.settingsIcon{ background-position: 0 -726px;  } 
-.sharethisIcon{ background-position: 0 -792px;  } 
-.socialButtons{ background-position: 0 -858px;  } 
-.stumbleuponIcon{ background-position: 0 -924px;  } 
-.supportIcon{ background-position: 0 -990px;  } 
+.linkedinIcon{ background-position: 0 -396px;  } 
+.minusIcon{ background-position: 0 -462px;  } 
+.oneclickIcon{ background-position: 0 -528px;  } 
+.placementIcon{ background-position: 0 -594px;  } 
+.redditIcon{ background-position: 0 -660px;  } 
+.retweetIcon{ background-position: 0 -726px;  } 
+.settingsIcon{ background-position: 0 -792px;  } 
+.sharethisIcon{ background-position: 0 -858px;  } 
+.socialButtons{ background-position: 0 -924px;  } 
+.stumbleuponIcon{ background-position: 0 -990px;  } 
+.supportIcon{ background-position: 0 -1056px;  } 
 
 .note{
 	background: #FFFBEC;

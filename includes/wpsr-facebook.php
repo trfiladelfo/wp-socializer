@@ -143,5 +143,4 @@ function wpsr_facebook_rss_bt(){
 
 	return $wpsr_facebook_processed;
 }
-
 ?>

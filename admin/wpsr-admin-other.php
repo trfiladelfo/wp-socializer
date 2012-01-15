@@ -15,20 +15,7 @@ function wpsr_check_hja(){
 }
 
 function wpsr_admin_page_other(){
-
-	$wpsr_shortcodes_list = array(
-		'Social buttons' => '[wpsr_socialbts]', 
-		'Addthis' => '[wpsr_addthis]',
-		'Sharethis'	=> '[wpsr_sharethis]', 
-		'Retweet' => '[wpsr_retweet]',
-		'Google Buzz' => '[wpsr_buzz]',
-		'Google +1' => '[wpsr_plusone]',
-		'Digg' => '[wpsr_digg]',
-		'Facebook' => '[wpsr_facebook]',
-		'StumbleUpon' => '[wpsr_stumbleupon]',
-		'Reddit' => '[wpsr_reddit]'
-	);
-
+	global $wpsr_shortcodes_list;
 ?>
 
 	<div class="wrap">
@@ -89,12 +76,11 @@ function wpsr_admin_page_other(){
 			
 			<hr />
 			
-			<p class="smallText hjaNote"><strong><?php _e('Note:', 'wpsr'); ?></strong> <?php _e('HTML Javascript Adder is a wordpress plugin for inserting HTML, Javascripts in widgets with more than 50,000 downloads. This is from the same author of this plugin. The latest version of HJA can insert WP Socializer buttons in widgets.', 'wpsr'); ?></p>
+			<p class="smallText hjaNote"><strong><?php _e('Note:', 'wpsr'); ?></strong> <?php _e('HTML Javascript Adder is a wordpress plugin for inserting HTML, Javascripts in widgets with more than 60,000 downloads. This is from the same author of this plugin. The latest version of HJA can insert WP Socializer buttons in widgets.', 'wpsr'); ?></p>
 			<a name="note" id="note"></a>
 		</div>
 		
 	</div>
 <?php
 }
-
 ?>

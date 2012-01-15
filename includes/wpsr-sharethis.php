@@ -182,5 +182,4 @@ function wpsr_sharethis_rss_bt(){
 	
 	return $wpsr_sharethis_processed;
 }
-
 ?>

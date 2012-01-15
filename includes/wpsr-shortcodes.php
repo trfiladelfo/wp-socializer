@@ -1,7 +1,7 @@
 <?php
 /*
  * Shortcodes for WP Socializer plugin
- * Version : 1.0
+ * Version : 2.0
  * Author : Aakash Chakravarthy
  * Since : 2.0
  */
@@ -38,9 +38,9 @@ function wpsr_retweet_shortcode($atts){
 }
 add_shortcode('wpsr_retweet', 'wpsr_retweet_shortcode');
 
-## Google Buzz button Shortcode
+## Google Buzz button Shortcode - Removed since v2.3
 function wpsr_buzz_shortcode($atts){
-	return wpsr_buzz($atts) . wpsr_buzz_script();
+	return '';
 }
 add_shortcode('wpsr_buzz', 'wpsr_buzz_shortcode');
 
@@ -74,4 +74,9 @@ function wpsr_reddit_shortcode($atts){
 }
 add_shortcode('wpsr_reddit', 'wpsr_reddit_shortcode');
 
+## LinkedIn Shortcode - since v2.3
+function wpsr_linkedin_shortcode($atts){
+	return wpsr_linkedin($atts) . wpsr_linkedin_script();
+}
+add_shortcode('wpsr_linkedin', 'wpsr_linkedin_shortcode');
 ?>

@@ -1,7 +1,7 @@
 <?php
 /*
  * Social buttons Processor code for WP Socializer Plugin
- * Version : 4.3
+ * Version : 4.4
  * Author : Aakash Chakravarthy
 */
 
@@ -139,6 +139,7 @@ function wpsr_socialbts_processlist($args = ''){
 		'sprites' => 1,
 		'label' => 1,
 		'target' => 1,
+		'nofollow' => 1,
 		'imgpath' => '',
 		'params' => '',
 	);
@@ -195,6 +196,7 @@ function wpsr_socialbts_processlist($args = ''){
 		$spritesYCoord = get_sprite_coord($sitename, $wpsr_socialsites_list, $pixel);
 		$finalSprites = '0px -' . $spritesYCoord . 'px';
 		$finalTarget = ($target == 1) ? ' target="_blank"' : '';
+		$finalNofollow = ($nofollow == 1) ? ' rel="nofollow"' : '';
 		
 		$socialbts_list .= $before;
 		
@@ -203,7 +205,7 @@ function wpsr_socialbts_processlist($args = ''){
 		
 			// Check whether label is enabled
 			if($label == 1){
-				$finalLabel = '<span class="wp-socializer-label"><a href="' . $finalUrl . '" title="' . $finalTitle . '"' . $finalTarget . '>' . $finalName . '</a></span>';
+				$finalLabel = '<span class="wp-socializer-label"><a href="' . $finalUrl . '" title="' . $finalTitle . '"' . $finalTarget . $finalNofollow .  '>' . $finalName . '</a></span>';
 			}else{
 				$finalLabel = '';
 			}
@@ -211,19 +213,19 @@ function wpsr_socialbts_processlist($args = ''){
 			// Check whether sprites is enabled
 			if($sprites == 1){
 				$socialbts_list .= 
-					'<a href="' . $finalUrl . '" title="' . $finalTitle . '"' . $finalTarget . $params . '>' .
+					'<a href="' . $finalUrl . '" title="' . $finalTitle . '"' . $finalTarget . $finalNofollow .  $params . '>' .
 					'<img src="' . $spriteMaskImage . '" alt="' . $finalName . '" style="width:' . $pixel . '; height:' . $pixel . '; background: transparent url(' . $spriteImage . ') no-repeat; background-position:' . $finalSprites . '; border:0;"/>' .
 					"</a>" . $finalLabel ;		
 			}else{
 				$socialbts_list .= 
-					'<a href="' . $finalUrl . '" title="' . $finalTitle . '"' . $finalTarget . $params . '>' .
+					'<a href="' . $finalUrl . '" title="' . $finalTitle . '"' . $finalTarget . $finalNofollow .  $params . '>' .
 					'<img src="' . $finalIcon . '" alt="' . $finalName . '" border="0"/>' .
 					"</a>" . $finalLabel ;
 			}
 		
 		}else{
 			$socialbts_list .= 
-				$textBefore . '<a href="' . $finalUrl . '" title="' . $finalTitle . '"' . $finalTarget . $params . '>' .
+				$textBefore . '<a href="' . $finalUrl . '" title="' . $finalTitle . '"' . $finalTarget . $finalNofollow .  $params . '>' .
 				$finalName . "</a>" . $textAfter ;
 		}
 		
@@ -248,6 +250,7 @@ function wpsr_socialbts($args = ''){
 		'excerpt' => $def_excerpt,
 		'type' => '16px',
 		'target' => 1,
+		'nofollow' => 1, // Since 2.3
 		'effect' => 'opacity',
 		'label' => 0,
 		'columns' => 'no',
@@ -286,6 +289,7 @@ function wpsr_socialbts($args = ''){
 						'sprites' => $sprites,
 						'label' => $label,
 						'target' => $target,
+						'nofollow' => $nofollow,
 						'imgpath' => $imgpath16px,
 					));
 				break;
@@ -301,6 +305,7 @@ function wpsr_socialbts($args = ''){
 						'sprites' => $sprites,
 						'label' => $label,
 						'target' => $target,
+						'nofollow' => $nofollow,
 						'imgpath' => $imgpath32px,
 					));
 				break;
@@ -325,6 +330,7 @@ function wpsr_socialbts($args = ''){
 						'sprites' => $sprites,
 						'label' => $label,
 						'target' => $target,
+						'nofollow' => $nofollow,
 						'imgpath' => $imgpath16px,
 						'after' => '',
 						'before' => '',
@@ -343,6 +349,7 @@ function wpsr_socialbts($args = ''){
 						'sprites' => $sprites,
 						'label' => $label,
 						'target' => $target,
+						'nofollow' => $nofollow,
 						'imgpath' => $imgpath32px,
 						'after' => '',
 						'before' => '',
@@ -360,6 +367,7 @@ function wpsr_socialbts($args = ''){
 						'sprites' => $sprites,
 						'label' => $label,
 						'target' => $target,
+						'nofollow' => $nofollow,
 						'after' => $after,
 						'before' => $before,
 						'textBefore' => '',
@@ -426,6 +434,7 @@ function wpsr_socialbts_template($type){
 		'output' => 'image',
 		'type' => $type,
 		'target' => $wpsr_socialbt['target'],
+		'nofollow' => $wpsr_socialbt['nofollow'],
 		'effect' => $wpsr_socialbt['effect'],
 		'label' => $wpsr_socialbt['label'],
 		'columns' => $wpsr_socialbt['columns'],
@@ -451,5 +460,4 @@ function wpsr_socialbts_rss($type){
 	
 	return $wpsr_socialbt_processed;
 }
-
 ?>

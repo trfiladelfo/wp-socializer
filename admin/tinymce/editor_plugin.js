@@ -1,7 +1,7 @@
 /*
  * WP Socializer shortcode inserting javascript in TinyMCE editor
  * http://www.aakashweb.com
- * v1.1
+ * v1.2
  * Added since WP Socializer v2.0
 */
 function wpsr_insert_shortcode(type, edparam) {
@@ -19,17 +19,17 @@ function wpsr_insert_shortcode(type, edparam) {
 			case '4':
 				btncode = "retweet"; break;
 			case '5':
-				btncode = "buzz"; break;
-			case '6':
 				btncode = "plusone"; break;
-			case '7':
+			case '6':
 				btncode = "digg"; break;
-			case '8':
+			case '7':
 				btncode = "facebook"; break;
-			case '9':
+			case '8':
 				btncode = "stumbleupon"; break;
-			case '10':
+			case '9':
 				btncode = "reddit"; break;
+			case '10':
+				btncode = "linkedin"; break;
 			default:
 				return '';
 		}
@@ -67,7 +67,7 @@ function wpsr_insert_shortcode(type, edparam) {
 				author : 'Aakash Chakravarthy',
 				authorurl : 'http://www.aakashweb.com/',
 				infourl : 'http://www.aakashweb.com/',
-				version : '1.1'
+				version : '1.2'
 			};
 		}
 
