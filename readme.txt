@@ -49,7 +49,7 @@ The social buttons can be inserted above or below posts easily. There are no fix
 
 Automatic adjustments are made to display the buttons in feeds. Custom buttons can also be added. Bit.ly integration is also available. Button scripts are optimized for site performance.
 
-Exclude the social buttons in specific pages. Insert the social buttons easily in Widgets using the [HTML Javascript Plugin](html-javascript-adder "A plugin for adding advanced html, text widgets in the sidebar").
+Exclude the social buttons in specific pages. Insert the social buttons easily in Widgets using the [HTML Javascript Plugin](http://www.aakashweb.com/wordpress-plugins/html-javascript-adder/ "A plugin for adding advanced html, text widgets in the sidebar").
 
 = Reference links =
 For more information on the plugin, you can use the below links.
