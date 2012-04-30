@@ -58,13 +58,13 @@ add_shortcode('wpsr_digg', 'wpsr_digg_shortcode');
 
 ## Facebook Shortcode
 function wpsr_facebook_shortcode($atts){
-	return wpsr_facebook($atts);
+	return wpsr_facebook($atts) . wpsr_facebook_script();
 }
 add_shortcode('wpsr_facebook', 'wpsr_facebook_shortcode');
 
 ## StumbleUpon Shortcode
 function wpsr_stumbleupon_shortcode($atts){
-	return wpsr_stumbleupon($atts);
+	return wpsr_stumbleupon($atts) . wpsr_stumbleupon_script();
 }
 add_shortcode('wpsr_stumbleupon', 'wpsr_stumbleupon_shortcode');
 
@@ -79,4 +79,10 @@ function wpsr_linkedin_shortcode($atts){
 	return wpsr_linkedin($atts) . wpsr_linkedin_script();
 }
 add_shortcode('wpsr_linkedin', 'wpsr_linkedin_shortcode');
+
+## Pinterest Shortcode - since v2.4
+function wpsr_pinterest_shortcode($atts){
+	return wpsr_pinterest($atts) . wpsr_pinterest_script();
+}
+add_shortcode('wpsr_pinterest', 'wpsr_pinterest_shortcode');
 ?>

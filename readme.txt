@@ -5,72 +5,65 @@ Plugin URI: http://www.aakashweb.com/wordpress-plugins/wp-socializer/
 Tags: social, social bookmarking, bookmarks, bookmarking, bookmarks menu, share, sharing, search, rss, post, posts, plugin, seo, page, pages, google, excerpt, content, bookmark, button, technorati, e-mail, email, gmail, Facebook, twitter, retweet, myspace, diigo, delicious, digg, buzz, linkedin, google buzz, yahoo, reddit, dzone, Sphinn, addthis, template, socializer, sociable, wp, wordpress, sexy bookmarks
 Donate Link: http://bit.ly/wpsrDonate
 Requires at least: 2.8
-Tested up to: 3.3.1
-Stable tag: 2.3
+Tested up to: 3.3.x
+Stable tag: 2.4
 
-All in one plugin for inserting Social bookmarking buttons(105), Retweet, Google+1, Facebook, LinkedIn, Addthis, Sharethis buttons in a WordPress site
+Super Cool Plugin for inserting all kinds of Social Bookmarking & Sharing buttons. Has customizable Floating Share Bar, Widgets, Shortcodes also.
 
 == Description ==
 
-WP Socializer is a advanced and powerful plugin for adding social bookmarking buttons, Retweet buttons, Google +1 buttons, LinkedIn buttons, Digg buttons, Addthis buttons, Facebook buttons anywhere in a WordPress site from posts to Widgets.
+WP Socializer is an advanced plugin for inserting all kinds of Social bookmarking & sharing buttons. It has super cool features to insert the buttons into posts, sidebar. It also has Floating sharebar.
 
-Facebook like box, Google + badge can also be added to the sidebar with full custtomization.
-A ultimate replacement to many plugins, being a all in one.
+= Notable features =
 
-[youtube="http://www.youtube.com/v/6AXCt13MXcU"]
+* Insert all kinds of social buttons in posts & pages.
+* **Floating share bar** (both horizontal & vertical)
+* Has Shortcodes for all buttons.
+* Widgets for inserting FB like box & G+ badges in sidebar.
+* Template functions are available for advanced placements.
 
-= Features =
+[youtube="http://www.youtube.com/v/1uimAE8rFYE"]
 
-WP Socializer allows to insert 8 different types of social and sharing buttons. Those features are explained below. These buttons can be used either seperately or together.
+= Buttons available =
 
-= New features in v2.3 =
+Using WP Socializer, you can insert all these buttons into your site. These buttons can be inserted easily in any desired way. There is no fixed way as other plugins do.
 
-* Facebook like box widget added.
-* Google + badge widget added.
-* LinkedIn buttons are added.
-* And [more](changelog) features.
+* *107* Social bookmarking buttons (in both 16px and 32px)
+* All kinds of Addthis buttons.
+* All kinds of Sharethis buttons.
+* Facebook like buttons.
+* Google +1 buttons.
+* Pinterest buttons.
+* 3 Kinds of retweet buttons.
+* ... and all kinds of Digg, LinkedIn, Reddit & StumbleUpon buttons
 
-= What buttons can be inserted ? =
+= Screenshots =
 
-* 105 Social bookmarking buttons with both 16px and 32px button sizes.
-* Addthis and Sharethis buttons of all type.
-* Google +1, Facebook like buttons.
-* All Retweet, Digg buttons and LinkedIn buttons.
-* StumbleUpon, Reddit and Google Buzz buttons.
+Check out the screenshots of the plugin to get the idea of how the plugin looks and works.
 
-= Where the button can be placed ? =
+[**Plugin screenshots**](http://www.aakashweb.com/wordpress-plugins/wp-socializer/#screenshots)
 
-* Above and below posts or both using the admin page.
-* In widgets using shortcodes and [HTML Javascript Adder](http://wordpress.org/extend/plugins/html-javascript-adder/) plugin.
-* Inside posts using shortcodes.
-* In theme files using template functions.
+= More features =
 
-= Other features =
- 
-* Template based system for adding all buttons at once.
-* Inbuilt beautiful templates available for easy usage.
-* Easy and responsive administration page.
-* Automatic adjustments of buttons in RSS feeds.
-* Custom buttons and icons can be used.
-* Avaialble in 2 languages (Spanish and Chinese).
+The social buttons can be inserted above or below posts easily. There are no fixed placements. There is a template feature, which allows to insert the buttons in **any** desired way.
 
-= Resources = 
-* [Full Documentation](http://www.aakashweb.com/wordpress-plugins/wp-socializer/)
-* [FAQs](http://www.aakashweb.com/faqs/wordpress-plugins/wp-socializer/)
-* [Screenshots](http://www.aakashweb.com/wordpress-plugins/wp-socializer/#screenshots-tab)
-* [Support](http://www.aakashweb.com/forum/)
-* [Request a Feature](http://www.aakashweb.com/wordpress-plugins/wp-socializer/#respond)
-* [Add a testimonial](http://www.aakashweb.com/wordpress-plugins/wp-socializer/#respond)
-* [Donate](http://bit.ly/wpsrDonate)
+Automatic adjustments are made to display the buttons in feeds. Custom buttons can also be added. Bit.ly integration is also available. Button scripts are optimized for site performance.
 
-= Using WP Socializer =
-[youtube="http://www.youtube.com/v/0G-joyseg7U"]
+Exclude the social buttons in specific pages. Insert the social buttons easily in Widgets using the [HTML Javascript Plugin](html-javascript-adder "A plugin for adding advanced html, text widgets in the sidebar").
+
+= Reference links =
+For more information on the plugin, you can use the below links.
+
+[**Homepage**](http://www.aakashweb.com/wordpress-plugins/wp-socializer/) - [**Support Forum**](http://www.aakashweb.com/forum/) - [**Donate**](http://bit.ly/wpsrDonate "If you like this plugin, then just a make a small donation for this plugins's hard work.")
+
+* [Template function reference](http://www.aakashweb.com/docs/wp-socializer-docs/function-reference/).
+* [Manual placement](http://www.aakashweb.com/docs/wp-socializer-docs/manual-placement/).
 
 == Installation ==
 
 1. Upload `wp-socializer` to the `/wp-content/plugins/` directory
 1. Activate the plugin through the `Plugins` menu in WordPress
-1. Go to Settings -> WP Socializer to open the WP Socializer Admin Page.
+1. Go to the WP Socializer Admin Page.
 1. Customize the settings.
 1. Use the corresponding button code in the placement template.
 1. That's all. Enjoy !
@@ -81,17 +74,42 @@ WP Socializer allows to insert 8 different types of social and sharing buttons. 
 
 Frequently Asked Questions can be seen [here](http://www.aakashweb.com/faqs/wordpress-plugins/wp-socializer/).
 
+For custom placement in theme files and posts, check out the following documentations
+
+* [Template function reference](http://www.aakashweb.com/docs/wp-socializer-docs/function-reference/).
+* [Manual placement](http://www.aakashweb.com/docs/wp-socializer-docs/manual-placement/).
+
 == Screenshots ==
 
-1. Complete WP Socializer, social bookmarking icons overview.
-2. Overview of the posts, showing where and how the buttons can be placed.
-3. Admin Interface overview.
-4. Facebook like box and Google + page badge included in a sidebar using inbuilt widgets.
-5. Widget for including Facebook like box and Google + page bage.
+1. A post showing Social bookmarking and sharing buttons added with WP Socializer plugin.
+2. Another example showing the buttons in action.
+3. Addthis and Sharethis buttons inserted in a post.
+4. A Floating Share Bar created using WP Socializer in action.
+5. A dark theme of the floating share bar.
+6. The horizontal mode of the floating share bar.
+7. The dark theme of the share bar.
+8. The admin UI showing the buttons inserted into the posts.
+9. The social bookmarking buttons selection page.
+10. The floating share bar settings page.
+11. Facebook like and Google+ widgets added using the WP Socializer plugin.
 
 [More Screenshots](http://www.aakashweb.com/wordpress-plugins/wp-socializer/#screenshots)
 
 == Changelog ==
+
+= 2.4 =
+* Admin UI is completely changed as per users request.
+* Floating share buttons are added.
+* Added a new social bookmarking buttons: Google+, Pinterest & OkNotizie
+* Pinterest button automatically recognizes the first image in the post.
+* Send button is included in Facebook.
+* Embed codes are updated for Facebook and StumbleUpon.
+* Removed Google Buzz completely.
+* Removed the "Retweet" (the unofficial button offered by retweet.com) service.
+* Two old inbuilt templates are removed and two new templates are added.
+* Lots and lots of bugs are fixed.
+* Email button problem is fixed.
+* Old translations (German & Chinese) are removed.
 
 = 2.3 = 
 * Facebook like box, Google + badge widget is included.
@@ -132,10 +150,9 @@ Frequently Asked Questions can be seen [here](http://www.aakashweb.com/faqs/word
 
 == Upgrade Notice ==
 
-Automatic optimaztion will be made for Upgrading from version 1 to 2.
+Version 2.4 is a recommended upgrade to get all the latest social bookmarking and sharing buttons avaialble in the Internet. Various bugs are fixed and the admin UI is completely changed for easy use.
 
 == Credits ==
 
 * Full interface and coding by [Aakash Chakravarthy](http://www.aakashweb.com/)
-* Social buttons list taken from sociable plugin.
-* German and Chinese translation were made with Google Translate and Microsoft Translate by [Aakash Chakravarthy](http://www.aakashweb.com/).
+* Social buttons list taken from the old sociable plugin and updates are added by the author.

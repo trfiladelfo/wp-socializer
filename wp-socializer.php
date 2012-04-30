@@ -1,9 +1,9 @@
 <?php
 /*
 Plugin Name: WP Socializer
-Version: 2.3
+Version: 2.4
 Plugin URI: http://www.aakashweb.com/
-Description: WP Socializer is an advanced and powerful plugin for adding bookmarking buttons like social buttons, Facebook like, Google +1, Addthis, Digg, Twitter retweet buttons in posts and excerpts. Facebook like box and Google+ page badge can also be added in the sidebars using Widgets.
+Description: WP Socializer is an advanced plugin for inserting all kinds of Social bookmarking & sharing buttons. It has super cool features to insert the buttons into posts, sidebar. It also has Floating sharebar. <a href="http://youtu.be/1uimAE8rFYE" target="_blank">Check out the demo video</a>.
 Author: Aakash Chakravarthy
 Author URI: http://www.aakashweb.com/
 */
@@ -14,7 +14,7 @@ if(!defined('WP_CONTENT_URL')) {
 	$wpsr_url = WP_CONTENT_URL . '/plugins/' . plugin_basename(dirname(__FILE__)) . '/';
 }
 
-define('WPSR_VERSION', '2.3');
+define('WPSR_VERSION', '2.4');
 define('WPSR_AUTHOR', 'Aakash Chakravarthy');
 define('WPSR_URL', $wpsr_url);
 define('WPSR_PUBLIC_URL', WPSR_URL . 'public/');
@@ -198,7 +198,7 @@ $wpsr_socialsites_list = array(
 		'name' => 'Email',
 		'titleText' => __('Email this ', 'wpsr') . '',
 		'icon' => 'email.png',
-		'url' => 'mailto:{email}?subject={de-title}&amp;body={de-excerpt} - {de-url}',
+		'url' => 'mailto:subject={de-title}&amp;body={de-excerpt} - {de-url}', // Removed "to" in v2.4
 		'support32px' => 1,
 	),
 	
@@ -274,13 +274,22 @@ $wpsr_socialsites_list = array(
 		'support32px' => 1,
 	),
 	
+	'googleplus' => array(
+		'name' => 'Google Plus',
+		'titleText' => __('Share this on ', 'wpsr') . 'Google Plus',
+		'icon' => 'googleplus.png',
+		'url' => 'https://plus.google.com/share?url={url}',
+		'support32px' => 1,
+	), // Added version 2.4 - 13-2-2012
+	
+	/*
 	'googlebuzz' => array(
 		'name' => 'Google Buzz',
 		'titleText' => __('Post this on ', 'wpsr') . 'Google Buzz',
         'icon' => 'googlebuzz.png',
         'url' => 'http://www.google.com/buzz/post?url={url}',
 		'support32px' => 1,
-    ),
+    ),*/
 	
 	'googlereader' => array(
 		'name' => 'Google Reader',
@@ -567,6 +576,14 @@ $wpsr_socialsites_list = array(
 	
 	// O
 	
+	'oknotizie' => array(
+		'name' => 'OkNotizie',
+		'titleText' => __('Share this on ', 'wpsr') . 'OkNotizie',
+		'icon' => 'oknotizie.png',
+		'url' => 'http://oknotizie.virgilio.it/post.html.php?url={url}&amp;title={title}',
+		'support32px' => 1,
+	), // Added version 2.4 - 13-12-2012
+	
 	'orkut' => array(
 		'name' => 'Orkut',
 		'titleText' => __('Share this on ', 'wpsr') . 'Orkut',
@@ -599,7 +616,15 @@ $wpsr_socialsites_list = array(
 		'url' => 'http://ping.fm/ref/?link={url}&amp;title={title}&amp;body={excerpt}',
 		'support32px' => 1,
 	),
-
+	
+	'pinterest' => array(
+		'name' => 'Pinterest',
+		'titleText' => __('Submit this to ', 'wpsr') . 'Pinterest',
+		'icon' => 'pinterest.png',
+		'url' => 'http://www.pinterest.com/pin/create/button/?url={url}&media={image}&description={excerpt}',
+		'support32px' => 1,
+	),// Added version 2.4 - 13-2-2012
+	
 	'posterous' => array(
 		'name' => 'Posterous',
 		'titleText' => __('Share this on ', 'wpsr') . 'Posterous',
@@ -873,15 +898,12 @@ $wpsr_button_code_list = array(
 	"{sharethis-regular}", "{sharethis-regular2}", "{sharethis-bt}", 
 	"{sharethis-classic}", "{plusone-small}", "{plusone-medium}", 
 	"{plusone-standard}", "{plusone-tall}", "{retweet-bt}", 
-	"{digg-bt}", "{facebook-like}", "{facebook-share}", 
+	"{digg-bt}", "{facebook-like}", "{facebook-send}", 
 	"{reddit-1}", "{reddit-2}", "{reddit-3}", 
 	"{stumbleupon-1}", "{stumbleupon-2}", "{stumbleupon-3}", 
 	"{stumbleupon-5}", "{linkedin-standard}", "{linkedin-right}",
-	"{linkedin-top}", "{custom-1}", "{custom-2}"
-);
-
-$wpsr_addthis_lang_array = array(
-	'en'=>'English', 'ar'=>'Arabic', 'zh'=>'Chinese', 'cs'=>'Czech', 'da'=>'Danish', 'nl'=>'Dutch','fa'=>'Farsi', 'fi'=>'Finnish', 'fr'=>'French', 'ga'=>'Gaelic', 'de'=>'German', 'el'=>'Greek', 'he'=>'Hebrew', 'hi'=>'Hindi', 'it'=>'Italian', 'ja'=>'Japanese', 'ko'=>'Korean', 'lv'=>'Latvian', 'lt'=>'Lithuanian', 'no'=>'Norwegian', 'pl'=>'Polish', 'pt'=>'Portugese', 'ro'=>'Romanian', 'ru'=>'Russian', 'sk'=>'Slovakian', 'sl'=>'Slovenian', 'es'=>'Spanish', 'sv'=>'Swedish', 'th'=>'Thai', 'ur'=>'Urdu', 'cy'=>'Welsh', 'vi'=>'Vietnamese'
+	"{linkedin-top}", "{pinterest-nocount}", "{pinterest-horizontal}", 
+	"{pinterest-vertical}", "{custom-1}", "{custom-2}"
 );
 
 $wpsr_shortcodes_list = array(
@@ -895,21 +917,87 @@ $wpsr_shortcodes_list = array(
 	'StumbleUpon' => '[wpsr_stumbleupon]',
 	'Reddit' => '[wpsr_reddit]',
 	'LinkedIn' => '[wpsr_linkedin]',
+	'Pinterest' => '[wpsr_pinterest]'
+);
+
+$wpsr_default_templates = array(
+	1 => array( 'name' => 'Template 1' ),
+	2 => array( 'name' => 'Template 2' )
+);
+
+$wpsr_floating_bar_bts = array(
+	'Retweet' => array(
+		'float_left' => '[wpsr_retweet service="twitter" type="normal"]', 
+		'bottom_fixed' => '[wpsr_retweet service="twitter"]', 
+	),
+	'Google +1' => array(
+		'float_left' => '[wpsr_plusone type="tall"]', 
+		'bottom_fixed' => '[wpsr_plusone type="medium"]', 
+	),
+	'Digg' => array(
+		'float_left' => '[wpsr_digg type="DiggMedium"]', 
+		'bottom_fixed' => '[wpsr_digg type="DiggCompact"]', 
+	),
+	'Facebook' => array(
+		'float_left' => '[wpsr_facebook style="box_count"]', 
+		'bottom_fixed' => '[wpsr_facebook style="button_count"]', 
+	),
+	'StumbleUpon' => array(
+		'float_left' => '[wpsr_stumbleupon type="5"]', 
+		'bottom_fixed' => '[wpsr_stumbleupon type="1"]', 
+	),
+	'Reddit' => array(
+		'float_left' => '[wpsr_reddit type="2"]', 
+		'bottom_fixed' => '[wpsr_reddit type="1"]', 
+	),
+	'LinkedIn' => array(
+		'float_left' => '[wpsr_linkedin type="top"]', 
+		'bottom_fixed' => '[wpsr_linkedin type="right"]', 
+	),
+	'Pinterest' => array(
+		'float_left' => '[wpsr_pinterest type="vertical"]', 
+		'bottom_fixed' => '[wpsr_pinterest type="horizontal"]', 
+	),
+	'Email' => array(
+		'float_left' => '[wpsr_socialbts output="singles" type="32px" services="email" sprites=0 effect=none]',
+		'bottom_fixed' => '[wpsr_socialbts output="singles" services="email" label=1 sprites=0 effect=none]'
+	),
+	'Print' => array(
+		'float_left' => '[wpsr_socialbts output="singles" type="32px" services="print" sprites=0 effect=none]',
+		'bottom_fixed' => '[wpsr_socialbts output="singles" services="print" label=1 sprites=0 effect=none]'
+	)
+);
+
+$wpsr_addthis_lang_array = array(
+	'en'=>'English', 'ar'=>'Arabic', 'zh'=>'Chinese', 'cs'=>'Czech', 'da'=>'Danish', 'nl'=>'Dutch','fa'=>'Farsi', 'fi'=>'Finnish', 'fr'=>'French', 'ga'=>'Gaelic', 'de'=>'German', 'el'=>'Greek', 'he'=>'Hebrew', 'hi'=>'Hindi', 'it'=>'Italian', 'ja'=>'Japanese', 'ko'=>'Korean', 'lv'=>'Latvian', 'lt'=>'Lithuanian', 'no'=>'Norwegian', 'pl'=>'Polish', 'pt'=>'Portugese', 'ro'=>'Romanian', 'ru'=>'Russian', 'sk'=>'Slovakian', 'sl'=>'Slovenian', 'es'=>'Spanish', 'sv'=>'Swedish', 'th'=>'Thai', 'ur'=>'Urdu', 'cy'=>'Welsh', 'vi'=>'Vietnamese'
 );
 
 ## Initializations
 function wpsr_init(){
+	global $wpsr_default_templates;
+	$user_template = get_option('wpsr_templates');
+	
+	if(empty($user_template)){
+		update_option('wpsr_templates', $wpsr_default_templates);
+	}else{
+		$merged_array = $wpsr_default_templates + $user_template;
+		if($user_template != $merged_array){
+			update_option('wpsr_templates', $merged_array);
+		}		
+	}
+	
 	// Include the plugin translations
 	load_plugin_textdomain('wpsr', false, dirname(plugin_basename( __FILE__ )) . '/languages');
 }
-add_action('init','wpsr_init');
+add_action('admin_init','wpsr_init');
 
 ## Include WP Socializer Processer files
 require_once('admin/wpsr-admin.php');
 require_once('admin/wpsr-admin-other.php');
+require_once('admin/wpsr-admin-floating-bar.php');
 require_once('includes/wpsr-addthis.php');
 require_once('includes/wpsr-sharethis.php');
-require_once('includes/wpsr-google.php'); // Since v2
+require_once('includes/wpsr-google.php'); // Since v2.0
 require_once('includes/wpsr-retweet.php');
 require_once('includes/wpsr-digg.php');
 require_once('includes/wpsr-facebook.php');
@@ -918,8 +1006,9 @@ require_once('includes/wpsr-other.php');
 require_once('includes/wpsr-custom.php');
 require_once('includes/wpsr-shortcodes.php');
 require_once('includes/wpsr-widgets.php'); // Since v2.3
+require_once('includes/wpsr-floatingbar.php'); // Since v2.4
 
-## General functions
+## General function
 function strpos_arr($haystack, $needle) { 
     if(!is_array($needle)) $needle = array($needle); 
     foreach($needle as $what) { 
@@ -939,9 +1028,20 @@ function wpsr_is_active(){
 
 ## wpsr plugin activate
 function wpsr_plugin_activate(){
+	// Set the defaults to the first time users
+	$active = get_option('wpsr_active');
+	if($active == ''){
+		wpsr_reset_values();
+	}
 	update_option("wpsr_active", 1);
+	
+	// Set the defaults to the Floating share bar
+	$floatbts = get_option('wpsr_template_floating_bar_data');
+	if($floatbts == ''){
+		wpsr_floatbts_reset_values();
+	}
 }
-register_deactivation_hook(__FILE__, 'wpsr_plugin_activate');
+register_activation_hook(__FILE__, 'wpsr_plugin_activate');
 
 ## wpsr plugin deactivate
 function wpsr_plugin_deactivate(){
@@ -969,6 +1069,14 @@ function wpsr_plugin_actions($links, $file){
 }
 add_filter('plugin_action_links', 'wpsr_plugin_actions', 10, 2);
 
+## Include the required scripts and styles
+if( !is_admin()){
+	// jQuery
+	wp_deregister_script('jquery');
+	wp_register_script('jquery', ("http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"), false, '1.3.2');
+	wp_enqueue_script('jquery');
+}
+
 /**
   * One function for displaying the buttons in theme files
   * Use wp_socializer(the button code or template name) in the theme files to print the 
@@ -992,10 +1100,6 @@ function wp_socializer($to_display, $params=""){
 			return wpsr_sharethis($params);
 			break;	
 			
-		case 'plusone' :
-			return wpsr_plusone_bt($params);
-			break;
-				
 		case 'retweet' :
 			return wpsr_retweet($params);
 			break;
@@ -1024,6 +1128,10 @@ function wp_socializer($to_display, $params=""){
 			return wpsr_linkedin($params);
 			break;
 		
+		case 'pinterest':
+			return wpsr_pinterest($params);
+			break;
+		
 		case 'custom-1' :
 			return wpsr_custom_bt('custom1');
 			break;
@@ -1048,7 +1156,7 @@ function wp_socializer($to_display, $params=""){
   *
   * Uses super variables to get the page url outside loop and wp_title()
   * to get the page title. 
-  */
+  **/
 
 function wpsr_get_post_details(){
 	// Get the global variables
@@ -1058,6 +1166,8 @@ function wpsr_get_post_details(){
 	$permalink_inside_loop = get_permalink($post->ID);
 	$title_inside_loop = str_replace('+', '%20', get_the_title($post->ID));
 	$excerpt_inside_loop = strip_tags(strip_shortcodes($post->post_excerpt));
+	$image_inside_loop = wpsr_get_first_image($post->ID);
+	
 	// If excerpt is null
 	if($excerpt_inside_loop == ''){
 		$excerpt_inside_loop = substr(strip_tags(strip_shortcodes($post->post_content)), 0, 250);
@@ -1067,6 +1177,7 @@ function wpsr_get_post_details(){
 	$permalink_outside_loop = (!empty($_SERVER['HTTPS'])) ? "https://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'] : "http://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
 	$title_outside_loop = str_replace('+', '%20', wp_title('', 0));
 	$excerpt_outside_loop = $title_outside_loop;
+	
 	// If title is null
 	if($title_outside_loop == ''){
 		$title_outside_loop = str_replace('+', '%20', get_bloginfo('name'));
@@ -1076,14 +1187,16 @@ function wpsr_get_post_details(){
 		$details = array(
 			'permalink' => $permalink_inside_loop,
 			'title' => trim($title_inside_loop),
-			'excerpt' => $excerpt_inside_loop
+			'excerpt' => $excerpt_inside_loop,
+			'image' => $image_inside_loop
 		);
 		
 	}else{
 		$details = array(
 			'permalink' => $permalink_outside_loop,
 			'title' => trim($title_outside_loop),
-			'excerpt' => $excerpt_outside_loop
+			'excerpt' => $excerpt_outside_loop,
+			'image' => ''
 		);
 	}
 	
@@ -1091,378 +1204,213 @@ function wpsr_get_post_details(){
 
 }
 
-function wpsr_process_template($the_template){
+// Get the first image of the post
+function wpsr_get_first_image($postID){					
+	$args = array(
+		'numberposts' => 1,
+		'order'=> 'ASC',
+		'post_mime_type' => 'image',
+		'post_parent' => $postID,
+		'post_status' => null,
+		'post_type' => 'attachment'
+	);
+	
+	$attachments = get_children( $args );
+		
+	if ($attachments){
+		foreach($attachments as $attachment){
+			return $attachment->guid;
+		}
+	}
+}
+
+function wpsr_process_template($no, $rss = 0){
 
 	// Get the global variables
 	global $wpsr_button_code_list;
 	
-	// Get the processed button codes
-	$wpsr_social_bts_16px = wpsr_socialbts_template('16px');
-	$wpsr_social_bts_32px = wpsr_socialbts_template('32px');
-	
-	$wpsr_addthis_bt = wpsr_addthis_bt('button');
-	$wpsr_addthis_tb16px = wpsr_addthis_bt('toolbar', '16px');
-	$wpsr_addthis_tb32px = wpsr_addthis_bt('toolbar', '32px');
-	$wpsr_addthis_sc = wpsr_addthis_bt('sharecount');
-	
-	$wpsr_sharethis_vcount = wpsr_sharethis_bt('vcount');
-	$wpsr_sharethis_hcount = wpsr_sharethis_bt('hcount');
-	$wpsr_sharethis_large = wpsr_sharethis_bt('large');
-	$wpsr_sharethis_regular = wpsr_sharethis_bt('regular');
-	$wpsr_sharethis_regular2 = wpsr_sharethis_bt('regular2');
-	$wpsr_sharethis_buttons = wpsr_sharethis_bt('buttons');
-	$wpsr_sharethis_classic = wpsr_sharethis_bt('classic');
-	
-	$wpsr_pone_small = wpsr_plusone_bt('small');
-	$wpsr_pone_medium = wpsr_plusone_bt('medium');
-	$wpsr_pone_standard = wpsr_plusone_bt('standard');
-	$wpsr_pone_tall = wpsr_plusone_bt('tall');
-	
-	$wpsr_retweet_bt = wpsr_retweet_bt();
-	$wpsr_digg_bt = wpsr_digg_bt();
-	$wpsr_facebook_like = wpsr_facebook_bt('like');
-	$wpsr_facebook_share = wpsr_facebook_bt('share');
-	
-	$wpsr_reddit_bts = array('', wpsr_reddit_bt('1'), wpsr_reddit_bt('2'), wpsr_reddit_bt('3'));
-	$wpsr_stumbleupon_bts = array('', wpsr_stumbleupon_bt('1'), wpsr_stumbleupon_bt('2'), wpsr_stumbleupon_bt('3'), wpsr_stumbleupon_bt('5'));
-	
-	$wpsr_linkedin_standard = wpsr_linkedin_bt('standard');
-	$wpsr_linkedin_right = wpsr_linkedin_bt('right');
-	$wpsr_linkedin_top = wpsr_linkedin_bt('top');
-	
-	$wpsr_custom1 = wpsr_custom_bt('custom1');
-	$wpsr_custom2 = wpsr_custom_bt('custom2');
-	
 	$wpsr_button_processed_list = array(
-		$wpsr_social_bts_16px, $wpsr_social_bts_32px, $wpsr_addthis_bt, 
-		$wpsr_addthis_tb16px, $wpsr_addthis_tb32px, $wpsr_addthis_sc, 
-		$wpsr_sharethis_vcount, $wpsr_sharethis_hcount, $wpsr_sharethis_large, 
-		$wpsr_sharethis_regular, $wpsr_sharethis_regular2, $wpsr_sharethis_buttons, 
-		$wpsr_sharethis_classic, $wpsr_pone_small, $wpsr_pone_medium, 
-		$wpsr_pone_standard, $wpsr_pone_tall, $wpsr_retweet_bt, 
-		$wpsr_digg_bt, $wpsr_facebook_like, $wpsr_facebook_share, 
-		$wpsr_reddit_bts[1], $wpsr_reddit_bts[2], $wpsr_reddit_bts[3], 
-		$wpsr_stumbleupon_bts[1], $wpsr_stumbleupon_bts[2], $wpsr_stumbleupon_bts[3], 
-		$wpsr_stumbleupon_bts[4], $wpsr_linkedin_standard, $wpsr_linkedin_right,
-		$wpsr_linkedin_top, $wpsr_custom1, $wpsr_custom2
+		wpsr_socialbts_template('16px'),		wpsr_socialbts_template('32px'), 		wpsr_addthis_bt('button'), 
+		wpsr_addthis_bt('toolbar', '16px'),		wpsr_addthis_bt('toolbar', '32px'), 	wpsr_addthis_bt('sharecount'), 
+		wpsr_sharethis_bt('vcount'),			wpsr_sharethis_bt('hcount'),			wpsr_sharethis_bt('large'), 
+		wpsr_sharethis_bt('regular'), 			wpsr_sharethis_bt('regular2'),			wpsr_sharethis_bt('buttons'), 
+		wpsr_sharethis_bt('classic'), 			wpsr_plusone_bt('small'),				wpsr_plusone_bt('medium'), 
+		wpsr_plusone_bt('standard'),			wpsr_plusone_bt('tall'),				wpsr_retweet_bt(), 
+		wpsr_digg_bt(), 						wpsr_facebook_bt('like'),				wpsr_facebook_bt('send'), 
+		wpsr_reddit_bt('1'), 					wpsr_reddit_bt('2'),					wpsr_reddit_bt('3'), 
+		wpsr_stumbleupon_bt('1'),				wpsr_stumbleupon_bt('2'),				wpsr_stumbleupon_bt('3'), 
+		wpsr_stumbleupon_bt('5'),				wpsr_linkedin_bt('standard'),			wpsr_linkedin_bt('right'),
+		wpsr_linkedin_bt('top'),				wpsr_pinterest_bt('nocount'), 			wpsr_pinterest_bt('horizontal'),
+		wpsr_pinterest_bt('vertical'),			wpsr_custom_bt('custom1'),				wpsr_custom_bt('custom2')
 	);
-	
-	// RSS Buttons v2.1
-	$wpsr_social_bts_16px_rss = wpsr_socialbts_rss('16px');
-	$wpsr_social_bts_32px_rss = wpsr_socialbts_rss('32px');
-	$wpsr_addthis_rss = wpsr_addthis_rss_bt();
-	$wpsr_sharethis_rss = wpsr_sharethis_rss_bt();
-	$wpsr_pone_rss = wpsr_plusone_rss_bt();
-	$wpsr_retweet_rss = wpsr_retweet_rss_bt();
-	$wpsr_digg_rss = wpsr_digg_rss_bt();
-	$wpsr_facebook_rss = wpsr_facebook_rss_bt();
-	$wpsr_reddit_rss = wpsr_reddit_rss_bt();
-	$wpsr_stumbleupon_rss = wpsr_stumbleupon_rss_bt();
-	$wpsr_linkedin_rss = wpsr_linkedin_rss_bt();
-	
+
 	$wpsr_button_processed_list_rss = array(
-		$wpsr_social_bts_16px_rss, $wpsr_social_bts_32px_rss, $wpsr_addthis_rss, 
-		$wpsr_addthis_rss, $wpsr_addthis_rss, $wpsr_addthis_rss, 
-		$wpsr_sharethis_rss, $wpsr_sharethis_rss, $wpsr_sharethis_rss, 
-		$wpsr_sharethis_rss, $wpsr_sharethis_rss, $wpsr_sharethis_rss, 
-		$wpsr_sharethis_rss, $wpsr_pone_rss, $wpsr_pone_rss, 
-		$wpsr_pone_rss, $wpsr_pone_rss, $wpsr_retweet_rss, 
-		$wpsr_digg_rss, $wpsr_facebook_rss, $wpsr_facebook_rss, 
-		$wpsr_reddit_rss, $wpsr_reddit_rss, $wpsr_reddit_rss, 
-		$wpsr_stumbleupon_rss, $wpsr_stumbleupon_rss, $wpsr_stumbleupon_rss, 
-		$wpsr_stumbleupon_rss, $wpsr_linkedin_rss, $wpsr_linkedin_rss,
-		$wpsr_linkedin_rss, $wpsr_custom1, $wpsr_custom2
+		wpsr_socialbts_rss('16px'), 	wpsr_socialbts_rss('32px'), 		wpsr_addthis_rss_bt(), 
+		wpsr_addthis_rss_bt(), 			wpsr_addthis_rss_bt(), 				wpsr_addthis_rss_bt(), 
+		wpsr_sharethis_rss_bt(), 		wpsr_sharethis_rss_bt(), 			wpsr_sharethis_rss_bt(), 
+		wpsr_sharethis_rss_bt(), 		wpsr_sharethis_rss_bt(), 			wpsr_sharethis_rss_bt(), 
+		wpsr_sharethis_rss_bt(), 		wpsr_plusone_rss_bt(), 				wpsr_plusone_rss_bt(), 
+		wpsr_plusone_rss_bt(), 			wpsr_plusone_rss_bt(),				wpsr_retweet_rss_bt(), 
+		wpsr_digg_rss_bt(), 			wpsr_facebook_rss_bt(), 			wpsr_facebook_rss_bt(), 
+		wpsr_reddit_rss_bt(), 			wpsr_reddit_rss_bt(), 				wpsr_reddit_rss_bt(), 
+		wpsr_stumbleupon_rss_bt(),		wpsr_stumbleupon_rss_bt(), 			wpsr_stumbleupon_rss_bt(), 
+		wpsr_stumbleupon_rss_bt(), 		wpsr_linkedin_rss_bt(), 			wpsr_linkedin_rss_bt(),
+		wpsr_linkedin_rss_bt(), 		wpsr_custom_bt('custom1'), 			wpsr_custom_bt('custom2')
 	); 
-
-	// Get the placement options | Template 1&2
-	$wpsr_template1 = get_option('wpsr_template1_data');
-	$wpsr_template2 = get_option('wpsr_template2_data');
-		
-	$wpsr_template1_content = ($wpsr_template1['addp'] == 1) ? wpautop($wpsr_template1['content']) : $wpsr_template1['content'];
-	$wpsr_template2_content = ($wpsr_template2['addp'] == 1) ? wpautop($wpsr_template2['content']) : $wpsr_template2['content'];
 	
-	switch($the_template){
-		case 'template1' :
-			$wpsr_template1_processed = str_replace($wpsr_button_code_list, $wpsr_button_processed_list, $wpsr_template1_content);
-			return $wpsr_template1_processed;
-			
-		case 'template2' :
-			$wpsr_template2_processed = str_replace($wpsr_button_code_list, $wpsr_button_processed_list, $wpsr_template2_content);
-			return $wpsr_template2_processed;
+	// Get the template data
+	$wpsr_template[$no] = get_option('wpsr_template' . $no . '_data');
+	
+	if(!$rss)
+		$wpsr_template_processed = str_replace($wpsr_button_code_list, $wpsr_button_processed_list, do_shortcode($wpsr_template[$no]['content']));
+	else
+		$wpsr_template_processed = str_replace($wpsr_button_code_list, $wpsr_button_processed_list_rss, $wpsr_template[$no]['content']);
 		
-		case 'rss1' :
-			$wpsr_template1_content = strip_tags($wpsr_template1_content, '<h1><h2><h3><h4><h5><h6>');
-			$wpsr_rss1_processed = str_replace($wpsr_button_code_list, $wpsr_button_processed_list_rss, $wpsr_template1_content);
-			return $wpsr_rss1_processed;
-			
-		case 'rss2' :
-			$wpsr_template2_content = strip_tags($wpsr_template2_content, '<h1><h2><h3><h4><h5><h6>');
-			$wpsr_rss2_processed = str_replace($wpsr_button_code_list, $wpsr_button_processed_list_rss, $wpsr_template2_content);
-			return $wpsr_rss2_processed;
-	}
+	return $wpsr_template_processed;
 }
 
-## Print the output of template1
-function wpsr_output_template1($content = ''){
+// Class to insert the template below the content and the excerpt
+class WPSR_Template_Output{
+	protected $callType;
+	
+	function WPSR_Template_Output($type){
+		$this->callType = $type;
+	}
+	
+	function output($content = ''){
 
-	// Get the global variables
-	global $post;
-	
-	// Get the placement options
-	$wpsr_template1 = get_option('wpsr_template1_data');
-	
-	$wpsr_template1_inhome = $wpsr_template1['inhome'];
-	$wpsr_template1_insingle = $wpsr_template1['insingle'];
-	$wpsr_template1_inpage = $wpsr_template1['inpage'];
-	$wpsr_template1_incategory = $wpsr_template1['incategory'];
-	$wpsr_template1_intag = $wpsr_template1['intag'];
-	$wpsr_template1_indate = $wpsr_template1['indate'];
-	$wpsr_template1_inauthor = $wpsr_template1['inauthor'];
-	$wpsr_template1_insearch = $wpsr_template1['insearch'];
-	$wpsr_template1_infeed = $wpsr_template1['infeed'];
-	$wpsr_template1_abvcontent = $wpsr_template1['abvcontent'];
-	$wpsr_template1_blwcontent = $wpsr_template1['blwcontent'];
-	
-	// Check page conditionals
-	if (is_home() == 1 && $wpsr_template1_inhome == 1){
-		$wpsr_template1_processed = wpsr_process_template('template1');
+		// Get the global variables
+		global $post;
+		$tempContent = $content;
 		
-	}elseif (is_single() == 1 && $wpsr_template1_insingle == 1){
-		$wpsr_template1_processed = wpsr_process_template('template1');
-		
-	}elseif (is_page() == 1 && $wpsr_template1_inpage == 1){
-		$wpsr_template1_processed = wpsr_process_template('template1');
-		
-	}elseif (is_category() == 1 && $wpsr_template1_incategory == 1){
-		$wpsr_template1_processed = wpsr_process_template('template1');
-	
-	}elseif (is_tag() == 1 && $wpsr_template1_intag == 1){
-		$wpsr_template1_processed = wpsr_process_template('template1');
-		
-	}elseif (is_date() == 1 && $wpsr_template1_indate == 1){
-		$wpsr_template1_processed = wpsr_process_template('template1');
-		
-	}elseif (is_author() == 1 && $wpsr_template1_inauthor == 1){
-		$wpsr_template1_processed = wpsr_process_template('template1');
-		
-	}elseif(is_search() == 1 && $wpsr_template1_insearch == 1){
-		$wpsr_template1_processed = wpsr_process_template('template1');
-		
-	}elseif(is_feed() == 1 && $wpsr_template1_infeed == 1){
-		$wpsr_template1_processed = $wpsr_template1_processed;
-		
-	}else{
-		$wpsr_template1_processed = '' ;
-	}
-	
-	/**  
-	 * If the output is given by the_excerpt() function 
-	 * and if the excerpt is empty generate the custom excerpt from the content 
-	 * 
-	 * Used to remove the widget/button text printed along with the content
-	 */
-	
-	/* BUG in v1.0
-	if(defined('IS_EXCERPT') && IS_EXCERPT ){
-		if(empty($post->post_excerpt)){
-			$content = substr(strip_tags(strip_shortcodes($post->post_content), '<p>'),0,250);
+		// Check whether the call from "the_excerpt" or the "get_the_excerpt" function
+		$excerpt = 0;
+		$call = debug_backtrace();
+		foreach($call as $val){
+			if($val['function'] == 'the_excerpt' || $val['function'] == 'get_the_excerpt'){
+				$excerpt = 1;
+			}
 		}
-	}
-	*/
-	
-	// Check whether displaying template1 in the post is enabled
-	if (get_post_meta($post->ID,'_wpsr-disable-template1', true) != 1){
-	
-		// Check position conditionals
-		if($wpsr_template1_abvcontent == 1 && $wpsr_template1_blwcontent == 1){
-			return $wpsr_template1_processed . $content . $wpsr_template1_processed;
+		
+		$templates = get_option('wpsr_templates');
+		
+		// Loop through all the templates
+		foreach($templates as $k => $v){
+			$wpsr_template[$k] = get_option('wpsr_template' . $k . '_data');
 			
-		}elseif($wpsr_template1_abvcontent == 1){
-			return $wpsr_template1_processed . $content;
-		
-		}elseif($wpsr_template1_blwcontent == 1){
-			return $content . $wpsr_template1_processed;
-		
-		}else{
-			return $content;
-		}
-	
-	}else{
-		return $content;
-	}
-	
-}
-
-function wpsr_output_rss1($content = ''){
-	// Get the global variables
-	global $post;
-	
-	$wpsr_template1 = get_option('wpsr_template1_data');
-	
-	$wpsr_template1_infeed = $wpsr_template1['infeed'];
-	$wpsr_template1_abvcontent = $wpsr_template1['abvcontent'];
-	$wpsr_template1_blwcontent = $wpsr_template1['blwcontent'];
-	
-	$wpsr_rss1_processed = wpsr_process_template('rss1');
-	
-	if (get_post_meta($post->ID,'_wpsr-disable-template1', true) != 1){
-		// Check position conditionals
-		if($wpsr_template1_abvcontent == 1 && $wpsr_template1_blwcontent == 1){
-			return $wpsr_rss1_processed . $content . $wpsr_template1_processed;
+			if(($this->callType == 'content' && $excerpt !== 1) || ($this->callType == 'excerpt' && $wpsr_template[$k]['inexcerpt'] == 1)){
 			
-		}elseif($wpsr_template1_abvcontent == 1){
-			return $wpsr_rss1_processed . $content;
+				// Check page conditionals
+				if (is_home() == 1 && $wpsr_template[$k]['inhome'] == 1){
+					$flag = 1;
+					
+				}elseif (is_single() == 1 && $wpsr_template[$k]['insingle'] == 1){
+					$flag = 1;
+					
+				}elseif (is_page() == 1 && $wpsr_template[$k]['inpage'] == 1){
+					$flag = 1;
+					
+				}elseif (is_category() == 1 && $wpsr_template[$k]['incategory'] == 1){
+					$flag = 1;
+				
+				}elseif (is_tag() == 1 && $wpsr_template[$k]['intag'] == 1){
+					$flag = 1;
+					
+				}elseif (is_date() == 1 && $wpsr_template[$k]['indate'] == 1){
+					$flag = 1;
+					
+				}elseif (is_author() == 1 && $wpsr_template[$k]['inauthor'] == 1){
+					$flag = 1;
+					
+				}elseif(is_search() == 1 && $wpsr_template[$k]['insearch'] == 1){
+					$flag = 1;
+				
+				}elseif(is_feed() == 1 && $wpsr_template[$k]['infeed'] == 1){
+					$flag = 2;
+				
+				}else{
+					$flag = 0;
+				}
+						
+				// Check for page conditionals
+				if($flag == 1){
+					$wpsr_template_processed = wpsr_process_template($k);
+				}elseif($flag == 2){
+					$wpsr_template_processed = wpsr_process_template($k, 1);
+				}elseif($flag == 0){
+					$wpsr_template_processed = '';
+				}
+				
+				// Check whether displaying template1 in the post is enabled
+				if (get_post_meta($post->ID,'_wpsr-disable-template' . $k, true) != 1){
+				
+					// Check position conditionals
+					if($wpsr_template[$k]['abvcontent'] == 1 && $wpsr_template[$k]['blwcontent'] == 1){
+						$tempContent = $wpsr_template_processed . $tempContent . $wpsr_template_processed;
+						
+					}elseif($wpsr_template[$k]['abvcontent'] == 1){
+						$tempContent = $wpsr_template_processed . $tempContent;
+					
+					}elseif($wpsr_template[$k]['blwcontent'] == 1){
+						$tempContent = $tempContent . $wpsr_template_processed;
+						
+					}
+				}
+				
+			}//if
 		
-		}elseif($wpsr_template1_blwcontent == 1){
-			return $content . $wpsr_rss1_processed;
+		}//foreach
 		
-		}else{
-			return $content;
-		}
-	
-	}else{
-		return $content;
+		return $tempContent; 
 	}
-}
-
-## Print the output of template2
-function wpsr_output_template2($content = ''){
-
-	// Get the global variables
-	global $post;
-	
-	// Get the placement options
-	$wpsr_template2 = get_option('wpsr_template2_data');
-	
-	$wpsr_template2_inhome = $wpsr_template2['inhome'];
-	$wpsr_template2_insingle = $wpsr_template2['insingle'];
-	$wpsr_template2_inpage = $wpsr_template2['inpage'];
-	$wpsr_template2_incategory = $wpsr_template2['incategory'];
-	$wpsr_template2_intag = $wpsr_template2['intag'];
-	$wpsr_template2_indate = $wpsr_template2['indate'];
-	$wpsr_template2_inauthor = $wpsr_template2['inauthor'];
-	$wpsr_template2_insearch = $wpsr_template2['insearch'];
-	$wpsr_template2_infeed = $wpsr_template2['infeed'];
-	$wpsr_template2_abvcontent = $wpsr_template2['abvcontent'];
-	$wpsr_template2_blwcontent = $wpsr_template2['blwcontent'];
-	
-	// Check page conditionals
-	if (is_home() == 1 && $wpsr_template2_inhome == 1){
-		$wpsr_template2_processed = wpsr_process_template('template2');
-		
-	}elseif (is_single() == 1 && $wpsr_template2_insingle == 1){
-		$wpsr_template2_processed = wpsr_process_template('template2');
-		
-	}elseif (is_page() == 1 && $wpsr_template2_inpage == 1){
-		$wpsr_template2_processed = wpsr_process_template('template2');
-		
-	}elseif (is_category() == 1 && $wpsr_template2_incategory == 1){
-		$wpsr_template2_processed = wpsr_process_template('template2');
-	
-	}elseif (is_tag() == 1 && $wpsr_template2_intag == 1){
-		$wpsr_template2_processed = wpsr_process_template('template2');
-		
-	}elseif (is_date() == 1 && $wpsr_template2_indate == 1){
-		$wpsr_template2_processed = wpsr_process_template('template2');
-		
-	}elseif (is_author() == 1 && $wpsr_template2_inauthor == 1){
-		$wpsr_template2_processed = wpsr_process_template('template2');
-		
-	}elseif(is_search() == 1 && $wpsr_template2_insearch == 1){
-		$wpsr_template2_processed = wpsr_process_template('template2');
-		
-	}elseif(is_feed() == 1 && $wpsr_template2_infeed == 1){
-		$wpsr_template2_processed = $wpsr_template2_processed;
-		
-	}else{
-		$wpsr_template2_processed = '' ;
-	}
-	
-	// Check whether displaying template2 in the post is enabled
-	if (get_post_meta($post->ID,'_wpsr-disable-template2', true) != 1){
-	
-		// Check position conditionals
-		if($wpsr_template2_abvcontent == 1 && $wpsr_template2_blwcontent == 1){
-			return $wpsr_template2_processed . $content . $wpsr_template2_processed;
-			
-		}elseif($wpsr_template2_abvcontent == 1){
-			return $wpsr_template2_processed . $content;
-		
-		}elseif($wpsr_template2_blwcontent == 1){
-			return $content . $wpsr_template2_processed;
-		
-		}else{
-			return $content;
-		}
-	
-	}else{
-		return $content;
-	}
-	
-}
-
-function wpsr_output_rss2($content = ''){
-	// Get the global variables
-	global $post;
-	
-	$wpsr_template2 = get_option('wpsr_template2_data');
-	
-	$wpsr_template2_infeed = $wpsr_template2['infeed'];
-	$wpsr_template2_abvcontent = $wpsr_template2['abvcontent'];
-	$wpsr_template2_blwcontent = $wpsr_template2['blwcontent'];
-	
-	$wpsr_rss2_processed = wpsr_process_template('rss2');
-	
-	if (get_post_meta($post->ID,'_wpsr-disable-template2', true) != 1){
-		// Check position conditionals
-		if($wpsr_template2_abvcontent == 1 && $wpsr_template2_blwcontent == 1){
-			return $wpsr_rss2_processed . $content . $wpsr_template2_processed;
-			
-		}elseif($wpsr_template2_abvcontent == 1){
-			return $wpsr_rss2_processed . $content;
-		
-		}elseif($wpsr_template2_blwcontent == 1){
-			return $content . $wpsr_rss2_processed;
-		
-		}else{
-			return $content;
-		}
-	
-	}else{
-		return $content;
-	}
-}
+};
 
 ## Add required filters and check whether WP Socializer is disabled
 $wpsr_settings = get_option('wpsr_settings_data');
 
 if(!$wpsr_settings['disablewpsr']){
+
+	// Create dummy objects to hold the call type
+	$wpsr_content_op = new WPSR_Template_Output('content');
+	$wpsr_excerpt_op = new WPSR_Template_Output('excerpt');
+	
 	// Filters
-	add_filter('the_content', 'wpsr_output_template1');
-	add_filter('the_content', 'wpsr_output_template2');
+	add_filter('the_content', array($wpsr_content_op, 'output'));
+	add_filter('the_excerpt', array($wpsr_excerpt_op, 'output'));
+
+}
+
+## Checks whether the button is used in any of the templates
+function wpsr_button_used($name){
+	$temp_data = '';
+	$button_codes = array(
+		'facebook' => array('{facebook-like}', '{facebook-send}', '[wpsr_facebook'),
+		'retweet' => array('{retweet-bt}', '[wpsr_retweet'),
+		'digg' => array('{digg-bt}', '[wpsr_digg'),
+		'addthis' => array("{addthis-bt}", "{addthis-tb-16px}", "{addthis-tb-32px}", "{addthis-sc}"),
+		'sharethis' => array("{sharethis-large}", "{sharethis-hcount}", "{sharethis-vcount}", "{sharethis-regular}", "{sharethis-regular2}", "{sharethis-bt}", "{sharethis-classic}"),
+		'plusone' => array('{plusone-small}', '{plusone-medium}', '{plusone-standard}', '{plusone-tall}', '[wpsr_plusone'),
+		'linkedin' => array('{linkedin-standard}', '{linkedin-right}', '{linkedin-top}', '[wpsr_linkedin'),
+		'stumbleupon' => array('{stumbleupon-1}', '{stumbleupon-2}', '{stumbleupon-3}', '{stumbleupon-5}', '[wpsr_stumbleupon'),
+		'pinterest' => array('{pinterest-nocount}', '{pinterest-horizontal}', '{pinterest-vertical}', '[wpsr_pinterest')
+	);
 	
-	$wpsr_template1 = get_option('wpsr_template1_data');
-	$wpsr_template2 = get_option('wpsr_template2_data');
-	
-	// Check whether to print in excerpts
-	if($wpsr_template1['inexcerpt']){
-		add_filter('the_excerpt', 'wpsr_output_template1');
+	$templates = get_option('wpsr_templates');
+	foreach($templates as $k => $v){
+		$wpsr_template[$k] = get_option('wpsr_template' . $k . '_data');
+		$temp_data .= $wpsr_template[$k]['content'];
 	}
 	
-	if($wpsr_template2['inexcerpt']){
-		add_filter('the_excerpt', 'wpsr_output_template2');
+	$temp_data .= wpsr_process_floatingbts();
+	
+	$is_bt_used = strpos_arr($temp_data, $button_codes[$name]);
+
+	if ($is_bt_used === false) {
+		return 0;
+	} else {
+		return 1;
 	}
 	
-	// For RSS
-	if($wpsr_template1['infeed']){
-		add_filter('the_content_feed', 'wpsr_output_rss1');
-		add_filter('the_excerpt_rss', 'wpsr_output_rss1');
-	}
-	
-	if($wpsr_template2['infeed']){
-		add_filter('the_content_feed', 'wpsr_output_rss2');
-		add_filter('the_excerpt_rss', 'wpsr_output_rss2');
-	}
 }
 
 ## Add the button scripts to the header
@@ -1480,31 +1428,52 @@ function wpsr_scripts_adder(){
 	$wpsr_retweet = get_option('wpsr_retweet_data');
 	$wpsr_retweet_service = $wpsr_retweet['service'];
 	
-	if(wpsr_retweet_bt_used() == 1 && $wpsr_retweet_service == 'topsy'){
+	if(wpsr_button_used('retweet') == 1 && $wpsr_retweet_service == 'topsy'){
 		echo wpsr_retweet_topsy_script();
 	}
 	
-	if(wpsr_retweet_bt_used() == 1 && $wpsr_retweet_service == 'twitter'){
+	if(wpsr_button_used('retweet') == 1 && $wpsr_retweet_service == 'twitter'){
 		echo wpsr_retweet_twitter_script();
 	}
 	
-	if(wpsr_digg_bt_used() == 1){
+	if(wpsr_button_used('facebook') == 1){
+		echo wpsr_facebook_script();
+	} // Since v2.4
+	
+	if(wpsr_button_used('digg') == 1){
 		echo wpsr_digg_script();
 	}
 	
-	if(wpsr_addthis_is_used() == 1){
+	if(wpsr_button_used('addthis') == 1){
 		echo wpsr_addthis_script();
 	}
 	
-	if(wpsr_sharethis_is_used() == 1){
+	if(wpsr_button_used('sharethis') == 1){
 		echo wpsr_sharethis_script();
 	}
 	
-	if(wpsr_plusone_bt_used() == 1){
+	if(wpsr_button_used('plusone') == 1){
 		echo wpsr_plusone_script();
 	}
-	if(wpsr_linkedin_bt_used() == 1){
+	
+	if(wpsr_button_used('linkedin') == 1){
 		echo wpsr_linkedin_script();
+	}
+	
+	if(wpsr_button_used('stumbleupon') == 1){
+		echo wpsr_stumbleupon_script();
+	}
+
+}
+
+## Add the misc/small scripts to the footer
+function wpsr_footer(){
+	if(wpsr_addtofavorites_bt_used()){
+		wpsr_addtofavorites_script();
+	}
+	
+	if(wpsr_button_used('pinterest') == 1){
+		echo wpsr_pinterest_script();
 	}
 }
 
@@ -1514,15 +1483,9 @@ if(!$wpsr_settings['disablewpsr']){
 	}else{
 		add_action('wp_footer', 'wpsr_scripts_adder');
 	}
+	
+	add_action('wp_footer', 'wpsr_footer');
 }
-
-## Add the misc/small scripts to the footer
-function wpsr_footer(){
-	if(wpsr_addtofavorites_bt_used()){
-		wpsr_addtofavorites_script();
-	}
-}
-add_action('wp_footer', 'wpsr_footer');
 
 ## Add notification to the dashboard right now
 function wpsr_dashboard_rightnow(){
@@ -1535,6 +1498,7 @@ function wpsr_dashboard_rightnow(){
 }
 add_action('rightnow_end','wpsr_dashboard_rightnow');
 
+## Add the "WP Socializer" menu to the admin bar.
 function wpsr_adminbar() {
     global $wp_admin_bar, $wpdb, $post;
     if ( !is_super_admin() || !is_admin_bar_showing()){
@@ -1544,7 +1508,7 @@ function wpsr_adminbar() {
 	$adminPage = get_option('home') . '/wp-admin/admin.php?page=wp_socializer'; // Broken link fix v2.1
 	
 	$wp_admin_bar->add_menu( array( 'id' => 'wpsr_adminbar_menu', 'title' => 'WP Socializer', 'href' => $adminPage));
-	$wp_admin_bar->add_menu( array( 'parent' => 'wpsr_adminbar_menu', 'title' => __('Edit the templates', 'wpsr'), 'href' => $adminPage . '#tab-9'));
+	$wp_admin_bar->add_menu( array( 'parent' => 'wpsr_adminbar_menu', 'title' => __('Edit the templates', 'wpsr'), 'href' => $adminPage . '#tab-3'));
 	
 	if(is_single() || is_page()){
 		$current_object = get_queried_object();
@@ -1580,7 +1544,7 @@ function wpsr_register_wpsrbutton_tinymce($buttons) {
 }
 
 function wpsr_add_wpsrbutton_tinymce($plugin_array) {
-   $plugin_array['wpsrbutton'] = WPSR_ADMIN_URL . 'tinymce/editor_plugin.js';
+   $plugin_array['wpsrbutton'] = WPSR_ADMIN_URL . 'js/tinymce/editor_plugin.js';
    return $plugin_array;
 }
 

@@ -1,47 +1,61 @@
+/* 
+ * WP Socializer - Admin page functions
+ * Author: Aakash Chakravarthy
+ * Version: 2.4
+ *
+ */
+
 $j = jQuery.noConflict();
 $j(document).ready(function(){
 
 	// Tab Initializements
-	var tabs = $j("#tabs").tabs({fx: {opacity: 'toggle', duration: 'fast'} });
-	var subTabs = $j(".subTabs").tabs({fx: {opacity: 'toggle', duration: 'fast'} });
-	
-	$j("#tabs").tabs().find(".ui-tabs-nav").sortable({axis:'y'});
-	
-	$j(".outLink").attr('target', '_blank');
-	$j(".outLink").each(function(){
-		$j(this).attr('href', $j(this).attr('rel'));
+	var tabs = $j("#content").tabs({
+		fx: {opacity: 'toggle', duration: 'fast'},
+		select: function(event, ui){
+			window.location.hash = ui.tab.hash;
+		}
 	});
-	
-	// For admin menu working
-	$j('a[href="admin.php?page=wp_socializer#tab-8"], a[href="#tab-8"]').live('click', function(e){
-		e.preventDefault();
-		tabs.tabs('select', 7);
-	});
-	
-	$j('a[href="admin.php?page=wp_socializer#tab-9"]').click(function(){
-		tabs.tabs('select', 8);
-	});
-	
-	// Color picker Initializements
-	$j('#wpsr_addthis_btheadclr').colorPicker();
-	$j('#wpsr_addthis_btheadbgclr').colorPicker();
+	var subTabs = $j("#tab-3").tabs({fx: {opacity: 'toggle', duration: 'fast'} });
 	
 	// Sorter Initializements
-	$j('#wpsr_socialbt_selected_list_16px, #wpsr_socialbt_selected_list_32px').sortable({
+	$j('.sbSelList').sortable({
 		stop : wpsr_socialbt_selectedgenerator,
 		opacity : 0.5,
 		scroll : true,
 		revert : true
 	});
 	
+	// Toolbar
 	$j('.parentLi').hover(function(){
-		$j(this).children('ul').fadeIn('fast');
+		$j(this).children('ul').show();
 	}, function(){
 		$j(this).children('ul').fadeOut('fast');
 	});
 	
+	$j('.parentLi li, .btn').click(function(){
+		var id = $j('#subTabs .ui-state-active').attr('data-editor');
+		var openTag = ($j(this).attr('openTag') == null) ? '' : $j(this).attr('openTag');
+		var closeTag = ($j(this).attr('closeTag') == null) ? '' : $j(this).attr('closeTag');
+		awQuickTags(id, openTag, closeTag,'');
+		$j(this).parent('.childMenu').fadeOut('fast');
+	});
+	
+	// Window
+	$j('.window').click(function(e){
+		if(e.target === this){
+			$j(this).hide();
+			$j('body').css('overflow', 'auto');
+		}
+	});
+	
+	$j('[data-win]').click(function(){
+		$j('body').css('overflow', 'hidden');
+		$j('.window .inWindow').hide();
+		$j('.window').show().children('.' + $j(this).attr('data-win')).show().css('width', $j(this).attr('data-width'));
+		$j('.window h2').text($j(this).attr('data-title'));
+	});
+	
 	// Oneclick functions
-	//$j('.templatesList').html("<img src='images/load.gif' alt='loading...' />");
 	$j.ajax({
         type: "GET",
 		url: $j('.tmplUrl').text(),
@@ -54,8 +68,8 @@ $j(document).ready(function(){
 				image = $j('.tmplImg').text() + $j(this).attr('image');
 				url = $j(this).attr('url')
 				vars = $j(this).find('settings').text();
-				temp1 = 'wpsr_template1_content==' + $j(this).find('template1').text() + ';;';
-				temp2 = 'wpsr_template2_content==' + $j(this).find('template2').text() + ';;';
+				temp1 = 'wpsr_template[1][content]==' + $j(this).find('template1').text() + ';;';
+				temp2 = 'wpsr_template[2][content]==' + $j(this).find('template2').text() + ';;';
 				cnt1 = 'wpsr_content1==' + $j(this).find('custom1').text() + ';;';
 				cnt2 = 'wpsr_content2==' + $j(this).find('custom2').text() + ';;';
 				
@@ -70,16 +84,13 @@ $j(document).ready(function(){
 		}
 	});
 	
-	$j('.templateItem').live('mouseover', function(e){
+	$j('.templateItem').live('mouseenter', function(e){
 		$j(this).append('<div class="tooltip">Preview: <br/><img src="' + $j(this).attr('rel') + '"/></div>');
-		$j('.tooltip').css({
-			'margin-top': 25,
-			'margin-left': -10
-		});
-	}).live('mouseout', function(){
+		$j('.tooltip').css({ top: '75px' });
+	}).live('mouseleave', function(){
 		$j(this).children('.tooltip').remove();
 	});
-
+	
 	$j('.applyBt').live('click', function(){
 		cnt = $j(this).next('.templateCont').text();
 		cntSplit = cnt.split(';;');
@@ -88,7 +99,7 @@ $j(document).ready(function(){
 		
 		for(i=0; i<cntSplit.length; i++){
 			element = cntSplit[i].split('==');
-			eleId = '#' + $j.trim(element[0]);
+			eleId = ConvertValue('#' + $j.trim(element[0]));
 			eleValue = $j.trim(element[1]);
 					
 			if($j(eleId).attr('type') == 'checkbox'){
@@ -103,83 +114,20 @@ $j(document).ready(function(){
 				$j(eleId).val(eleValue);
 			}
 		}
-		
 	});
 	
-	function wpsr_socialbt_selectedgenerator(){
-		// 16 px
-		var socialBtSelected16px = [];
-		$j("#wpsr_socialbt_selected_list_16px li .sb_name").each(function(){
-			socialBtSelected16px.push($j(this).text());
-		});
-		var groupedSocialBtSelected16px = socialBtSelected16px.join(',');
-		$j("#wpsr_socialbt_selected16px").val(groupedSocialBtSelected16px);
+	// Add social button
+	$j('.sbAdd').click(function(){
+		var text =  $j(this).siblings('.sbName').text();
+		var appendList = '<li><span class="sbName">' + text + '</span><span class="sbDelete">x</span></li>';
+		var pixel = $j(this).attr('data-pixel');
 		
-		// 32 px
-		var socialBtSelected32px = [];
-		$j("#wpsr_socialbt_selected_list_32px li .sb_name").each(function(){
-			socialBtSelected32px.push($j(this).text());
-		});
-		var groupedSocialBtSelected32px = socialBtSelected32px.join(',');
-		$j("#wpsr_socialbt_selected32px").val(groupedSocialBtSelected32px);
-	}
-	
-	// Append list 16px
-	$j('#wpsr_socialbt_list li .sb_add16px').click(function(){
-		var text16px =  $j.trim($j(this).parent().text().replace('16', '').replace('32', ''));
-		var appendList16px = '<li><span class="sb_name">' + text16px + '</span><span class="sb_close">x</span></li>';
-		$j('#wpsr_socialbt_selected_list_16px').append(appendList16px);
+		$j('#sbSelList_' + pixel + 'px' ).append(appendList);
 		wpsr_socialbt_selectedgenerator();
-		
-		var temp = $j(this).parent().children('.sb_name').text();
-		
-		$j(this).parent().children('.sb_name').fadeOut(function(){
-			$j(this).text('Added !');
-		});
-		
-		$j(this).parent().children('.sb_name').fadeIn();
-	
-		$j(this).parent().children('.sb_name').fadeOut(function(){
-			$j(this).parent().children('.sb_name').text(temp);
-		});
+	});
 
-		$j(this).parent().children('.sb_name').fadeIn();
-		
-	});
-	
-	// Append list 32px
-	$j('#wpsr_socialbt_list li .sb_add32px').click(function(){
-		var text32px = $j.trim($j(this).parent().text().replace('16', '').replace('32', ''));
-		var appendList32px = '<li><span class="sb_name">' + text32px + '</span><span class="sb_close">x</span></li>';
-		$j('#wpsr_socialbt_selected_list_32px').append(appendList32px);
-		wpsr_socialbt_selectedgenerator();
-		
-		var temp = $j(this).parent().children('.sb_name').text();
-		
-		$j(this).parent().children('.sb_name').fadeOut(function(){
-			$j(this).text('Added !');
-		});
-		
-		$j(this).parent().children('.sb_name').fadeIn();
-	
-		$j(this).parent().children('.sb_name').fadeOut(function(){
-			$j(this).parent().children('.sb_name').text(temp);
-		});
-
-		$j(this).parent().children('.sb_name').fadeIn();
-		
-	});
-	
-	//Delete List 16px
-	$j('#wpsr_socialbt_selected_list_16px li .sb_close').live("click", function() {
-		$j(this).parent().fadeOut('slow', function(){
-			$j(this).remove();
-			wpsr_socialbt_selectedgenerator();
-		});
-	});
-	
-	//Delete List 32px
-	$j('#wpsr_socialbt_selected_list_32px li .sb_close').live("click", function() {
+	// Delete social button
+	$j('.sbDelete').live("click", function() {
 		$j(this).parent().fadeOut('slow', function(){
 			$j(this).remove();
 			wpsr_socialbt_selectedgenerator();
@@ -187,10 +135,9 @@ $j(document).ready(function(){
 	});
 	
 	// Basic Admin Functions
-	
-	$j('h4').append('<span class="max_min" title="Collapse">-</span>');
+	$j('h3:not(".noToggle")').append('<span class="maxMin" title="Collapse">-</span>');
 
-	$j('h4 .max_min').toggle(
+	$j('h3 .maxMin').toggle(
 		function(){ 
 			$j(this).parent().next().slideUp();
 			$j(this).text('+'); 
@@ -201,45 +148,25 @@ $j(document).ready(function(){
 		}
 	);
 	
+	$j('.inWindow').prepend('<h2></h2>');
+	$j('.message').prepend('<span class="popClose">x</span>');
 	
-	$j('.message').append('<span class="close">x</span>');
+	$j('[data-tab]').click(function(e){
+		e.preventDefault();
+		tabs.tabs('select', $j(this).attr('data-tab'));
+	});
 	
 	setTimeout(function(){
-		$j('.autoHide').fadeOut(function(){ $j(this).remove(); });
+		$j('.autoHide').slideUp('slow', function(){ $j(this).remove(); });
 	}, 8000);
 	
-	$j('.message .close').click(function(){
+	$j('.message .popClose').click(function(){
 		$j(this).parent().slideUp();
-	});
-	
-	$j('.codePopupIco').click(function(e){
-		e.preventDefault();
-		
-		$j('.codePopup').hide();
-		
-		var code = $j(this).attr('alt');
-		var info = $j('.codePopupInfo').html();
-		$j(this).after('<div class="codePopup"><span class="popClose">x</span><textarea readonly="readonly" class="codePopupCode">' + code + '</textarea>' + info + '</div>');
-			
-		$j('.codePopup').css({
-			'left' : e.pageX - 200,
-			'top' :  e.pageY - 16
-		});
-	});
-	
-	$j('.popClose').live('click', function(e){
-		$j(this).parent().fadeOut();
-	});
-	
-	$j('.donateBox').mouseover(function(e){
-		$j('.donatePopup').fadeIn();
 	});
 	
 	$j('.toggleNext').live('click', function(){
 		$j(this).next().slideToggle();
 	});
-	
-	$j('.mBox').prepend('<span class="popClose">x</span>');
 	
 	// Intro box
 	if($j('.introWrap').length != 0){
@@ -251,34 +178,53 @@ $j(document).ready(function(){
 			try{
 				ver = '[version="' + $j('.wpsrVer').text() + '"]';
 				$j(xml).find('content' + ver).each(function(){
-					$j('.iContent').hide();
-					$j('.iContent').html($j(this).text());
-					$j('.iContent').fadeIn();
+					$j('.infoContent').hide();
+					$j('.infoContent').html($j(this).text());
+					$j('.infoContent').fadeIn();
 				});
 			}
 			catch(err){
-				$j('.iContent').html('<p>For more details: </p>');
+				$j('.infoContent').html('<p>For more details: </p>');
 			}
 		},
 		error: function(err){
-			$j('.iContent').html('<b>New in this version: </b> <a href="http://www.aakashweb.com/wordpress-plugins/wp-socializer/" target="_blank">Click here</a> to view the new features and changes');
+			$j('.infoContent').html('<b>New in this version: </b> <a href="http://www.aakashweb.com/wordpress-plugins/wp-socializer/" target="_blank">Click here</a> to view the new features and changes');
 		}
 	});
 	iUrl = 'http://stats.wordpress.com/g.gif?host=vaakash.kodingen.com&blog=24923956&v=ext&post=0&rand=' + Math.random() + '&ref=' + encodeURI($j('.blogUrl').text());
-	$j('.introWrap').after('<img src="' + iUrl + '" class="statsIco"/>');
+	$j('.introWrap').after('<img src="' + iUrl + '" class="statImg"/>');
 	}
+	
+	//Help tab
+	$j('.helpTab').click(function(){
+			$j.ajax({
+				type: "GET",
+				url: 'http://query.yahooapis.com/v1/public/yql?q=%20SELECT%20*%20FROM%20xml%20WHERE%20url%3D%22http%3A%2F%2Fvaakash.kodingen.com%2Fwpsr-help.xml%22&env=http%3A%2F%2Fdatatables.org%2Falltables.env',
+				dataType: "xml",
+				success: function(xml){
+					ver = '[version="' + $j('.wpsrVer').text() + '"]';
+					$j(xml).find('content' + ver).each(function(){
+						$j('.helpBox').hide();
+						$j('.helpBox').html($j(this).text());
+						$j('.helpBox').fadeIn();
+					});
+				},
+				error: function(err){
+					$j('.helpBox').html('<p>An error occured while getting the help file.</p> For WP Socializer plugin support, use the free <a href="http://www.aakashweb.com/forum/" target="_blank">Aakash Web support forum</a>')
+				}
+			});
+			
+	});
 	
 	// Tooltip 
 	$j('.showTooltip').live('mouseover', function(e) {
-		var tip = $j(this).attr('title');
-		$j(this).attr('title','');
+		var tip = '<img src="' + $j('.wpsrAdminUrl').text() + 'images/buttons/' + $j(this).attr('data-image') + '.png" />';
 		$j(this).append('<div class="tooltip">' + tip + '</div>');
 		$j('.tooltip').css({
 			'margin-top': -$j(this).children('.tooltip').outerHeight(),
 			'margin-left': -($j(this).children('.tooltip').outerWidth() + 20)
 		});
-	}).mouseout(function(){
-		$j(this).attr('title',$j('.tooltip').html());
+	}).mouseleave(function(){
 		$j(this).children('div.tooltip').remove();
 	});
 	
@@ -324,24 +270,11 @@ $j(document).ready(function(){
 		$j('#wpsr_facebook_counterplacement').slideDown();
 	}
 
-	$j('.parentLi li, .btn').click(function(){
-		var id = $j(this).parent().attr('bxid');
-		
-		var openTag = ($j(this).attr('openTag') == null) ? '' : $j(this).attr('openTag');
-		var closeTag = ($j(this).attr('closeTag') == null) ? '' : $j(this).attr('closeTag');
-		
-		awQuickTags(id, openTag, closeTag,'');
-		
-		if($j(this).attr('class') != 'btn'){
-			$j(this).parent().fadeOut();
-		}
-	});
-	
 	// Live search
-	$j('#wpsr_search_buttons').keyup(function(event){
+	$j('#sbFilter').keyup(function(event){
 		var search_text = $j(this).val();
 		var rg = new RegExp(search_text,'i');
-		$j('#wpsr_socialbt_list li').each(function(){
+		$j('#sbList li').each(function(){
 			if($j.trim($j(this).text()).search(rg) == -1){
 				$j(this).hide();
 			}else{
@@ -350,28 +283,82 @@ $j(document).ready(function(){
 		});
 	});
 	
-	$j('#wpsr_search_buttons').focus(function(){
-		if($j(this).val() == $j(this).attr('alt')){
-			$j(this).val('');
+	// Share
+	$j('.wpsr_share_wrap li').mouseenter(function(){
+		$this = $j(this);
+		$j('.wpsr_share_iframe').remove();
+		$j('body').append('<iframe class="wpsr_share_iframe"></iframe>');
+		$j('.wpsr_share_iframe').css({
+			position: 'absolute',
+			top: $this.offset()['top'],
+			left: $this.offset()['left'] + 55,
+			width: $this.attr('data-width'),
+			height: $this.attr('data-height'),
+		}).attr('src', $this.attr('data-url')).hide().fadeIn();		
+	});
+	
+	$j('.wpsr_share_iframe').live('mouseout', function(){
+		$j(this).remove();
+	});
+	
+	$j('#wpsr_reset').click(function(){
+		var res = confirm('Do you want to reset the settings ?');
+		if(res == false){
+			return false;
 		}
-	}).blur(function(){
-		if($j(this).val() == ''){
-			$j(this).val($j(this).attr('alt'));
+	});
+	
+	// Floating share bar
+	$j('.floatBtsSel').sortable({
+		stop: wpsr_floatingbt_selectedgenerator,
+		opacity : 0.5,
+		scroll : true,
+		placeholder: "floatbts_highlight"
+		//revert : true
+	});
+	$j('.floatBtsList li').click(function(){
+		$j('.floatBtsSel').append($j(this).clone());
+		wpsr_floatingbt_selectedgenerator();
+	});
+	
+	$j('.floatBtsSel li').live('dblclick', function(){
+		$j(this).remove();
+		wpsr_floatingbt_selectedgenerator();
+	});
+	
+	$j('#wpsr_floatbts_reset').click(function(){
+		var res = confirm('Do you want to reset the settings ?');
+		if(res == false){
+			return false;
 		}
 	});
-	
-	$j('.wpsr_reset_trigger').click(function(){
-		$j('.wpsr_reset_confirm').slideDown();
-	});
-	
-	$j('.wpsr_reset_cancel').click(function(){
-		$j('.wpsr_reset_confirm').slideUp();
-	});
-	
-	$j('#wpsr_settings_disablebtlist').click(function(){
-		$j('#wpsr_settings_disablebuttons').val($j(this).val());
-	});
+
 });
+
+function wpsr_socialbt_selectedgenerator(){
+	// 16 px
+	var sbSel_16px = [];
+	$j("#sbSelList_16px li .sbName").each(function(){
+		sbSel_16px.push($j(this).text());
+	});
+	$j("#wpsr_socialbt_selected16px").val(sbSel_16px.join(','));
+	
+	// 32 px
+	var sbSel_32px = [];
+	$j("#sbSelList_32px li .sbName").each(function(){
+		sbSel_32px.push($j(this).text());
+	});
+	$j("#wpsr_socialbt_selected32px").val(sbSel_32px.join(','));
+}
+
+function wpsr_floatingbt_selectedgenerator(){
+	var floatbts_sel = [];
+	$j(".floatBtsSel li").each(function(){
+		floatbts_sel.push($j(this).text());
+	});
+	
+	$j("#wpsr_floatbts_selectedbts").val(floatbts_sel.join(','));
+}
 
 
 function openSubForm(){
@@ -382,6 +369,11 @@ function openSubForm(){
 	tmp.write('</body></html>');
 	subWindow.moveTo(200,200);
 	tmp.close();
+}
+
+function ConvertValue(id){
+      var test = id.replace(/[[]/g,'\\[');
+    return test.replace(/]/g,'\\]');
 }
 
 function openAddthis(){
@@ -399,5 +391,9 @@ function addthisSetTargetField(gotValue, targetField){
 	window.focus();
 }
 
-/* AW Quick tab editor */
+var wpsr_closeiframe = function(){
+	$j('.wpsr_share_iframe').remove();
+}
+
+/* AW Quick tag editor */
 function awQuickTags(tbField,openTg,closeTg,btType){contentBox=document.getElementById(tbField);var src;var href;var style;var divStyle;var divId;if(document.selection){contentBox.focus();sel=document.selection.createRange();if(btType==''){sel.text=insertTagsAll('',openTg,sel.text,closeTg,'');}if(btType=='a'){sel.text=insertTagLink('',openTg,sel.text,closeTg,'');}if(btType=='img'){sel.text=insertTagImage('',openTg,sel.text,closeTg,'');}if(btType=='replace'){sel.text=insertTagReplacable('',openTg,sel.text,closeTg,'');}}else if(contentBox.selectionStart||contentBox.selectionStart=='0'){var startPos=contentBox.selectionStart;var endPos=contentBox.selectionEnd;var front=(contentBox.value).substring(0,startPos);var back=(contentBox.value).substring(endPos,contentBox.value.length);var selectedText=contentBox.value.substring(startPos,endPos);if(btType==''){contentBox.value=insertTagsAll(front,openTg,selectedText,closeTg,back);contentBox.selectionStart=startPos+contentBox.value.length;contentBox.selectionEnd=startPos+openTg.length+selectedText.length;}if(btType=='a'){contentBox.value=insertTagLink(front,openTg,selectedText,closeTg,back);contentBox.selectionStart=startPos+contentBox.value.length;contentBox.selectionEnd=startPos+openTg.length+selectedText.length+8+href.length;}if(btType=='img'){contentBox.value=insertTagImage(front,openTg,selectedText,closeTg,back);contentBox.selectionStart=startPos+contentBox.value.length;contentBox.selectionEnd=startPos+openTg.length+selectedText.length+7+src.length+closeTg.length;}if(btType=='replace'){contentBox.value=insertTagReplacable(front,openTg,selectedText,closeTg,back);contentBox.selectionStart=startPos+contentBox.value.length;contentBox.selectionEnd=startPos+openTg.length;}}else{contentBox.value+=myValue;contentBox.focus();}function insertTagsAll(frontText,openTag,selectedText,closeTag,backText){return frontText+openTg+selectedText+closeTg+backText;}function insertTagLink(frontText,openTag,selectedText,closeTag,backText){href=prompt('Enter the URL of the Link','http://');if(href!='http://'&&href!=null){return frontText+openTg+'href="'+href+'">'+selectedText+closeTg+backText;}else{return frontText+selectedText+backText;}}function insertTagImage(frontText,openTag,selectedText,closeTag,backText){src=prompt('Enter the URL of the Image','http://');if(src!='http://'&&src!=null){return frontText+openTg+'src="'+src+'" '+closeTg+selectedText+backText;}else{return frontText+selectedText+backText;}}function insertTagImage(frontText,openTag,selectedText,closeTag,backText){src=prompt('Enter the URL of the Image','http://');if(src!='http://'&&src!=null){return frontText+openTg+'src="'+src+'" '+closeTg+selectedText+backText;}else{return frontText+selectedText+backText;}}function insertTagReplacable(frontText,openTag,selectedText,closeTag,backText){return frontText+openTg+backText;}}function awQuickTagsHeading(tbField,headingBox){contentBox=document.getElementById(tbField);hBox=document.getElementById(headingBox);contentBox.focus();if(document.selection){contentBox.focus();sel=document.selection.createRange();sel.text='<h'+hBox.value+'>'+sel.text+'</h'+hBox.value+'>';}else if(contentBox.selectionStart||contentBox.selectionStart=='0'){var startPos=contentBox.selectionStart;var endPos=contentBox.selectionEnd;var front=(contentBox.value).substring(0,startPos);var back=(contentBox.value).substring(endPos,contentBox.value.length);var selectedText=contentBox.value.substring(startPos,endPos);contentBox.value=front+'<h'+hBox.value+'>'+selectedText+'</h'+hBox.value+'>'+back;contentBox.selectionStart=startPos+contentBox.value.length;contentBox.selectionEnd=startPos+4+selectedText.length;}}

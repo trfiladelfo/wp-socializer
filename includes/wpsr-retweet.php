@@ -19,23 +19,6 @@ function wpsr_retweet_twitter_script(){
 	"\n<!-- WP Socializer - End Twitter Script -->\n";
 }
 
-function wpsr_retweet_bt_used(){
-
-	## Get template data
-	$wpsr_template1 = get_option('wpsr_template1_data');
-	$wpsr_template2 = get_option('wpsr_template2_data');
-	
-	$wpsr_template1_content = $wpsr_template1['content'];
-	$wpsr_template2_content = $wpsr_template2['content'];
-	$is_retweetbt_used = strpos($wpsr_template1_content . $wpsr_template2_content, '{retweet-bt}');
-
-	if ($is_retweetbt_used === false) {
-		return 0;
-	} else {
-		return 1;
-	}
-}
-
 function wpsr_retweet($args = ''){
 	global $post;
 	
@@ -118,25 +101,6 @@ function wpsr_retweet($args = ''){
 						'"nick": "'. $username . '", ' . 
 						'"theme": "'. $topsytheme . '", ' . 
 					'}--></div>';
-
-				break;
-				
-				// Retweet processing code
-				case "retweet" :
-				
-					if($type == 'normal'){
-						$type = "";
-					}else{
-						$type = "size = 'small'; "; 
-					}
-
-					$retweet_processed .= 
-					'<script type="text/javascript">' . "\n" . "//<!--\n" .
-						"url = '" . $url . "';" . 
-						"username  = '" . $username . "';" . 
-						$type . "\n//-->" . 
-					'</script>' .
-					'<script type="text/javascript" src="http://www.retweet.com/static/retweets.js"></script>';
 
 				break;
 			}

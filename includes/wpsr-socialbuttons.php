@@ -167,19 +167,20 @@ function wpsr_socialbts_processlist($args = ''){
 	$email = get_bloginfo('admin_email');
 	$trUsername = (empty($wpsr_retweet['username'])) ? '' : '@' . $wpsr_retweet['username'];
 	$sUrl = wpsr_get_shorturl($deUrl);
+	$image = urlencode($details['image']);
 	
 	$replace_with = array(
 		$url, $title, $rss, 
 		$blogname, $excerpt, $deUrl,
 		$deTitle, $deExcerpt, $email, 
-		$trUsername, $sUrl,
+		$trUsername, $sUrl, $image
 	);
 	
 	$to_be_replaced = array(
 		'{url}', '{title}', '{rss-url}', 
 		'{blogname}', '{excerpt}', '{de-url}',
 		'{de-title}', '{de-excerpt}', '{email}', 
-		'{twitter-username}', '{s-url}',
+		'{twitter-username}', '{s-url}', '{image}'
 	);
 
 	$srvcsSplit = explode(',', $services);

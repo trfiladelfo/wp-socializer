@@ -30,6 +30,8 @@ function wpsr_insert_shortcode(type, edparam) {
 				btncode = "reddit"; break;
 			case '10':
 				btncode = "linkedin"; break;
+			case '11':
+				btncode = "pinterest"; break;
 			default:
 				return '';
 		}

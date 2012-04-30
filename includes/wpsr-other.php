@@ -1,10 +1,167 @@
 <?php
 /*
- * Reddit, StumbleUpon and LinkedIn buttons Processor code for WP Socializer Plugin
- * Version : 2.1
+ * Pinterest, Reddit, StumbleUpon and LinkedIn buttons Processor code for WP Socializer Plugin
+ * Version : 2.2
  * Since v2.0
  * Author : Aakash Chakravarthy
 */
+
+// StumbleUpon button
+function wpsr_stumbleupon_script(){
+	return "\n<!-- WP Socializer - StumbleUpon Script -->\n<script type=\"text/javascript\"> 
+ (function() { 
+     var li = document.createElement('script'); li.type = 'text/javascript'; li.async = true; 
+     li.src = window.location.protocol + '//platform.stumbleupon.com/1/widgets.js'; 
+     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(li, s); 
+ })(); 
+ </script>\n<!-- WP Socializer - StumbleUpon Script -->\n";
+}
+
+function wpsr_stumbleupon($args = ''){
+	global $post;
+	
+	$details = wpsr_get_post_details();
+	$def_url = $details['permalink'];
+	$def_title = $details['title'];
+
+	$defaults = array (
+		'output' => 'button',
+ 		'url' => $def_url,
+ 		'title' => $def_title,
+		'type' => '1',
+		'text' => __('Stumble this' ,'wpsr'),
+		'image' => WPSR_PUBLIC_URL . 'buttons/stumbleupon-bt.gif',
+		'params' => '',
+	);
+	
+	$args = wp_parse_args($args, $defaults);
+	extract($args, EXTR_SKIP);
+	
+	$stumbleupon_processed = "\n<!-- Start WP Socializer Plugin - StumbleUpon Button -->\n";
+	
+	switch($output){
+		// Display the ordinary button
+		case 'button':
+			$stumbleupon_processed .= '<su:badge layout="' . $type . '"></su:badge>';
+		break;
+		
+		// Display the Image format
+		case 'image':
+			$stumbleupon_processed .= '<a href="http://www.stumbleupon.com/submit?url=' . urlencode($url) . '&title=' . urlencode($title) . '" ' . $params . '><img src="' . $image . '" alt="Submit to Stumbleupon"  /></a>';
+		break;
+		
+		// Display the Text format
+		case 'text':
+			$stumbleupon_processed .= '<a href="http://www.stumbleupon.com/submit?url=' . urlencode($url) . '&title=' . urlencode($title) . '" ' . $params . '>' . $text . '</a>';
+		break;
+	}
+	
+	$stumbleupon_processed .= "\n<!-- End WP Socializer Plugin - StumbleUpon Button -->\n";
+	
+	return $stumbleupon_processed;
+}
+
+function wpsr_stumbleupon_bt($type){
+
+	## Start Output
+	$wpsr_stumbleupon_bt_processed = wpsr_stumbleupon(array(
+		'output' => 'button',
+		'type' => $type,
+	));
+	## End Output
+	
+	return $wpsr_stumbleupon_bt_processed;
+}
+
+function wpsr_stumbleupon_rss_bt(){
+
+	## Start Output
+	$wpsr_stumbleupon_processed = wpsr_stumbleupon(array(
+		'output' => 'text',
+		'params' => 'target="_blank"',
+	));
+	## End Output
+	
+	return $wpsr_stumbleupon_processed;
+}
+
+// Pinterest button
+function wpsr_pinterest_script(){
+	return "\n<!-- WP Socializer - Pinterest Script -->\n" . 
+	'<script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>'.
+	"\n<!-- WP Socializer - Pinterest Script -->\n";
+}
+
+function wpsr_pinterest($args = ''){
+
+	global $post;
+	
+	$details = wpsr_get_post_details();
+	$def_url = $details['permalink'];
+	$def_title = $details['title'];
+	$def_media = $details['image'];
+	
+	$defaults = array (
+		'output' => 'button',
+ 		'url' => $def_url,
+ 		'title' => $def_title,
+		'type' => 'horizontal',
+		'media' => $def_media,
+		'text' => __('Submit this to', 'wpsr'),
+		'image' => '//assets.pinterest.com/images/PinExt.png',
+		'params' => '',
+	);
+	
+	$args = wp_parse_args($args, $defaults);
+	extract($args, EXTR_SKIP);
+	
+	$pinterest_processed = "\n<!-- Start WP Socializer Plugin - Pinterest Button -->\n";
+	
+	switch($output){
+		// Display the ordinary button
+		case 'button':
+			$pinterest_processed .= '<a href="http://pinterest.com/pin/create/button/?url=' . urlencode($url) . '&media=' . urlencode($media) . '" class="pin-it-button" count-layout="' . $type . '"><img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It" /></a>';
+		break;
+		
+		// Display the Image format
+		case 'image':
+			$pinterest_processed .= '<a href="http://pinterest.com/pin/create/button/?url=' . urlencode($url) . '&media=' . urlencode($media) . '" ' . $params . '><img src="' . $image . '" alt="Submit to Reddit"  /></a>';
+		break;
+		
+		// Display the Text format
+		case 'text':
+			$pinterest_processed .= '<a href="http://pinterest.com/pin/create/button/?url=' . urlencode($url) . '&media=' . urlencode($media) . '" ' . $params . '>' . $text . '</a>';
+		break;
+	}
+	
+	$pinterest_processed .= "\n<!-- End WP Socializer Plugin - Pinterest Button -->\n";
+	
+	return $pinterest_processed;
+}
+
+function wpsr_pinterest_bt($type){
+
+	## Start Output
+	$wpsr_pinterest_processed = wpsr_pinterest(array(
+		'output' => 'button',
+		'type' => $type,
+	));
+	## End Output
+	
+	return $wpsr_pinterest_processed;
+}
+
+function wpsr_pinterest_rss_bt(){
+
+	## Start Output
+	$wpsr_pinterest_processed = wpsr_pinterest(array(
+		'output' => 'text',
+		'params' => 'target="_blank"',
+	));
+	## End Output
+	
+	return $wpsr_pinterest_processed;
+}
 
 // Reddit button
 function wpsr_reddit($args = ''){
@@ -76,77 +233,8 @@ function wpsr_reddit_rss_bt(){
 	return $wpsr_reddit_processed;
 }
 
-// StumbleUpon button
-function wpsr_stumbleupon($args = ''){
 
-	global $post;
-	
-	$details = wpsr_get_post_details();
-	$def_url = $details['permalink'];
-	$def_title = $details['title'];
-
-	$defaults = array (
-		'output' => 'button',
- 		'url' => $def_url,
- 		'title' => $def_title,
-		'type' => '1',
-		'text' => __('Stumble this' ,'wpsr'),
-		'image' => WPSR_PUBLIC_URL . 'buttons/stumbleupon-bt.gif',
-		'params' => '',
-	);
-	
-	$args = wp_parse_args($args, $defaults);
-	extract($args, EXTR_SKIP);
-	
-	$reddit_processed = "\n<!-- Start WP Socializer Plugin - StumbleUpon Button -->\n";
-	
-	switch($output){
-		// Display the ordinary button
-		case 'button':
-			$stumbleupon_processed .= '<script type="text/javascript" src="http://www.stumbleupon.com/hostedbadge.php?s=' . $type .'&r=' . $url . '"></script>';
-		break;
-		
-		// Display the Image format
-		case 'image':
-			$stumbleupon_processed .= '<a href="http://www.stumbleupon.com/submit?url=' . urlencode($url) . '&title=' . urlencode($title) . '" ' . $params . '><img src="' . $image . '" alt="Submit to Stumbleupon"  /></a>';
-		break;
-		
-		// Display the Text format
-		case 'text':
-			$stumbleupon_processed .= '<a href="http://www.stumbleupon.com/submit?url=' . urlencode($url) . '&title=' . urlencode($title) . '" ' . $params . '>' . $text . '</a>';
-		break;
-	}
-	
-	$stumbleupon_processed .= "\n<!-- End WP Socializer Plugin - StumbleUpon Button -->\n";
-	
-	return $stumbleupon_processed;
-}
-
-function wpsr_stumbleupon_bt($type){
-
-	## Start Output
-	$wpsr_stumbleupon_bt_processed = wpsr_stumbleupon(array(
-		'output' => 'button',
-		'type' => $type,
-	));
-	## End Output
-	
-	return $wpsr_stumbleupon_bt_processed;
-}
-
-function wpsr_stumbleupon_rss_bt(){
-
-	## Start Output
-	$wpsr_stumbleupon_processed = wpsr_stumbleupon(array(
-		'output' => 'text',
-		'params' => 'target="_blank"',
-	));
-	## End Output
-	
-	return $wpsr_stumbleupon_processed;
-}
-
-//LinkedIn button
+// LinkedIn button
 function wpsr_linkedin_script(){
 	// Return the script
 	return "\n<!-- WP Socializer - LinkedIn Script -->\n".

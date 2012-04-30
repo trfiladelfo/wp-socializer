@@ -30,14 +30,13 @@ function wpsr_plusone_bt_used(){
 }
 
 function wpsr_plusone($args = ''){
-
 	global $post;
 	
 	$details = wpsr_get_post_details();
 	$def_url = $details['permalink'];
 	$def_title = $details['title'];
 
-	$defaults = array (
+	$defaults = array(
 		'output' => 'button',
  		'url' => $def_url,
  		'title' => $def_title,
@@ -57,7 +56,6 @@ function wpsr_plusone($args = ''){
 		case 'button':
 			$plusone_processed .= '<g:plusone size="' . $type . '" href="' . $url . '" ' . $params . '></g:plusone>';
 		break;
-		
 	}
 	
 	$plusone_processed .= "\n<!-- End WP Socializer Plugin - +1 Button -->\n";
@@ -70,7 +68,7 @@ function wpsr_plusone_bt($type = 'standard'){
 	## Start Output
 	$wpsr_plusone_bt_processed = wpsr_plusone(array(
 		'output' => 'button',
-		'type' => $type,
+		'type' => $type
 	));
 	## End Output
 	

@@ -78,6 +78,16 @@
 }
 
 /** Templates **/
+.wp-socializer-buttons{
+	margin: 0px 0px 10px !important;
+	padding: 0px !important;
+}
+.wp-socializer-buttons .wpsr-btn{
+	margin: 0px;
+	padding: 0px;
+	float: left;
+	margin-right: 10px;
+}
 .floatleft{
 	float:left !important;
 }
@@ -116,6 +126,143 @@
 .buttons-wrap{
 	padding: 10px 0px !important;
 }
+
+/* Floating share bar */
+.wpsr-floatbar-float_left{
+	position: absolute;
+	border: 1px solid;
+	border-color: #ccc;
+	background-color: #fff;
+	padding: 0px 5px 0px 6px !important;
+	width: 60px;
+	margin: 0px 0px 0px 0px !important;
+	z-index: 9999;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	-webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
+	-moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
+	box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
+	text-align: center;
+}
+.wpsr-floatbar-float_left .wpsr_floatbt{
+	margin: 10px 0px;
+	padding: 0px;
+}
+.wpsr-floatbar-bottom_fixed{
+	position: fixed;
+	border: 1px solid;
+	border-color: #ccc;
+	background-color: #fff;
+	background-image: url(images/grey-bg.png);
+	background-repeat: repeat-x;
+	background-position: 0px -30px;
+	bottom: -1px;
+	width: 900px;
+	z-index: 9999;
+	padding: 0px 0px 0px 15px;
+	-moz-border-radius-topleft: 10px;
+	-moz-border-radius-topright: 10px;
+	-moz-border-radius-bottomright: 0px;
+	-moz-border-radius-bottomleft: 0px;
+	-webkit-border-radius: 10px 10px 0px 0px;
+	border-radius: 10px 10px 0px 0px;
+	-webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
+	-moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
+	box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
+	left: 0px;
+	right: 0px;
+	margin: 0 auto;
+	height: 35px;
+}
+.wpsr-floatbar-bottom_fixed .wpsr_floatbt{
+	float: left;
+	margin-right: 10px;
+	border-right: 1px solid;
+	border-color: #ccc;
+	padding: 8px 5px 0px 0px;
+	text-align: center;
+	height: 35px;
+}
+
+/* Floating bar themes */
+.wpsr-floatbar-bottom_fixed.wpsr-floatbar-dark{
+	border-color: #333;
+	background-color: #333;
+	background-image: url(images/dark-bg.png);
+	background-position: 0px 0px;
+	-webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
+	-moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
+	box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
+}
+.wpsr-floatbar-float_left.wpsr-floatbar-dark{
+	border-color: #333;
+	background-color: #333;
+}
+.wpsr-floatbar-dark .wpsr_floatbt{
+	border-color: #333;
+}
+.wpsr-floatbar-dark .wpsr_floatbt a{
+	color: white !important;
+}
+
+/* Link back */
+.wpsr-floatbar-float_left .wpsr-linkback{
+	margin: 15px 0 0 0;
+	position: absolute;
+}
+.wpsr-floatbar-float_left .wpsr-linkback a{
+	font-size: 8px;
+	color: #ccc;
+	text-decoration: none;
+	opacity: 0.05;
+	-webkit-transition: opacity .8s linear;
+	display: block;
+	margin: 0px;
+	padding: 0px;
+}
+.wpsr-floatbar-float_left .wpsr-linkback a:hover{
+ 	opacity: 1;
+}
+.wpsr-floatbar-float_left .wpsr_linkaw{
+	margin: -5px 0 0 0 !important;
+}
+.wpsr-floatbar-bottom_fixed .wpsr-linkback{
+	margin: 6px 0 0 0;
+	position: absolute;
+	bottom: -70px;
+}
+.wpsr-floatbar-bottom_fixed .wpsr-linkback a{
+	font-size: 8px;
+	color: #ccc;
+	text-decoration: none;
+	opacity: 0.05;
+	-webkit-transition: opacity .8s linear;
+	display: block;
+	margin: 0px;
+	padding: 0px;
+}
+
+/* Hide btn */
+.wpsr_hidebt{
+	background: url(images/grey-toggle.png) no-repeat center center;
+	float: right;
+	height: 35px;
+	width: 35px;
+	cursor: pointer;
+}
+.wpsr_hidebt:hover{
+	opacity: 0.5;
+}
+
+/* Misc */
+.wpsr-floatbar-float_left .wpsr_floatbt .fb-like{
+	width: 50px !important;
+}
+.wpsr_floatbt .wp-socializer-single{
+	margin: 0px;
+}
+
 /* Clearfix */
 .clearfix:after {
 	visibility: hidden;
