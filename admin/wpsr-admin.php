@@ -83,7 +83,7 @@ echo
 			<span class="admSprites facebookIcon"></span>Facebook
 			<ul class="childMenu">
 				<li openTag="{facebook-like}">Like button</li>
-				<li openTag="{facebook-send}">Like button + Send button</li>
+				<li style="opacity:0.2" title="Not available">Like button + Send button</li>
 			</ul>
 		</li>
 		
@@ -931,7 +931,7 @@ function wpsr_admin_page(){
 			<div class="section">
 			<table width="100%" border="0">
 			  <tr>
-				<td height="52"><label for="wpsr_addthis_username"><?php _e('Add This Username', 'wpsr'); ?></label></td>
+				<td height="52"><label for="wpsr_addthis_username"><?php _e('AddThis PubID', 'wpsr'); ?></label></td>
 				<td><input type="text" id="wpsr_addthis_username"  name="wpsr_addthis_username" value="<?php echo $wpsr_addthis['username']; ?>" /><br /><span class="smallText"> <?php _e('If available', 'wpsr'); ?></span></td>
 				<td><label for="wpsr_addthis_lang"><?php _e('Language', 'wpsr'); ?></label></td>
 				<td><select name="wpsr_addthis_lang" id="wpsr_addthis_lang">
@@ -1167,7 +1167,7 @@ function wpsr_admin_page(){
 				<table width="100%" border="0">
 				   <tr>
 					  <td height="38"><label for="wpsr_facebook_appid"><?php _e('Application ID', 'wpsr'); ?></label></td>
-					  <td><input name="wpsr_facebook_appid" id="wpsr_facebook_appid" type="text" value="<?php echo $wpsr_facebook['appid']; ?>"/><br /><span class="smallText"><?php _e('Useful in analytics', 'wpsr'); ?></span></td>
+					  <td><input name="wpsr_facebook_appid" id="wpsr_facebook_appid" type="text" value="<?php echo $wpsr_facebook['appid']; ?>"/><br /><span class="smallText"><?php _e('Useful in analytics', 'wpsr'); ?>. Enter a <b>valid</b> ID or else leave blank.</span></td>
 				   </tr>
 				</table>
 			</div>

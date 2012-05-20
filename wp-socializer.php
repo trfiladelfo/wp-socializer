@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: WP Socializer
-Version: 2.4
+Version: 2.4.1
 Plugin URI: http://www.aakashweb.com/
 Description: WP Socializer is an advanced plugin for inserting all kinds of Social bookmarking & sharing buttons. It has super cool features to insert the buttons into posts, sidebar. It also has Floating sharebar. <a href="http://youtu.be/1uimAE8rFYE" target="_blank">Check out the demo video</a>.
 Author: Aakash Chakravarthy
@@ -14,7 +14,7 @@ if(!defined('WP_CONTENT_URL')) {
 	$wpsr_url = WP_CONTENT_URL . '/plugins/' . plugin_basename(dirname(__FILE__)) . '/';
 }
 
-define('WPSR_VERSION', '2.4');
+define('WPSR_VERSION', '2.4.1');
 define('WPSR_AUTHOR', 'Aakash Chakravarthy');
 define('WPSR_URL', $wpsr_url);
 define('WPSR_PUBLIC_URL', WPSR_URL . 'public/');
@@ -198,7 +198,7 @@ $wpsr_socialsites_list = array(
 		'name' => 'Email',
 		'titleText' => __('Email this ', 'wpsr') . '',
 		'icon' => 'email.png',
-		'url' => 'mailto:subject={de-title}&amp;body={de-excerpt} - {de-url}', // Removed "to" in v2.4
+		'url' => 'mailto:?subject={de-title}&amp;body={de-excerpt} - {de-url}', // Fixed the bug in v2.4.1
 		'support32px' => 1,
 	),
 	
@@ -1073,7 +1073,7 @@ add_filter('plugin_action_links', 'wpsr_plugin_actions', 10, 2);
 if( !is_admin()){
 	// jQuery
 	wp_deregister_script('jquery');
-	wp_register_script('jquery', ("http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"), false, '1.3.2');
+	wp_register_script('jquery', ("http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"), false, WPSR_VERSION);
 	wp_enqueue_script('jquery');
 }
 
@@ -1236,7 +1236,7 @@ function wpsr_process_template($no, $rss = 0){
 		wpsr_sharethis_bt('regular'), 			wpsr_sharethis_bt('regular2'),			wpsr_sharethis_bt('buttons'), 
 		wpsr_sharethis_bt('classic'), 			wpsr_plusone_bt('small'),				wpsr_plusone_bt('medium'), 
 		wpsr_plusone_bt('standard'),			wpsr_plusone_bt('tall'),				wpsr_retweet_bt(), 
-		wpsr_digg_bt(), 						wpsr_facebook_bt('like'),				wpsr_facebook_bt('send'), 
+		wpsr_digg_bt(), 						wpsr_facebook_bt('like'),				'' /* Facebook Send button not available */, 
 		wpsr_reddit_bt('1'), 					wpsr_reddit_bt('2'),					wpsr_reddit_bt('3'), 
 		wpsr_stumbleupon_bt('1'),				wpsr_stumbleupon_bt('2'),				wpsr_stumbleupon_bt('3'), 
 		wpsr_stumbleupon_bt('5'),				wpsr_linkedin_bt('standard'),			wpsr_linkedin_bt('right'),
@@ -1435,10 +1435,6 @@ function wpsr_scripts_adder(){
 	if(wpsr_button_used('retweet') == 1 && $wpsr_retweet_service == 'twitter'){
 		echo wpsr_retweet_twitter_script();
 	}
-	
-	if(wpsr_button_used('facebook') == 1){
-		echo wpsr_facebook_script();
-	} // Since v2.4
 	
 	if(wpsr_button_used('digg') == 1){
 		echo wpsr_digg_script();

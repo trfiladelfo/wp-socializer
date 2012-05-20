@@ -6,7 +6,7 @@ Tags: social, social bookmarking, bookmarks, bookmarking, bookmarks menu, share,
 Donate Link: http://bit.ly/wpsrDonate
 Requires at least: 2.8
 Tested up to: 3.3.x
-Stable tag: 2.4
+Stable tag: 2.4.1
 
 Super Cool Plugin for inserting all kinds of Social Bookmarking & Sharing buttons. Has customizable Floating Share Bar, Widgets, Shortcodes also.
 
@@ -23,6 +23,8 @@ WP Socializer is an advanced plugin for inserting all kinds of Social bookmarkin
 * Template functions are available for advanced placements.
 
 [youtube="http://www.youtube.com/v/1uimAE8rFYE"]
+
+(Check out the changelog for new fixes in this version)
 
 = Buttons available =
 
@@ -49,7 +51,7 @@ The social buttons can be inserted above or below posts easily. There are no fix
 
 Automatic adjustments are made to display the buttons in feeds. Custom buttons can also be added. Bit.ly integration is also available. Button scripts are optimized for site performance.
 
-Exclude the social buttons in specific pages. Insert the social buttons easily in Widgets using the [HTML Javascript Plugin](http://www.aakashweb.com/wordpress-plugins/html-javascript-adder/ "A plugin for adding advanced html, text widgets in the sidebar").
+Exclude the social buttons in specific pages. Insert the social buttons easily in Widgets using the [HTML Javascript Plugin](html-javascript-adder "A plugin for adding advanced html, text widgets in the sidebar").
 
 = Reference links =
 For more information on the plugin, you can use the below links.
@@ -96,6 +98,12 @@ For custom placement in theme files and posts, check out the following documenta
 [More Screenshots](http://www.aakashweb.com/wordpress-plugins/wp-socializer/#screenshots)
 
 == Changelog ==
+
+= 2.4.1 =
+* Facebook like button bug is fixed.
+* Facebook send button not available.
+* Email button bug fixed.
+* Added query strings to all WP Socializer CSS and JS files.
 
 = 2.4 =
 * Admin UI is completely changed as per users request.

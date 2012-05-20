@@ -1,19 +1,19 @@
 <?php
 /*
  * Social buttons Processor code for WP Socializer Plugin
- * Version : 4.4
+ * Version : 4.5
  * Author : Aakash Chakravarthy
 */
 
 function wpsr_socialbts_script(){
 	echo "\n<!-- Start WP Socializer | Social Buttons CSS File -->\n";
-	echo '<link rel="stylesheet" type="text/css" media="all" href="' . WPSR_PUBLIC_URL . 'css/wp-socializer-buttons-css.css" />';
+	echo '<link rel="stylesheet" type="text/css" media="all" href="' . WPSR_PUBLIC_URL . 'css/wp-socializer-buttons-css.css?v=' . WPSR_VERSION . '" />';
 	echo "\n<!-- End WP Socializer | Social Buttons CSS File -->\n";
 }
 
 function wpsr_addtofavorites_script(){
 	echo "\n<!-- Start WP Socializer | Bookmark File -->\n";
-	echo '<script type="text/javascript" src="' . WPSR_PUBLIC_URL . 'js/wp-socializer-bookmark-js.js"></script>';
+	echo '<script type="text/javascript" src="' . WPSR_PUBLIC_URL . 'js/wp-socializer-bookmark-js.js?v=' . WPSR_VERSION . '"></script>';
 	echo "\n<!-- End WP Socializer | Bookmark CSS File -->\n";
 }
 

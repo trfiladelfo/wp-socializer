@@ -1,7 +1,7 @@
 <?php
 /*
  * Shortcodes for WP Socializer plugin
- * Version : 2.0
+ * Version : 2.1
  * Author : Aakash Chakravarthy
  * Since : 2.0
  */
@@ -58,7 +58,7 @@ add_shortcode('wpsr_digg', 'wpsr_digg_shortcode');
 
 ## Facebook Shortcode
 function wpsr_facebook_shortcode($atts){
-	return wpsr_facebook($atts) . wpsr_facebook_script();
+	return wpsr_facebook($atts);
 }
 add_shortcode('wpsr_facebook', 'wpsr_facebook_shortcode');
 

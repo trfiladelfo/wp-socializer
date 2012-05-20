@@ -1,7 +1,7 @@
 <?php
 /*
  * Floating share bar Processor code for WP Socializer Plugin
- * Version : 1.0
+ * Version : 1.1
  * Since : v2.4
  * Author : Aakash Chakravarthy
 */
@@ -61,7 +61,7 @@ function wpsr_floatingbts_output(){
 		echo do_shortcode(wpsr_process_floatingbts());
 		echo '
 <!-- Start WP Socializer | Floating bar - JS file-->
-<script type="text/javascript" src="' . WPSR_PUBLIC_URL . 'js/wp-socializer-floating-bar-js.js"></script>
+<script type="text/javascript" src="' . WPSR_PUBLIC_URL . 'js/wp-socializer-floating-bar-js.js?v=' . WPSR_VERSION . '"></script>
 <!-- End WP Socializer | Floating bar - JS file -->
 ';
 	}
