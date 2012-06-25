@@ -284,7 +284,7 @@ $j(document).ready(function(){
 	});
 	
 	// Share
-	$j('.wpsr_share_wrap li').mouseenter(function(){
+	$j('.wpsr_share_wrap li').not('.wpsr_pressthis').mouseenter(function(){
 		$this = $j(this);
 		$j('.wpsr_share_iframe').remove();
 		$j('body').append('<iframe class="wpsr_share_iframe"></iframe>');
@@ -299,6 +299,11 @@ $j(document).ready(function(){
 	
 	$j('.wpsr_share_iframe').live('mouseout', function(){
 		$j(this).remove();
+	});
+	
+	$j('.wpsr_pressthis a').click(function(e){
+		e.preventDefault();
+		newwindow2=window.open('press-this.php?t=WP Socializer - all in one social buttons plugin for WordPress&u=http://www.aakashweb.com/wordpress-plugins/wp-socializer/&s=WP Socializer is an advanced plugin for inserting all kinds of Social bookmarking and sharing buttons. It has super cool features to insert the buttons into posts, sidebar. It also has Floating sharebar in two modes of orientation. Custom icons can be used for social icons. Check out to know more information on this plugin.','name','height=400,width=700');
 	});
 	
 	$j('#wpsr_reset').click(function(){
@@ -358,17 +363,6 @@ function wpsr_floatingbt_selectedgenerator(){
 	});
 	
 	$j("#wpsr_floatbts_selectedbts").val(floatbts_sel.join(','));
-}
-
-
-function openSubForm(){
-	subWindow = window.open('','preview','height=500,width=600');
-	var tmp = subWindow.document;
-	tmp.write('<html><head><title>Subscribe to Aakash Web</title>');
-	tmp.write('</head><body><p><b>Select an option</b></p><ul><li><a href="http://feedburner.google.com/fb/a/mailverify?uri=aakashweb">Subscribe Now</a></li><li><a href="http://feeds2.feedburner.com/aakashweb" target="_blank">Read the feeds</a></li></ul>');
-	tmp.write('</body></html>');
-	subWindow.moveTo(200,200);
-	tmp.close();
 }
 
 function ConvertValue(id){

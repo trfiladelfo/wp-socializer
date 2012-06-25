@@ -528,6 +528,8 @@
 }
 .wpsr_donate a{ background-image: url(images/donate.png); }
 .wpsr_share a{ background-image: url(images/share.png); }
+.wpsr_pressthis a{ background-image: url(images/pressthis.png); }
+
 .wpsr_share_iframe{
 	background: #FFFFFF;
 	border: 1px solid #dfdfdf;

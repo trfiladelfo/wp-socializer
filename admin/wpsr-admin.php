@@ -530,6 +530,7 @@ function wpsr_admin_page(){
 	<ul class="wpsr_share_wrap">
 	<li class="wpsr_donate" data-width="300" data-height="220" data-url="<?php echo WPSR_ADMIN_URL . 'js/share.php?i=1'; ?>"><a href="#"></a></li>
 	<li class="wpsr_share" data-width="350" data-height="85" data-url="<?php echo WPSR_ADMIN_URL . 'js/share.php?i=2'; ?>"><a href="#"></a></li>
+	<li class="wpsr_pressthis" title="Share a small post about this plugin in your blog !"><a href="press-this.php" target="_blank"></a></li>
 	</ul>
 	
 	<form id="content" method="post">

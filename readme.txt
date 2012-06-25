@@ -2,11 +2,12 @@
 Contributors: Aakash Chakravarthy
 Author URI: http://www.aakashweb.com/
 Plugin URI: http://www.aakashweb.com/wordpress-plugins/wp-socializer/
-Tags: social, social bookmarking, bookmarks, bookmarking, bookmarks menu, share, sharing, search, rss, post, posts, plugin, seo, page, pages, google, excerpt, content, bookmark, button, technorati, e-mail, email, gmail, Facebook, twitter, retweet, myspace, diigo, delicious, digg, buzz, linkedin, google buzz, yahoo, reddit, dzone, Sphinn, addthis, template, socializer, sociable, wp, wordpress, sexy bookmarks
+Tags: social, social bookmarking, bookmarks, bookmarking, bookmarks menu, share, sharing, search, rss, post, posts, plugin, seo, page, pages, google, widget,  excerpt, content, bookmark, button, technorati, email, gmail, facebook, twitter, retweet, myspace, diigo, delicious, digg, buzz, linkedin, google buzz, yahoo, reddit, dzone, sphinn, addthis, template, socializer, sociable, wp, wordpress, sexy bookmarks
+License: GPLv2 or later
 Donate Link: http://bit.ly/wpsrDonate
 Requires at least: 2.8
-Tested up to: 3.3.x
-Stable tag: 2.4.1
+Tested up to: 3.4
+Stable tag: 2.4.2
 
 Super Cool Plugin for inserting all kinds of Social Bookmarking & Sharing buttons. Has customizable Floating Share Bar, Widgets, Shortcodes also.
 
@@ -22,9 +23,9 @@ WP Socializer is an advanced plugin for inserting all kinds of Social bookmarkin
 * Widgets for inserting FB like box & G+ badges in sidebar.
 * Template functions are available for advanced placements.
 
-[youtube="http://www.youtube.com/v/1uimAE8rFYE"]
+(Check out the changelog for the new features and fixes in the version **2.4.2**)
 
-(Check out the changelog for new fixes in this version)
+[youtube="http://www.youtube.com/v/1uimAE8rFYE"]
 
 = Buttons available =
 
@@ -51,7 +52,7 @@ The social buttons can be inserted above or below posts easily. There are no fix
 
 Automatic adjustments are made to display the buttons in feeds. Custom buttons can also be added. Bit.ly integration is also available. Button scripts are optimized for site performance.
 
-Exclude the social buttons in specific pages. Insert the social buttons easily in Widgets using the [HTML Javascript Plugin](html-javascript-adder "A plugin for adding advanced html, text widgets in the sidebar").
+Exclude the social buttons in specific pages. Insert the social buttons easily in Widgets using the [HTML Javascript Plugin](../html-javascript-adder "A plugin for adding advanced html, text widgets in the sidebar").
 
 = Reference links =
 For more information on the plugin, you can use the below links.
@@ -98,6 +99,13 @@ For custom placement in theme files and posts, check out the following documenta
 [More Screenshots](http://www.aakashweb.com/wordpress-plugins/wp-socializer/#screenshots)
 
 == Changelog ==
+
+= 2.4.2 =
+* Facebook like button centered in the left float sharing bar.
+* Facebook like button iframe CSS zero margin fix is done for themes.
+* Bug fixed in the `wp_socializer();` function for printing templates.
+* Retweet button now traces the title of the post from the home page.
+* Small admin interface tweaks.
 
 = 2.4.1 =
 * Facebook like button bug is fixed.
@@ -158,7 +166,7 @@ For custom placement in theme files and posts, check out the following documenta
 
 == Upgrade Notice ==
 
-Version 2.4 is a recommended upgrade to get all the latest social bookmarking and sharing buttons avaialble in the Internet. Various bugs are fixed and the admin UI is completely changed for easy use.
+Version 2.4.x is a recommended upgrade to get all the latest social bookmarking and sharing buttons avaialble in the Internet. Various bugs are fixed and the admin UI is completely changed for easy use.
 
 == Credits ==
 

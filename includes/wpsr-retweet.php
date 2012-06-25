@@ -1,7 +1,7 @@
 <?php
 /*
  * Retweet buttons Processor code for WP Socializer Plugin
- * Version : 2.0
+ * Version : 2.1
  * Author : Aakash Chakravarthy
 */
 
@@ -67,7 +67,7 @@ function wpsr_retweet($args = ''){
 					$recacc = ($twitter_recacc == '') ? '' : "data-related='$twitter_recacc'";
 					
 					$retweet_processed .= 
-					'<a href="http://twitter.com/share" class="twitter-share-button" data-count="' . $type . '" ' . $user . ' data-lang="' . $twitter_lang . '" ' . $recacc . ' data-url="' . $url . '"></a>';
+					'<a href="http://twitter.com/share" class="twitter-share-button" data-count="' . $type . '" ' . $user . ' data-lang="' . $twitter_lang . '" ' . $recacc . ' data-url="' . $url . '" data-text="' . $title . ' - "></a>';
 
 				break;
 				

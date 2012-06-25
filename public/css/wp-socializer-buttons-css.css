@@ -1,5 +1,5 @@
 /*
- * WP Socializer Social buttons - CSS File - v2.2
+ * WP Socializer Social buttons - CSS File - v2.3
  * Author: Aakash Chakravarthy
  */
 
@@ -87,6 +87,9 @@
 	padding: 0px;
 	float: left;
 	margin-right: 10px;
+}
+.wp-socializer-buttons .wpsr-btn iframe{
+	margin: 0px !important; /** Fix for Facebook v2.4.2 **/
 }
 .floatleft{
 	float:left !important;
