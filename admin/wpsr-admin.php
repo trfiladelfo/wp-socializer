@@ -343,16 +343,19 @@ function wpsr_admin_page(){
 	if (function_exists('current_user_can') && !current_user_can('manage_options'))
 			die(__('Sorry you do not have enough previliges to access this page.'));
 	
-	if (isset($_POST['wpsr_reset'])){
+	## Reset form on submit
+	if (isset($_POST['wpsr_reset']) && check_admin_referer('wpsr_main_form')){
 		wpsr_reset_values();
 		$wpsr_reseted = true;
 	}
 	
-	if (isset($_POST['wpsr_intro_submit'])){
+	## Version intro form on submit
+	if (isset($_POST['wpsr_intro_submit']) && check_admin_referer('wpsr_intro_form')){
 		update_option("wpsr_version", WPSR_VERSION);
 	}
 	
-	if (isset($_POST["wpsr_submit"])) {
+	## Main form on submit
+	if (isset($_POST["wpsr_submit"]) && check_admin_referer('wpsr_main_form')) {
 		## Addthis options
 		$wpsr_addthis['username'] = $_POST['wpsr_addthis_username'];
 		$wpsr_addthis['language'] = $_POST['wpsr_addthis_lang'];
@@ -746,6 +749,7 @@ function wpsr_admin_page(){
 		</div>
 		
 		<div class="footer">
+		<?php wp_nonce_field('wpsr_main_form'); ?>
 		<input class="button-primary" type="submit" name="wpsr_submit" id="wpsr_submit" value="<?php _e('Update', 'wpsr'); ?>" />
 		<input class="button alignright" type="submit" name="wpsr_reset" id="wpsr_reset" value="  <?php _e('Reset', 'wpsr'); ?>   " />
 		</div>
@@ -1198,7 +1202,6 @@ function wpsr_admin_page(){
 		
 	</div><!-- Window -->
 		
-
 	</form><!-- Content -->
 	
 	<div class="bottomInfo">
@@ -1235,6 +1238,7 @@ function wpsr_admin_page(){
 		<p class="refLinks"><b><a href="http://www.aakashweb.com/wordpress-plugins/wp-socializer/" target="_blank"><?php _e('Full Features', 'wpsr'); ?></a> | <a href="http://www.aakashweb.com/docs/wp-socializer-docs/" target="_blank"><?php _e('Documentation', 'wpsr'); ?></a> | <a href="http://www.aakashweb.com/forum/" target="_blank"><?php _e('Support', 'wpsr'); ?></a> | <a href="http://www.aakashweb.com/forum/" target="_blank"><?php _e('Bug Report', 'wpsr'); ?></a> | <a href="http://www.aakashweb.com/wordpress-plugins/wp-socializer/#videos" target="_blank"><?php _e('Video Demo & Tutorials', 'wpsr'); ?></a></b></p>
 
 		<form class="startForm" method="post">
+			<?php wp_nonce_field('wpsr_intro_form'); ?>
 			<input class="button-primary" type="submit" name="wpsr_intro_submit" id="wpsr_intro_submit" value="     <?php _e('Start using WP Socializer', 'wpsr'); echo ' v' . WPSR_VERSION; ?>     " />
 		</form>
 	</div>

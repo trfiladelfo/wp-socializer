@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: WP Socializer
-Version: 2.4.2
+Version: 2.4.3
 Plugin URI: http://www.aakashweb.com/
 Description: WP Socializer is an advanced plugin for inserting all kinds of Social bookmarking & sharing buttons. It has super cool features to insert the buttons into posts, sidebar. It also has Floating sharebar. <a href="http://youtu.be/1uimAE8rFYE" target="_blank">Check out the demo video</a>.
 Author: Aakash Chakravarthy
@@ -14,7 +14,7 @@ if(!defined('WP_CONTENT_URL')) {
 	$wpsr_url = WP_CONTENT_URL . '/plugins/' . plugin_basename(dirname(__FILE__)) . '/';
 }
 
-define('WPSR_VERSION', '2.4.2');
+define('WPSR_VERSION', '2.4.3');
 define('WPSR_AUTHOR', 'Aakash Chakravarthy');
 define('WPSR_URL', $wpsr_url);
 define('WPSR_PUBLIC_URL', WPSR_URL . 'public/');
@@ -198,7 +198,7 @@ $wpsr_socialsites_list = array(
 		'name' => 'Email',
 		'titleText' => __('Email this ', 'wpsr') . '',
 		'icon' => 'email.png',
-		'url' => 'mailto:?subject={de-title}&amp;body={de-excerpt} - {de-url}', // Fixed the bug in v2.4.1
+		'url' => 'mailto:?subject={de-title}&amp;body={de-excerpt} - {de-url}', // Fixed the bug in v2.4.1 & v2.4.3
 		'support32px' => 1,
 	),
 	
@@ -753,7 +753,7 @@ $wpsr_socialsites_list = array(
 		'name' => 'Techmeme',
 		'titleText' => __('Share this on ', 'wpsr') . 'Techmeme',
 		'icon' => 'techmeme.png',
-		'url' => 'http://twitter.com/home/?status=tip%20@Techmeme%20{url}%20{title}', 
+		'url' => 'http://twitter.com/home/?status=tip%20@Techmeme%20{url}%20{de-title}', 
 	), 
 
 	'technorati' => array(
@@ -783,7 +783,7 @@ $wpsr_socialsites_list = array(
 		'name' => 'Twitter',
 		'titleText' => __('Tweet this !', 'wpsr') . '',
 		'icon' => 'twitter.png',
-		'url' => 'http://twitter.com/home?status={title}%20-%20{s-url}%20{twitter-username}',
+		'url' => 'http://twitter.com/home?status={de-title}%20-%20{s-url}%20{twitter-username}',
 		'support32px' => 1,
 	),
 	

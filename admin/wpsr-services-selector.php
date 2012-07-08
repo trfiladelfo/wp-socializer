@@ -1,11 +1,27 @@
 <?php
-	$id = intval($_GET['id']);
-	$val = stripslashes($_GET['val']);
-	$bt = stripslashes($_GET['bt']);
+	
+	if(empty($_GET['id']) || empty($_GET['val']) || empty($_GET['bt'])) die('<!-- Empty parameters -->');
+	
+	$id = sanitize($_GET['id']);
+	$val = sanitize($_GET['val']);
+	$bt = sanitize($_GET['bt']);
 	
 	$addthis_services = array("100zakladok", "2tag", "2linkme", "a1webmarks", "addio", "menu", "adfty", "adifni", "aerosocial", "allmyfaves", "amazonwishlist", "amenme", "aim", "aolmail", "arto", "aviary", "baang", "baidu", "bebo", "bentio", "biggerpockets", "bitly", "bizsugar", "bleetbox", "blinklist", "blip", "blogger", "bloggy", "blogmarks", "blogtrottr", "blurpalicious", "boardlite", "bobrdobr", "bonzobox", "bookmarkedbyus", "socialbookmarkingnet", "bookmarkycz", "bookmerkende", "bordom", "box", "brainify", "bryderi", "buddymarks", "buzzzy", "camyoo", "care2", "chiq", "cirip", "citeulike", "classicalplace", "clickazoo", "clply", "cndig", "colivia", "technerd", "connotea", "cosmiq", "delicious", "designbump", "designmoo", "digthiswebhost", "digaculturanet", "digg", "diggita", "diglog", "digo", "digzign", "diigo", "dipdive", "domelhor", "dosti", "dotnetkicks", "dotnetshoutout", "woscc", "douban", "drimio", "dropjack", "dwellicious", "dzone", "edelight", "efactor", "ekudos", "elefantapl", "email", "mailto", "embarkons", "eucliquei", "evernote", "extraplay", "ezyspot", "fabulously40", "facebook", "informazione", "fark", "farkinda", "fashiolista", "fashionburner", "favable", "faves", "favlogde", "favoritende", "favorites", "favoritus", "flaker", "flosspro", "folkd", "followtags", "forceindya", "thefreedictionary", "fresqui", "friendfeed", "friendster", "funp", "fwisp", "gabbr", "gacetilla", "gamekicker", "givealink", "globalgrind", "gmail", "goodnoows", "google", "googlebuzz", "googlereader", "googletranslate", "gravee", "greaterdebater", "grono", "grumper", "habergentr", "hackernews", "hadashhot", "hatena", "hazarkor", "gluvsnap", "hedgehogs", "hellotxt", "hipstr", "hitmarks", "hotbookmark", "hotklix", "hotmail", "w3validator", "hyves", "idearef", "identica", "igoogle", "ihavegot", "instapaper", "investorlinks", "iorbix", "isociety", "iwiw", "jamespot", "jisko", "joliprint", "jumptags", "zooloo", "kaboodle", "kaevur", "kipup", "kirtsy", "kledy", "kommenting", "latafaneracat", "laaikit", "ladenzeile", "librerio", "linkninja", "linkagogo", "linkedin", "linksgutter", "linkshares", "linkuj", "livefavoris", "livejournal", "lockerblogger", "logger24", "lynki", "mymailru", "markme", "mashbord", "mawindo", "meccho", "meinvz", "mekusharim", "memori", "meneame", "live", "mindbodygreen", "misterwong", "misterwong_de", "mixx", "moemesto", "mototagz", "mrcnetworkit", "multiply", "myaol", "mylinkvault", "myspace", "n4g", "netlog", "netvibes", "netvouz", "newsmeback");
 	
 	$sharethis_services = array("facebook", "fark", "faves", "fresqui", "friendfeed", "funp", "gbuzz", "google_bmarks", "kirsty", "linkedin", "meaneame", "messenger", "mister_wong", "mixx", "myspace", "n4g", "newsvine", "oknotizie", "propeller", "reddit", "simpy", "slashdot", "sonico", "sphinn", "stumbleupon", "technorati", "twackle", "twine", "twitter", "windows_live", "xanga", "yahoo_bmarks", "ybuzz", "yigg");
+
+// Clean the GET variables.
+function sanitize($input) {
+	$search = array(
+		'@<script[^>]*?>.*?</script>@si',   // Strip out javascript
+		'@<[\/\!]*?[^<>]*?>@si',            // Strip out HTML tags
+		'@<style[^>]*?>.*?</style>@siU',    // Strip style tags properly
+		'@<![\s\S]*?--[ \t\n\r]*>@'         // Strip multi-line comments
+	);
+	
+	$output = htmlspecialchars(preg_replace($search, '', $input));
+	return $output;
+} // Thanks to CSS Tricks
 	
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -86,6 +102,7 @@ function moveUp(lst){
 			lst.options[lst.selectedIndex].text = lst.options[lst.selectedIndex-1].text; 
 			lst.options[lst.selectedIndex-1].text = tempText; 
 			lst.selectedIndex = tempIndex;
+			loopSelected();
 		}
 	} 
 	return false;
@@ -105,7 +122,8 @@ function moveDown(lst){
 			var tempText = lst.options[lst.selectedIndex].text; 
 			lst.options[lst.selectedIndex].text = lst.options[lst.selectedIndex+1].text; 
 			lst.options[lst.selectedIndex+1].text = tempText; 
-			lst.selectedIndex = tempIndex; 
+			lst.selectedIndex = tempIndex;
+			loopSelected();
 		} 
 	} 
 	return false;
@@ -182,7 +200,7 @@ function googleTranslateElementInit() {
 		<td width="45%">
 			<select name="sel2" id="sel2"  size="20" multiple="multiple" style="width:100%">
 				<?php 
-					$selVal = $_GET['val'];
+					$selVal = $val;
 					if($selVal != ''){
 						$expSel = explode(',', $selVal);
 						foreach ($expSel as $eSel){
@@ -196,8 +214,8 @@ function googleTranslateElementInit() {
       </tr>
 </table>
 <br />
-<p>Selected services:<br/> <input name="services" type="text" id="services" value="<?php echo $_GET['val']; ?>" size="40"/>
-<input type="hidden" id="targetId" name="targetId" value="<?php echo $_GET['id']; ?>"/>
+<p>Selected services:<br/> <input name="services" type="text" id="services" value="<?php echo $val; ?>" size="40"/>
+<input type="hidden" id="targetId" name="targetId" value="<?php echo $id; ?>"/>
 
 </form>
 </p>

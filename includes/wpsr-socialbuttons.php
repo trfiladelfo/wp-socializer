@@ -1,7 +1,7 @@
 <?php
 /*
  * Social buttons Processor code for WP Socializer Plugin
- * Version : 4.5
+ * Version : 4.6
  * Author : Aakash Chakravarthy
 */
 
@@ -160,7 +160,7 @@ function wpsr_socialbts_processlist($args = ''){
 	$deTitle = trim($pTitle);
 	
 	$excerpt = trim(urlencode($pExcerpt));
-	$deExcerpt = $pExcerpt;
+	$deExcerpt = htmlspecialchars($pExcerpt);
 	
 	$rss = (empty($wpsr_settings['rssurl'])) ? get_bloginfo('rss_url') : $wpsr_settings['rssurl'];
 	$blogname = urlencode(get_bloginfo('name') . ' - ' . get_bloginfo('description'));

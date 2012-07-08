@@ -21,12 +21,12 @@ function wpsr_floatbts_reset_values(){
 
 function wpsr_admin_page_floating_bar(){
 
-	if(isset($_POST["wpsr_floatbts_reset"])){
+	if(isset($_POST["wpsr_floatbts_reset"]) && check_admin_referer('wpsr_floatbts_main_form')){
 		wpsr_floatbts_reset_values();
 		$reset = 1;
 	}
 	
-	if (isset($_POST["wpsr_floatbts_submit"])){
+	if (isset($_POST["wpsr_floatbts_submit"]) && check_admin_referer('wpsr_floatbts_main_form')){
 	
 		$wpsr_floatbts['selectedbts'] = stripslashes($_POST['wpsr_floatbts_selectedbts']);
 		$wpsr_floatbts['position'] = $_POST['wpsr_floatbts_position'];
@@ -71,6 +71,7 @@ function wpsr_admin_page_floating_bar(){
 	<ul class="wpsr_share_wrap">
 	<li class="wpsr_donate" data-width="300" data-height="220" data-url="<?php echo WPSR_ADMIN_URL . 'js/share.php?i=1'; ?>"><a href="#"></a></li>
 	<li class="wpsr_share" data-width="350" data-height="85" data-url="<?php echo WPSR_ADMIN_URL . 'js/share.php?i=2'; ?>"><a href="#"></a></li>
+	<li class="wpsr_pressthis" title="Share a small post about this plugin in your blog !"><a href="press-this.php" target="_blank"></a></li>
 	</ul>
 	
 	<form id="content" method="post">
@@ -153,6 +154,7 @@ function wpsr_admin_page_floating_bar(){
 	</div>
 	
 	<div class="footer">
+	<?php wp_nonce_field('wpsr_floatbts_main_form'); ?>
 	<input type="hidden" name="wpsr_floatbts_selectedbts" id="wpsr_floatbts_selectedbts" value="<?php echo $wpsr_floatbts['selectedbts']; ?>" />
 	<input class="button-primary" type="submit" name="wpsr_floatbts_submit" id="wpsr_floatbts_submit" value="<?php _e('Update', 'wpsr'); ?>" />
 	<input class="button alignright" type="submit" name="wpsr_floatbts_reset" id="wpsr_floatbts_reset" value="  <?php _e('Reset', 'wpsr'); ?>   " />

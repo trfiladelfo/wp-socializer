@@ -6,8 +6,8 @@ Tags: social, social bookmarking, bookmarks, bookmarking, bookmarks menu, share,
 License: GPLv2 or later
 Donate Link: http://bit.ly/wpsrDonate
 Requires at least: 2.8
-Tested up to: 3.4
-Stable tag: 2.4.2
+Tested up to: 3.4.1
+Stable tag: 2.4.3
 
 Super Cool Plugin for inserting all kinds of Social Bookmarking & Sharing buttons. Has customizable Floating Share Bar, Widgets, Shortcodes also.
 
@@ -23,7 +23,7 @@ WP Socializer is an advanced plugin for inserting all kinds of Social bookmarkin
 * Widgets for inserting FB like box & G+ badges in sidebar.
 * Template functions are available for advanced placements.
 
-(Check out the changelog for the new features and fixes in the version **2.4.2**)
+** Note: v2.4.3 is an important security update, fixing the XSS bug in the plugin. Check the changelog for more info **
 
 [youtube="http://www.youtube.com/v/1uimAE8rFYE"]
 
@@ -99,6 +99,12 @@ For custom placement in theme files and posts, check out the following documenta
 [More Screenshots](http://www.aakashweb.com/wordpress-plugins/wp-socializer/#screenshots)
 
 == Changelog ==
+
+= 2.4.3 =
+* XSS Vulnerability issue in the "Services selector" page is fixed.
+* Added nounce to the Admin page forms.
+* Fixed bug in the Twitter social button template.
+* Fixed the collision of the quotes in the excerpt with the HTML tags for the email button.
 
 = 2.4.2 =
 * Facebook like button centered in the left float sharing bar.
