@@ -1,12 +1,23 @@
 /*
  * Copyright 2012 Aakash Chakravarthy - www.aakashweb.com
  * Created for WP Socializer - Wordpress Plugin
+ * v1.2
 */
+
+if(typeof jQuery == 'undefined'){
+	if(typeof document.getElementsByClassName == 'function'){
+		document.getElementsByClassName('wpsr-floatbar-float_left')[0].style.display = 'none';
+		console.log('WP Socializer float bar: There is a Javascript error in the page and the floatbar is hidden');
+	}
+}
 
 jQuery(document).ready(function(){
 	var $floatbar = jQuery(".wpsr-floatbar-float_left");
 	var $anchor = jQuery('.wpsr_floatbts_anchor');
-
+	
+	// Init effects
+	$floatbar.hide().fadeIn(2000);
+	
     // Position the left float bar to the anchor
 	var wpsr_position_floatbar = function(){
 		anchorOffset = jQuery('.wpsr_floatbts_anchor').offset();
@@ -27,7 +38,7 @@ jQuery(document).ready(function(){
 				c.css({position:"fixed", top: "30px"});
 			}else{
 				if(b<=d){
-					c.css({position:"absolute", top: anchorOffset.top + "px",});
+					c.css({position:"absolute", top: anchorOffset.top + "px"});
 				}
 			}
 		});
@@ -37,6 +48,10 @@ jQuery(document).ready(function(){
 	jQuery(window).resize(function(){
 		wpsr_position_floatbar();
 	});
+	
+	window.onload = function(){
+		wpsr_position_floatbar();
+	};
 	
 	wpsr_position_floatbar();
 	

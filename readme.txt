@@ -7,7 +7,7 @@ License: GPLv2 or later
 Donate Link: http://bit.ly/wpsrDonate
 Requires at least: 2.8
 Tested up to: 3.4.1
-Stable tag: 2.4.3
+Stable tag: 2.4.4
 
 Super Cool Plugin for inserting all kinds of Social Bookmarking & Sharing buttons. Has customizable Floating Share Bar, Widgets, Shortcodes also.
 
@@ -23,7 +23,11 @@ WP Socializer is an advanced plugin for inserting all kinds of Social bookmarkin
 * Widgets for inserting FB like box & G+ badges in sidebar.
 * Template functions are available for advanced placements.
 
-** Note: v2.4.3 is an important security update, fixing the XSS bug in the plugin. Check the changelog for more info **
+= New in v2.4.4 =
+* New CSS3 **on-hover effects** for social bookmarking buttons (Magnify and Jump) ([Screenshot-7](http://www.aakashweb.com/wordpress-plugins/wp-socializer/#screenshots)).
+* New "Comments" button for the floating share bar.
+* Updated "Twitter" button icon.
+* Floating share bar Javascript is revised and fade effects are added.
 
 [youtube="http://www.youtube.com/v/1uimAE8rFYE"]
 
@@ -39,6 +43,7 @@ Using WP Socializer, you can insert all these buttons into your site. These butt
 * Pinterest buttons.
 * 3 Kinds of retweet buttons.
 * ... and all kinds of Digg, LinkedIn, Reddit & StumbleUpon buttons
+* Comments button for floating share bar.
 
 = Screenshots =
 
@@ -90,7 +95,7 @@ For custom placement in theme files and posts, check out the following documenta
 4. A Floating Share Bar created using WP Socializer in action.
 5. A dark theme of the floating share bar.
 6. The horizontal mode of the floating share bar.
-7. The dark theme of the share bar.
+7. Magnify, Jump effects and the "Comments" button.
 8. The admin UI showing the buttons inserted into the posts.
 9. The social bookmarking buttons selection page.
 10. The floating share bar settings page.
@@ -99,6 +104,12 @@ For custom placement in theme files and posts, check out the following documenta
 [More Screenshots](http://www.aakashweb.com/wordpress-plugins/wp-socializer/#screenshots)
 
 == Changelog ==
+
+= 2.4.4 =
+* New CSS3 on-hover effects for social bookmarking buttons (Magnify and Jump).
+* New "Comments" button for the floating share bar.
+* Updated "Twitter" button icon.
+* Floating share bar Javascript is revised and fade effects are added.
 
 = 2.4.3 =
 * XSS Vulnerability issue in the "Services selector" page is fixed.

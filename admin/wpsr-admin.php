@@ -763,6 +763,8 @@ function wpsr_admin_page(){
 		<div class="inWindow winSocialBts">
 		<input type="hidden" id="wpsr_socialbt_selected16px" name="wpsr_socialbt_selected16px" value="<?php echo $wpsr_socialbt['selected16px']; ?>" />
 		<input type="hidden" id="wpsr_socialbt_selected32px" name="wpsr_socialbt_selected32px" value="<?php echo $wpsr_socialbt['selected32px']; ?>" />
+		<a href="#settings" class="sbSettingsBt">Settings</a>
+		
 		<h3>Select the required social bookmarking buttons</h3>
 		
 		<div class="section clearfix">
@@ -820,7 +822,7 @@ function wpsr_admin_page(){
 		</div>
 			
 		</div>
-		
+		<a id="settings"></a>
 		<h3><?php _e('Settings', 'wpsr'); ?></h3>
 		<div class="section">
 		<table width="100%" border="0">
@@ -841,9 +843,10 @@ function wpsr_admin_page(){
 		  </tr>
 		  
 		  <tr>
-			<td height="35"><?php _e('Image on Hover effect', 'wpsr'); ?> </td>
+			<td height="35"><?php _e('Image on Hover effect', 'wpsr'); ?> <small class="redText">New effects</small></td>
 			<td><select id="wpsr_socialbt_effect" name="wpsr_socialbt_effect">
-			  <option <?php echo $wpsr_socialbt['effect'] == 'jump' ? ' selected="selected"' : ''; ?> value="jump">Jump Effect</option>
+			  <option <?php echo $wpsr_socialbt['effect'] == 'magnify' ? ' selected="selected"' : ''; ?> value="magnify">Magnify Effect (New)</option>
+			  <option <?php echo $wpsr_socialbt['effect'] == 'jump' ? ' selected="selected"' : ''; ?> value="jump">Jump Effect (Updated)</option>
 			  <option <?php echo $wpsr_socialbt['effect'] == 'opacity' ? ' selected="selected"' : ''; ?> value="opacity">Transparency Effect</option>
 			  <option <?php echo $wpsr_socialbt['effect'] == 'none' ? ' selected="selected"' : ''; ?> value="none"><?php _e('No Effect', 'wpsr'); ?></option>
 			</select></td>

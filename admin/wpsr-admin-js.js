@@ -121,7 +121,7 @@ $j(document).ready(function(){
 		var text =  $j(this).siblings('.sbName').text();
 		var appendList = '<li><span class="sbName">' + text + '</span><span class="sbDelete">x</span></li>';
 		var pixel = $j(this).attr('data-pixel');
-		
+	
 		$j('#sbSelList_' + pixel + 'px' ).append(appendList);
 		wpsr_socialbt_selectedgenerator();
 	});

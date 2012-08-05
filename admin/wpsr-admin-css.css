@@ -323,6 +323,16 @@
 	cursor: pointer;
 	color: #FF0000;
 }
+.sbSettingsBt{
+	font-size: 18px;
+	float: right;
+	margin-top: -60px;
+	margin-right: 10px;
+	color: #fff;
+	text-decoration: none;
+	background: #00CC00;
+	padding: 10px;
+}
 
 /************/
 

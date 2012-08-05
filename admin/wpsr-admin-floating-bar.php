@@ -116,6 +116,7 @@ function wpsr_admin_page_floating_bar(){
 	<h3>Select the buttons</h3>
 	<div class="section">
 		<h4>Available buttons &nbsp; <small class="smallText">(Click to add buttons)</small></h4>
+		<small><span class="redText">New:</span> Try out the new comments button (Beta) (<a href="http://www.aakashweb.com/wordpress-plugins/wp-socializer/" target="_blank">Feedback</a>)</small>
 		<ul class="floatBtsList clearfix">
 			<?php
 				global $wpsr_floating_bar_bts;

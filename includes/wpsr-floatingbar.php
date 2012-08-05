@@ -1,7 +1,7 @@
 <?php
 /*
  * Floating share bar Processor code for WP Socializer Plugin
- * Version : 1.1
+ * Version : 1.2
  * Since : v2.4
  * Author : Aakash Chakravarthy
 */
@@ -77,4 +77,41 @@ function wpsr_floatingbts_anchor($content = ''){
 	}
 }
 add_action('the_content', 'wpsr_floatingbts_anchor');
+
+## Floating sharebar comments button (Beta)
+function wpsr_floatingbts_commentbt($args){
+	global $post;
+	
+	$defaults = array (
+		'type' => 'vertical'
+	);
+	
+	$args = wp_parse_args($args, $defaults);
+	extract($args, EXTR_SKIP);
+	
+	$comments_num = get_comments_number();
+
+	if ( comments_open() ) {
+		if($type == 'vertical'){
+			return '<div class="wpsr_commentsbt">
+				<div class="wpsr_cmt_bubble" title="Comments"><a href="' . get_comments_link() .'">' . $comments_num . '</a></div>
+				<div class="wpsr_cmt_button"><a href="' . get_comments_link() .'">Comment</a></div>
+			</div>';
+		}else{
+		
+			if ( $comments_num == 0 ) {
+				$comments = __('No Comments');
+			} elseif ( $comments_num > 1 ) {
+				$comments = $comments_num . __(' Comments');
+			} else {
+				$comments = __('1 Comment');
+			}
+		
+			return '<a href="' . get_comments_link() .'">' . $comments . '</a>';
+		}
+	} else {
+		return '';
+	}
+	
+}
 ?>

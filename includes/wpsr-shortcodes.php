@@ -1,7 +1,7 @@
 <?php
 /*
  * Shortcodes for WP Socializer plugin
- * Version : 2.1
+ * Version : 2.2
  * Author : Aakash Chakravarthy
  * Since : 2.0
  */
@@ -85,4 +85,10 @@ function wpsr_pinterest_shortcode($atts){
 	return wpsr_pinterest($atts) . wpsr_pinterest_script();
 }
 add_shortcode('wpsr_pinterest', 'wpsr_pinterest_shortcode');
+
+## Comments Shortcode - Floating sharebar - since v2.4.4 (Beta)
+function wpsr_commentsbt_shortcode($atts){
+	return wpsr_floatingbts_commentbt($atts);
+}
+add_shortcode('wpsr_commentsbt', 'wpsr_commentsbt_shortcode');
 ?>

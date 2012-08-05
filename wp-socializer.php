@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: WP Socializer
-Version: 2.4.3
+Version: 2.4.4
 Plugin URI: http://www.aakashweb.com/
 Description: WP Socializer is an advanced plugin for inserting all kinds of Social bookmarking & sharing buttons. It has super cool features to insert the buttons into posts, sidebar. It also has Floating sharebar. <a href="http://youtu.be/1uimAE8rFYE" target="_blank">Check out the demo video</a>.
 Author: Aakash Chakravarthy
@@ -14,7 +14,7 @@ if(!defined('WP_CONTENT_URL')) {
 	$wpsr_url = WP_CONTENT_URL . '/plugins/' . plugin_basename(dirname(__FILE__)) . '/';
 }
 
-define('WPSR_VERSION', '2.4.3');
+define('WPSR_VERSION', '2.4.4');
 define('WPSR_AUTHOR', 'Aakash Chakravarthy');
 define('WPSR_URL', $wpsr_url);
 define('WPSR_PUBLIC_URL', WPSR_URL . 'public/');
@@ -957,6 +957,10 @@ $wpsr_floating_bar_bts = array(
 	'Pinterest' => array(
 		'float_left' => '[wpsr_pinterest type="vertical"]', 
 		'bottom_fixed' => '[wpsr_pinterest type="horizontal"]', 
+	),
+	'Comments' => array(
+		'float_left' => '[wpsr_commentsbt type="vertical"]', 
+		'bottom_fixed' => '[wpsr_commentsbt type="horizontal"]', 
 	),
 	'Email' => array(
 		'float_left' => '[wpsr_socialbts output="singles" type="32px" services="email" sprites=0 effect=none]',
