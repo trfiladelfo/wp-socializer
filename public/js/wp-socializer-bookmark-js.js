@@ -1,5 +1,5 @@
 /*
- * Copyright 2011 Aakash Chakravarthy - www.aakashweb.com
+ * Copyright 2012 Aakash Chakravarthy - www.aakashweb.com
  * Created for WP Socializer - Wordpress Plugin
 */
 

@@ -5,7 +5,7 @@
  * Added since WP Socializer v2.0
 */
 function wpsr_insert_shortcode(type, edparam) {
-	var choice = prompt('Select the button to insert: \n\n1.Social buttons \n2.Addthis \n3.Sharethis \n4.Retweet \n5.Google Buzz \n6.Google +1 \n7.Digg \n8.Facebook \n9.StumbleUpon \n10.Reddit \n\nExample: 4 \n\n Please refer "http://bit.ly/wpsrParams" for parameters.', '');
+	var choice = prompt('Select the button to insert: \n\n1.Social buttons \n2.Addthis \n3.Sharethis \n4.Retweet \n5.Google +1 \n6.Digg \n7.Facebook \n8.StumbleUpon \n9.Reddit \n10.LinkedIn \n11.Pinterest \n\nExample: 4 \n\n Please refer "http://bit.ly/wpsrParams" for parameters.', '');
 	var btncode;
 	
 	if (choice !== null) {

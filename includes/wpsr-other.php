@@ -1,20 +1,23 @@
 <?php
 /*
  * Pinterest, Reddit, StumbleUpon and LinkedIn buttons Processor code for WP Socializer Plugin
- * Version : 2.2
+ * Version : 2.3
  * Since v2.0
  * Author : Aakash Chakravarthy
 */
 
 // StumbleUpon button
 function wpsr_stumbleupon_script(){
-	return "\n<!-- WP Socializer - StumbleUpon Script -->\n<script type=\"text/javascript\"> 
- (function() { 
-     var li = document.createElement('script'); li.type = 'text/javascript'; li.async = true; 
-     li.src = window.location.protocol + '//platform.stumbleupon.com/1/widgets.js'; 
-     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(li, s); 
- })(); 
- </script>\n<!-- WP Socializer - StumbleUpon Script -->\n";
+	return "
+<!-- WP Socializer - StumbleUpon Script -->
+<script type=\"text/javascript\"> 
+(function() { 
+   var li = document.createElement('script'); li.type = 'text/javascript'; li.async = true; 
+   li.src = window.location.protocol + '//platform.stumbleupon.com/1/widgets.js'; 
+   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(li, s); 
+})(); 
+</script>
+<!-- WP Socializer - StumbleUpon Script -->\n";
 }
 
 function wpsr_stumbleupon($args = ''){
@@ -87,9 +90,10 @@ function wpsr_stumbleupon_rss_bt(){
 
 // Pinterest button
 function wpsr_pinterest_script(){
-	return "\n<!-- WP Socializer - Pinterest Script -->\n" . 
-	'<script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>'.
-	"\n<!-- WP Socializer - Pinterest Script -->\n";
+	return "
+<!-- WP Socializer - Pinterest Script -->\n" . 
+'<script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>'.
+"\n<!-- WP Socializer - Pinterest Script -->\n";
 }
 
 function wpsr_pinterest($args = ''){
@@ -237,26 +241,16 @@ function wpsr_reddit_rss_bt(){
 // LinkedIn button
 function wpsr_linkedin_script(){
 	// Return the script
-	return "\n<!-- WP Socializer - LinkedIn Script -->\n".
-	'<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script>'.
-	"\n<!-- WP Socializer - End LinkedIn Script -->\n";
-}
-
-function wpsr_linkedin_bt_used(){
-
-	## Get template data
-	$wpsr_template1 = get_option('wpsr_template1_data');
-	$wpsr_template2 = get_option('wpsr_template2_data');
-	
-	$wpsr_template_content = $wpsr_template1['content'] . $wpsr_template2['content'];
-	$is_linkedin_used = strpos_arr($wpsr_template_content, array('{linkedin-standard}', '{linkedin-right}', '{linkedin-top}'));
-
-	if ($is_linkedin_used === false) {
-		return 0;
-	} else {
-		return 1;
-	}
-	
+	return "
+<!-- WP Socializer - LinkedIn Script -->\n".
+"<script type=\"text/javascript\">
+	(function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'http://platform.linkedin.com/in.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>".
+"\n<!-- WP Socializer - End LinkedIn Script -->\n";
 }
 
 function wpsr_linkedin($args = ''){

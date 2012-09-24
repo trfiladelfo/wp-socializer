@@ -1,7 +1,7 @@
 <?php
 /*
  * Facebook buttons Processor code for WP Socializer Plugin
- * Version : 1.7
+ * Version : 1.8
  * Author : Aakash Chakravarthy
 */
 
@@ -37,32 +37,9 @@ function wpsr_facebook($args = ''){
 	switch($output){
 		// Output ordinary button
 		case 'button':
-			
-			if($style == 'standard' && $showfaces == 1){
-				$height = 80;
-			}
-			if ($style == 'standard' && $showfaces == 0){
-				$height = 35;
-			}
-			if ($style == 'button_count'){
-				$height = 21;
-			}
-			if ($style == 'box_count'){
-				$height = 62;
-			}
-
-			$facebook_processed .= 
-			'<iframe src="http://www.facebook.com/plugins/like.php?' . 
-			'&amp;href=' . $url . 
-			'&amp;layout=' . $style . 
-			'&amp;show_faces=' . $showfaces . 
-			'&amp;width=' . $width . 
-			'&amp;action=' . $verb . 
-			'&amp;font=' . $font . 
-			'&amp;colorscheme=' . $color . 
-			'&amp;height=' . $height . 
-			'&amp;appId=' . $appid . 
-			'" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:' . $width . 'px; height:' . $height . 'px;" allowTransparency="true"></iframe>'; 
+				
+			$facebook_processed .=
+			'<div class="fb-like" data-href="' . $url . '" data-send="' . (($type == 'send') ? 'true' : 'false') . '" data-layout="' . $style . '" data-width="' . $width . '" data-show-faces="' . $showfaces . '" data-action="' . $verb . '" data-font="' . $font . '" data-colorscheme="' . $color . '"></div>';
 			
 		break;
 		

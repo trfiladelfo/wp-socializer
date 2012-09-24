@@ -1,9 +1,9 @@
 <?php
 /*
 Plugin Name: WP Socializer
-Version: 2.4.4
+Version: 2.4.5
 Plugin URI: http://www.aakashweb.com/
-Description: WP Socializer is an advanced plugin for inserting all kinds of Social bookmarking & sharing buttons. It has super cool features to insert the buttons into posts, sidebar. It also has Floating sharebar. <a href="http://youtu.be/1uimAE8rFYE" target="_blank">Check out the demo video</a>.
+Description: WP Socializer is an advanced plugin for inserting all kinds of Social bookmarking & sharing buttons. It has super cool features to insert the buttons into posts, sidebar. It also has Floating sharebar and Smart load feature. <a href="http://youtu.be/1uimAE8rFYE" target="_blank">Check out the demo video</a>.
 Author: Aakash Chakravarthy
 Author URI: http://www.aakashweb.com/
 */
@@ -14,7 +14,7 @@ if(!defined('WP_CONTENT_URL')) {
 	$wpsr_url = WP_CONTENT_URL . '/plugins/' . plugin_basename(dirname(__FILE__)) . '/';
 }
 
-define('WPSR_VERSION', '2.4.4');
+define('WPSR_VERSION', '2.4.5');
 define('WPSR_AUTHOR', 'Aakash Chakravarthy');
 define('WPSR_URL', $wpsr_url);
 define('WPSR_PUBLIC_URL', WPSR_URL . 'public/');
@@ -927,36 +927,36 @@ $wpsr_default_templates = array(
 
 $wpsr_floating_bar_bts = array(
 	'Retweet' => array(
-		'float_left' => '[wpsr_retweet service="twitter" type="normal"]', 
-		'bottom_fixed' => '[wpsr_retweet service="twitter"]', 
+		'float_left' => '[wpsr_retweet service="twitter" type="normal" script="0"]', 
+		'bottom_fixed' => '[wpsr_retweet service="twitter" script="0"]', 
 	),
 	'Google +1' => array(
-		'float_left' => '[wpsr_plusone type="tall"]', 
-		'bottom_fixed' => '[wpsr_plusone type="medium"]', 
+		'float_left' => '[wpsr_plusone type="tall" script="0"]', 
+		'bottom_fixed' => '[wpsr_plusone type="medium" script="0"]', 
 	),
 	'Digg' => array(
-		'float_left' => '[wpsr_digg type="DiggMedium"]', 
-		'bottom_fixed' => '[wpsr_digg type="DiggCompact"]', 
+		'float_left' => '[wpsr_digg type="DiggMedium" script="0"]', 
+		'bottom_fixed' => '[wpsr_digg type="DiggCompact" script="0"]', 
 	),
 	'Facebook' => array(
 		'float_left' => '[wpsr_facebook style="box_count" width="48"]', // Added "width" in v2.4.2
 		'bottom_fixed' => '[wpsr_facebook style="button_count"]', 
 	),
 	'StumbleUpon' => array(
-		'float_left' => '[wpsr_stumbleupon type="5"]', 
-		'bottom_fixed' => '[wpsr_stumbleupon type="1"]', 
+		'float_left' => '[wpsr_stumbleupon type="5" script="0"]', 
+		'bottom_fixed' => '[wpsr_stumbleupon type="1" script="0"]', 
 	),
 	'Reddit' => array(
 		'float_left' => '[wpsr_reddit type="2"]', 
 		'bottom_fixed' => '[wpsr_reddit type="1"]', 
 	),
 	'LinkedIn' => array(
-		'float_left' => '[wpsr_linkedin type="top"]', 
-		'bottom_fixed' => '[wpsr_linkedin type="right"]', 
+		'float_left' => '[wpsr_linkedin type="top" script="0"]', 
+		'bottom_fixed' => '[wpsr_linkedin type="right" script="0"]', 
 	),
 	'Pinterest' => array(
-		'float_left' => '[wpsr_pinterest type="vertical"]', 
-		'bottom_fixed' => '[wpsr_pinterest type="horizontal"]', 
+		'float_left' => '[wpsr_pinterest type="vertical" script="0"]', 
+		'bottom_fixed' => '[wpsr_pinterest type="horizontal" script="0"]', 
 	),
 	'Comments' => array(
 		'float_left' => '[wpsr_commentsbt type="vertical"]', 
@@ -1240,7 +1240,7 @@ function wpsr_process_template($no, $rss = 0){
 		wpsr_sharethis_bt('regular'), 			wpsr_sharethis_bt('regular2'),			wpsr_sharethis_bt('buttons'), 
 		wpsr_sharethis_bt('classic'), 			wpsr_plusone_bt('small'),				wpsr_plusone_bt('medium'), 
 		wpsr_plusone_bt('standard'),			wpsr_plusone_bt('tall'),				wpsr_retweet_bt(), 
-		wpsr_digg_bt(), 						wpsr_facebook_bt('like'),				'' /* Facebook Send button not available */, 
+		wpsr_digg_bt(), 						wpsr_facebook_bt('like'),				wpsr_facebook_bt('send'), 
 		wpsr_reddit_bt('1'), 					wpsr_reddit_bt('2'),					wpsr_reddit_bt('3'), 
 		wpsr_stumbleupon_bt('1'),				wpsr_stumbleupon_bt('2'),				wpsr_stumbleupon_bt('3'), 
 		wpsr_stumbleupon_bt('5'),				wpsr_linkedin_bt('standard'),			wpsr_linkedin_bt('right'),
@@ -1419,7 +1419,7 @@ function wpsr_button_used($name){
 
 ## Add the button scripts to the header
 function wpsr_scripts_adder(){
-
+	
 	## Social Button options
 	$wpsr_socialbt = get_option('wpsr_socialbt_data');
 	$wpsr_socialbt_loadcss = $wpsr_socialbt['loadcss'];
@@ -1432,48 +1432,87 @@ function wpsr_scripts_adder(){
 	$wpsr_retweet = get_option('wpsr_retweet_data');
 	$wpsr_retweet_service = $wpsr_retweet['service'];
 	
+	## Get Facebook Options
+	$wpsr_facebook = get_option('wpsr_facebook_data');
+	
+	# Get the settings
+	$wpsr_settings = get_option('wpsr_settings_data');
+	
+	$scripts = array();
+	
 	if(wpsr_button_used('retweet') == 1 && $wpsr_retweet_service == 'topsy'){
-		echo wpsr_retweet_topsy_script();
+		array_push($scripts, '"http://cdn.topsy.com/topsy.js?init=topsyWidgetCreator"');
 	}
 	
 	if(wpsr_button_used('retweet') == 1 && $wpsr_retweet_service == 'twitter'){
-		echo wpsr_retweet_twitter_script();
+		array_push($scripts, '"http://platform.twitter.com/widgets.js"');
+	}
+	
+	if(wpsr_button_used('facebook') == 1){
+		$fbappid = $wpsr_facebook['appid'];
+		$fbparam = ($fbappid == '') ? '' : '&appId=' . $fbappid;
+		array_push($scripts, '"http://connect.facebook.net/en_US/all.js#xfbml=1' . $fbparam . '"');
 	}
 	
 	if(wpsr_button_used('digg') == 1){
-		echo wpsr_digg_script();
+		array_push($scripts, '"http://widgets.digg.com/buttons.js"');
 	}
 	
 	if(wpsr_button_used('addthis') == 1){
-		echo wpsr_addthis_script();
+		echo wpsr_addthis_config();
+		array_push($scripts, '"http://s7.addthis.com/js/300/addthis_widget.js"');
 	}
 	
 	if(wpsr_button_used('sharethis') == 1){
-		echo wpsr_sharethis_script();
+		echo wpsr_sharethis_config();
+		array_push($scripts, '"http://w.sharethis.com/button/buttons.js"');
 	}
 	
 	if(wpsr_button_used('plusone') == 1){
-		echo wpsr_plusone_script();
+		array_push($scripts, '"https://apis.google.com/js/plusone.js"');
 	}
 	
 	if(wpsr_button_used('linkedin') == 1){
-		echo wpsr_linkedin_script();
+		array_push($scripts, '"http://platform.linkedin.com/in.js"');
 	}
 	
 	if(wpsr_button_used('stumbleupon') == 1){
-		echo wpsr_stumbleupon_script();
+		array_push($scripts, '"http://platform.stumbleupon.com/1/widgets.js"');
 	}
-
+	
+	if(wpsr_button_used('pinterest') == 1){
+		array_push($scripts, '"http://assets.pinterest.com/js/pinit.js"');
+	}
+	
+	$scriptsCount = count($scripts);
+	$scriptsVar = implode(',', $scripts);
+	
+	if($wpsr_settings['smartload'] == 'normal' || $wpsr_settings['smartload'] == ''){
+		$scriptsFnc = 'wpsrload();';
+	/*}elseif($wpsr_settings['smartload'] == 'window'){
+		$scriptsFnc = 'function wpsraddload(a){if(window.addEventListener){window.addEventListener("load", a, false);}else if (window.attachEvent){window.attachEvent("onload", a);}} wpsraddload(wpsrload);';*/
+	}elseif($wpsr_settings['smartload'] == 'timeout'){
+		$scriptsFnc = 'setTimeout(wpsrload, ' . $wpsr_settings['smartload_timeout']*1000 . ');';
+	}
+	
+	if(!empty($scripts)){
+echo "\n<!--WP Socializer v" . WPSR_VERSION . " - Scripts Loader-->";
+echo '
+<script type="text/javascript">
+var wu=[' . $scriptsVar . '],wc=' . $scriptsCount . ';
+function wpsrload(){ for(var i=0;i<wc;i++){wpsrasync(wu[i]);} }
+function wpsrasync(u){var a=document.createElement("script");a.type="text/javascript";a.async=true;a.src=u;var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(a,s);} ' . $scriptsFnc . '
+</script>
+';
+echo "<!--End WP Socializer - Scripts Loader-->\n";
+	}
+	
 }
 
 ## Add the misc/small scripts to the footer
 function wpsr_footer(){
 	if(wpsr_addtofavorites_bt_used()){
 		wpsr_addtofavorites_script();
-	}
-	
-	if(wpsr_button_used('pinterest') == 1){
-		echo wpsr_pinterest_script();
 	}
 }
 
@@ -1485,6 +1524,7 @@ if(!$wpsr_settings['disablewpsr']){
 	}
 	
 	add_action('wp_footer', 'wpsr_footer');
+	
 }
 
 ## Add notification to the dashboard right now
@@ -1544,7 +1584,7 @@ function wpsr_register_wpsrbutton_tinymce($buttons) {
 }
 
 function wpsr_add_wpsrbutton_tinymce($plugin_array) {
-   $plugin_array['wpsrbutton'] = WPSR_ADMIN_URL . 'js/tinymce/editor_plugin.js';
+   $plugin_array['wpsrbutton'] = WPSR_ADMIN_URL . 'js/tinymce/editor_plugin.js?v=' . WPSR_VERSION;
    return $plugin_array;
 }
 

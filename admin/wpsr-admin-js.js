@@ -1,7 +1,7 @@
 /* 
  * WP Socializer - Admin page functions
  * Author: Aakash Chakravarthy
- * Version: 2.4
+ * Version: 2.5
  *
  */
 
@@ -268,6 +268,21 @@ $j(document).ready(function(){
 	});
 	if($j('#wpsr_facebook_counter').val() == '1'){
 		$j('#wpsr_facebook_counterplacement').slideDown();
+	}
+	
+	// smartload settings
+	
+	$j('#wpsr_lazload_timeout').hide();
+	$j('#wpsr_settings_smartload').change(function(){
+		if($j(this).val() == 'timeout'){
+			$j('#wpsr_lazload_timeout').slideDown();
+		}
+		if($j(this).val() != 'timeout'){
+			$j('#wpsr_lazload_timeout').slideUp();
+		}
+	});
+	if($j('#wpsr_settings_smartload').val() == 'timeout'){
+		$j('#wpsr_lazload_timeout').slideDown();
 	}
 
 	// Live search

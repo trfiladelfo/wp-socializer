@@ -1,32 +1,21 @@
 <?php
 /*
  * Google +1 button Processor code for WP Socializer Plugin
- * Version : 3.0
+ * Version : 3.1
  * Author : Aakash Chakravarthy
 */
 
 function wpsr_plusone_script(){
 	// Return the script
 	return "\n<!-- WP Socializer - +1 Script -->\n".
-	'<script type="text/javascript" src="http://apis.google.com/js/plusone.js"></script>'.
-	"\n<!-- WP Socializer - End +1 Script -->\n";
-}
-
-function wpsr_plusone_bt_used(){
-
-	## Get template data
-	$wpsr_template1 = get_option('wpsr_template1_data');
-	$wpsr_template2 = get_option('wpsr_template2_data');
-	
-	$wpsr_template_content = $wpsr_template1['content'] . $wpsr_template2['content'];
-	$is_plusonebt_used = strpos_arr($wpsr_template_content, array('{plusone-small}', '{plusone-medium}', '{plusone-standard}', '{plusone-tall}'));
-
-	if ($is_plusonebt_used === false) {
-		return 0;
-	} else {
-		return 1;
-	}
-	
+"<script type=\"text/javascript\">
+(function() {
+   var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+   po.src = 'https://apis.google.com/js/plusone.js';
+   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+})();
+</script>".
+"\n<!-- WP Socializer - End +1 Script -->\n";
 }
 
 function wpsr_plusone($args = ''){

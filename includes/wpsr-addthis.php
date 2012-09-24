@@ -1,25 +1,9 @@
 <?php
 /*
  * Addthis button Processor code for WP Socializer Plugin
- * Version : 2.0
+ * Version : 2.1
  * Author : Aakash Chakravarthy
 */
-
-function wpsr_addthis_is_used(){
-	## Get template data
-	$wpsr_template1 = get_option('wpsr_template1_data');
-	$wpsr_template2 = get_option('wpsr_template2_data');
-	
-	$wpsr_template1_content = $wpsr_template1['content'] . $wpsr_template2['content'];
-	$is_addthis_used = strpos_arr($wpsr_template1_content, array("{addthis-bt}", "{addthis-tb-16px}", "{addthis-tb-32px}", "{addthis-sc}"));
-
-	if ($is_addthis_used === false){
-		return 0;
-	} else {
-		return 1;
-	}
-	
-}
 
 function wpsr_addthis_uniqueid(){
     $rand_no  = dechex(mt_rand(0,min(0xffffffff,mt_getrandmax())));
@@ -34,7 +18,7 @@ function wpsr_addthis_uniqueid(){
     return $unique_id;
 }
 
-function wpsr_addthis_script(){
+function wpsr_addthis_config(){
 	## Get Addthis Options
 	$wpsr_addthis = get_option('wpsr_addthis_data');
 	
@@ -47,9 +31,9 @@ function wpsr_addthis_script(){
 	
 	# Config settings
 	if($wpsr_addthis['username'] == ''){
-		$wpsr_addthis_username = '&amp;username=' . wpsr_addthis_uniqueid();
+		$wpsr_addthis_username = 'username: "' . wpsr_addthis_uniqueid() . '"' . ",\n";
 	}else{
-		$wpsr_addthis_username = '&amp;username=' . $wpsr_addthis['username'];
+		$wpsr_addthis_username = 'username: "' . $wpsr_addthis['username'] . '"' . ",\n";
 	}
 	
 	if($wpsr_addthis['language'] != 'lg-share-'){
@@ -80,7 +64,7 @@ function wpsr_addthis_script(){
 		$wpsr_addthis_clickback = 'data_track_clickback: false' . "\n";
 	}
 	
-	$wpsr_addthis_config = $wpsr_addthis_btbrand . $wpsr_addthis_btheadclr . $wpsr_addthis_btheadbgclr . $wpsr_addthis_clickback;
+	$wpsr_addthis_config = $wpsr_addthis_username . $wpsr_addthis_btbrand . $wpsr_addthis_btheadclr . $wpsr_addthis_btheadbgclr . $wpsr_addthis_clickback;
 	
 	$wpsr_addthis_settings  = 
 	"\n<script type=\"text/javascript\">\n" .
@@ -88,15 +72,16 @@ function wpsr_addthis_script(){
 	"var addthis_config = { \n" . 
 	$wpsr_addthis_config .
 	"}\n//-->" .
-	"</script>\n" .
-	'<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#' .
-	$wpsr_addthis_username .
-	'"></script>';
+	"</script>\n";
 	
 	// Return the script
-	return "\n<!-- WP Socializer - AddThis Script -->" .
+	return "\n<!-- WP Socializer - AddThis Config -->" .
 	$wpsr_addthis_settings . 
-	"\n<!-- WP Socializer - End AddThis Script -->\n";
+	"<!-- WP Socializer - End AddThis Config -->\n";
+}
+
+function wpsr_addthis_script(){
+	return '<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>';
 }
 
 function wpsr_addthis($args = ''){

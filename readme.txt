@@ -6,8 +6,8 @@ Tags: social, social bookmarking, bookmarks, bookmarking, bookmarks menu, share,
 License: GPLv2 or later
 Donate Link: http://bit.ly/wpsrDonate
 Requires at least: 2.8
-Tested up to: 3.4.1
-Stable tag: 2.4.4
+Tested up to: 3.4.2
+Stable tag: 2.4.5
 
 Super Cool Plugin for inserting all kinds of Social Bookmarking & Sharing buttons. Has customizable Floating Share Bar, Widgets, Shortcodes also.
 
@@ -19,15 +19,17 @@ WP Socializer is an advanced plugin for inserting all kinds of Social bookmarkin
 
 * Insert all kinds of social buttons in posts & pages.
 * **Floating share bar** (both horizontal & vertical)
+* Faster and Optimized loading with **Smart load** feature.
 * Has Shortcodes for all buttons.
 * Widgets for inserting FB like box & G+ badges in sidebar.
 * Template functions are available for advanced placements.
 
-= New in v2.4.4 =
-* New CSS3 **on-hover effects** for social bookmarking buttons (Magnify and Jump) ([Screenshot-7](http://www.aakashweb.com/wordpress-plugins/wp-socializer/#screenshots)).
-* New "Comments" button for the floating share bar.
-* Updated "Twitter" button icon.
-* Floating share bar Javascript is revised and fade effects are added.
+= New in v2.4.5 =
+* All the Buttons now load faster with "Smart Load" async feature.
+* Load button scripts after a specific time (Smart Load).
+* Facebook button now uses HTML5 code instead of iframe.
+* Facebook Send button now available.
+* TinyMCE toolbar button now updated.
 
 [youtube="http://www.youtube.com/v/1uimAE8rFYE"]
 
@@ -104,6 +106,13 @@ For custom placement in theme files and posts, check out the following documenta
 [More Screenshots](http://www.aakashweb.com/wordpress-plugins/wp-socializer/#screenshots)
 
 == Changelog ==
+
+= 2.4.5 =
+* New "Smart Load" feature to load buttons faster using async method.
+* Can load button scripts after a specific time (Smart Load).
+* Facebook button now uses HTML5 code instead of iframe.
+* Facebook Send button now available.
+* TinyMCE toolbar button now updated.
 
 = 2.4.4 =
 * New CSS3 on-hover effects for social bookmarking buttons (Magnify and Jump).

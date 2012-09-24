@@ -1,7 +1,7 @@
 /*
  * Copyright 2012 Aakash Chakravarthy - www.aakashweb.com
  * Created for WP Socializer - Wordpress Plugin
- * v1.2
+ * v1.3
 */
 
 if(typeof jQuery == 'undefined'){
@@ -49,9 +49,11 @@ jQuery(document).ready(function(){
 		wpsr_position_floatbar();
 	});
 	
-	window.onload = function(){
-		wpsr_position_floatbar();
-	};
+	if(window.addEventListener){
+		window.addEventListener("load", wpsr_position_floatbar, false);}
+	else if (window.attachEvent){
+		window.attachEvent("onload", wpsr_position_floatbar);
+	}
 	
 	wpsr_position_floatbar();
 	

@@ -1,7 +1,7 @@
 <?php
 /*
  * Sharethis buttons Processor code for WP Socializer Plugin
- * Version : 2.1
+ * Version : 2.2
  * Author : Aakash Chakravarthy
 */
 
@@ -18,7 +18,7 @@ function wpsr_sharethis_pubkey(){
 	return $key;
 }
 
-function wpsr_sharethis_script(){
+function wpsr_sharethis_config(){
 	## Sharethis options
 	$wpsr_sharethis = get_option('wpsr_sharethis_data');
 	
@@ -26,25 +26,13 @@ function wpsr_sharethis_script(){
 	$wpsr_sharethis_pubkey = ($wpsr_sharethis_pubkey == '') ? wpsr_sharethis_pubkey() : $wpsr_sharethis_pubkey;
 	
 	// Return the script
-	return "\n<!-- WP Socializer - ShareThis Script -->\n" .
-	'<script charset="utf-8" type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script><script type="text/javascript">stLight.options({publisher:\'' . $wpsr_sharethis_pubkey . '\'});var st_type=\'wordpress\';</script>' .
-	"\n<!-- WP Socializer - End ShareThis Script -->\n";
+	return "\n<!-- WP Socializer - ShareThis Config -->\n" .
+	'<script type="text/javascript">stLight.options({publisher:\'' . $wpsr_sharethis_pubkey . '\'});var st_type=\'wordpress\';</script>' .
+	"\n<!-- WP Socializer - End ShareThis Config -->\n";
 }
 
-function wpsr_sharethis_is_used(){
-	## Get template data
-	$wpsr_template1 = get_option('wpsr_template1_data');
-	$wpsr_template2 = get_option('wpsr_template2_data');
-	
-	$wpsr_template1_content = $wpsr_template1['content'] . $wpsr_template2['content'];
-	$is_sharethis_used = strpos_arr($wpsr_template1_content, array("{sharethis-large}", "{sharethis-hcount}", "{sharethis-vcount}", "{sharethis-regular}", "{sharethis-regular2}", "{sharethis-bt}", "{sharethis-classic}"));
-
-	if ($is_sharethis_used === false) {
-		return 0;
-	} else {
-		return 1;
-	}
-	
+function wpsr_sharethis_script(){
+	return '<script charset="utf-8" type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>';
 }
 
 function wpsr_sharethis($args = ''){

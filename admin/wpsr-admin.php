@@ -18,7 +18,7 @@ add_action('admin_menu', 'wpsr_admin_menu');
 
 ## Load the Javascripts
 function wpsr_admin_js() {
-	wp_register_script('wpsr-admin-js', WPSR_ADMIN_URL . 'wpsr-admin-js.js');
+	wp_register_script('wpsr-admin-js', WPSR_ADMIN_URL . 'wpsr-admin-js.js?v=' . WPSR_VERSION);
 	$pages = array('wp_socializer', 'wp_socializer_other', 'wp_socializer_floating_bar');
 	
 	if (isset($_GET['page']) && (in_array($_GET['page'], $pages))){
@@ -83,7 +83,7 @@ echo
 			<span class="admSprites facebookIcon"></span>Facebook
 			<ul class="childMenu">
 				<li openTag="{facebook-like}">Like button</li>
-				<li style="opacity:0.2" title="Not available">Like button + Send button</li>
+				<li openTag="{facebook-send}">Like button + Send button</li>
 			</ul>
 		</li>
 		
@@ -305,6 +305,8 @@ function wpsr_reset_values(){
 	update_option("wpsr_template2_data", $wpsr_template2);
 	
 	## Settings Defaults
+	$wpsr_settings['smartload'] = 'normal';
+	$wpsr_settings['smartload_timeout'] = '1';
 	$wpsr_settings['rssoutput'] = '';
 	$wpsr_settings['bitlyusername'] = '';
 	$wpsr_settings['bitlyapi'] = '';
@@ -453,6 +455,8 @@ function wpsr_admin_page(){
 		}
 		
 		## Settings options
+		$wpsr_settings['smartload'] = $_POST['wpsr_settings_smartload'];
+		$wpsr_settings['smartload_timeout'] = $_POST['wpsr_settings_smartload_timeout'];
 		$wpsr_settings['rssurl'] = $_POST['wpsr_settings_rssurl'];
 		$wpsr_settings['bitlyusername'] = $_POST['wpsr_settings_bitlyusername'];
 		$wpsr_settings['bitlyapi'] = $_POST['wpsr_settings_bitlyapi'];
@@ -559,6 +563,12 @@ function wpsr_admin_page(){
 				<p>If you want to use your own customized button set for your site, then just move further to create your customized buttons template.</p>
 				
 				<div class="startBt" data-tab="2"><span>Manual customization</span></div>
+				
+				<h5>Give 5 star rating</h5>
+				<p class="note">If you like this plugin then please give <a href="http://wordpress.org/extend/plugins/wp-socializer/" target="_blank"><img src="<?php echo WPSR_ADMIN_URL; ?>images/five-star.png" align="absmiddle"/></a> rating in the WP page to show the quality and worth of the plugin.</p>
+				
+				<h5>Report bugs</h5>
+				<p class="note">If you notice a bug in the plugin, report it immediately in the <a href="http://www.aakashweb.com/forum/" target="_blank">Support Forum</a>.</p>
 				
 			</div>
 			
@@ -671,6 +681,23 @@ function wpsr_admin_page(){
 		</div><!-- Tab - 3-->
 		
 		<div id="tab-4">
+			<h3>Smart load <small class="redText">New !</small></h3>
+			<div class="section">
+				<table width="100%" height="39" border="0">
+				   <tr>
+					<td width="49%" height="35">Load the button scripts</td>
+					<td width="51%"><select id="wpsr_settings_smartload" name="wpsr_settings_smartload">
+				<option <?php echo $wpsr_settings['smartload'] == 'normal' ? ' selected="selected"' : ''; ?> value="normal">Normally (Async)</option>
+				<!--<option <?php echo $wpsr_settings['smartload'] == 'window' ? ' selected="selected"' : ''; ?> value="window">After window load</option>-->
+				<option <?php echo $wpsr_settings['smartload'] == 'timeout' ? ' selected="selected"' : ''; ?> value="timeout">After specific time</option>
+			</select>
+			<div id="wpsr_lazload_timeout">Load buttons script after: <input name="wpsr_settings_smartload_timeout" type="text" id="wpsr_settings_smartload_timeout" value="<?php echo $wpsr_settings['smartload_timeout']; ?>" size="2"/> seconds</div>
+						 </td>
+				  </tr>
+				</table>
+				<small class="grayText"><strong>Note:</strong> If the buttons fail to load, there might be a <abbr title="Javascript">JS</abbr> error in the page. This plugin is tested on various browsers and it seems to work fine. If you can't find a solution for the problem report it in the <a href="http://www.aakashweb.com/forum/" target="_blank">Support Forum</a></small>		
+			</div>
+			
 			<h3>RSS <?php _e('Settings', 'wpsr'); ?></h3>
 			<div class="section">
 				<table width="100%" height="39" border="0">

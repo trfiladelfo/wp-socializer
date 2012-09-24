@@ -1,40 +1,24 @@
 <?php
 /*
  * Digg buttons Processor code for WP Socializer Plugin
- * Version : 1.0
+ * Version : 1.1
  * Author : Aakash Chakravarthy
 */
 
 function wpsr_digg_script(){
 	// Return the script
-	return "\n<!-- WP Socializer - Digg Script -->\n" .
-	"<script type=\"text/javascript\">
-	(function() {
-		var s = document.createElement('SCRIPT'), s1 = document.getElementsByTagName('SCRIPT')[0];
-		s.type = 'text/javascript';
-		s.async = true;
-		s.src = 'http://widgets.digg.com/buttons.js';
-		s1.parentNode.insertBefore(s, s1);
-	})();
-	</script>" .
-	"\n<!-- WP Socializer - End Digg Script -->\n";
-}
-
-function wpsr_digg_bt_used(){
-
-	## Get template data
-	$wpsr_template1 = get_option('wpsr_template1_data');
-	$wpsr_template2 = get_option('wpsr_template2_data');
-	
-	$wpsr_template1_content = $wpsr_template1['content'] . $wpsr_template2['content'];
-	$is_diggbt_used = strpos($wpsr_template1_content, '{digg-bt}');
-
-	if ($is_diggbt_used === false) {
-		return 0;
-	} else {
-		return 1;
-	}
-	
+	return "
+<!-- WP Socializer - Digg Script -->\n" .
+"<script type=\"text/javascript\">
+(function() {
+	var s = document.createElement('SCRIPT'), s1 = document.getElementsByTagName('SCRIPT')[0];
+	s.type = 'text/javascript';
+	s.async = true;
+	s.src = 'http://widgets.digg.com/buttons.js';
+	s1.parentNode.insertBefore(s, s1);
+})();
+</script>" .
+"\n<!-- WP Socializer - End Digg Script -->\n";
 }
 
 function wpsr_digg($args = ''){
